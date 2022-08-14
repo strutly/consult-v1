@@ -1,9 +1,9 @@
 <topTip show="{{show}}" type="{{type}}" msg="{{msg}}"></topTip>
 <view class="padding text-center bg-main">
-  <image class="cu-avatar xl round" src="{{userInfo.avatarUrl||'/images/headimg.png'}}"></image>
+  <button class="cu-avatar round xl" style="background-image:url({{userInfo.avatarUrl||'/images/headimg.png'}})" bindtap="getUserProfile"></button>
   <view class="margin-top-sm">
-    <view bindtap="toUrl" data-url="/pages/index/login" class="cu-btn lines-white">立即登录</view>
-  </view> 
+    <view bindtap="toUrl" data-url="/pages/index/login" class="cu-btn lines-white">{{userInfo?'切换账号':'立即登录'}}</view>
+  </view>
 </view>
 <view class="cu-list menu solid-top margin-top footer-bottom">
   <view class="cu-item arrow">

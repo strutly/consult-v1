@@ -68,6 +68,16 @@ CustomPage({
     }
     let res = await Api.loginByAccount(params);
     console.log(res);
+    if(res.code==0){
+      wx.setStorageSync('token', res.data.token);
+      wx.setStorageSync('userInfo', res.data.userInfo);
+      that.showTips("登录成功","success");
+      setTimeout(()=>{
+        that.home();
+      },2000);      
+    }else{
+      that.showTips(res.msg);
+    }
   },
   async forgetSubmit(e){
     console.log(e);
@@ -79,7 +89,13 @@ CustomPage({
     }
     console.log(123);
     let res = await Api.passwordUpdate(params);
-    console.log(res)
+    console.log(res);
+    if(res.code==0){
+      that.showTips("密码修改成功,请重新登录","success");
+    }else{
+      that.showTips(res.msg);
+    }
+    that.forget();
   },
   phoneChange(e) {
     console.log(e);
