@@ -1,0 +1,33 @@
+page {
+  background-color: #F2F5FA;
+}
+
+.bg-img {
+  width: 100%;
+  z-index: -1;
+}
+
+.container {
+  background-color: #F2F5FA;
+}
+
+.search-box {
+  margin-top: -50rpx;
+  border-radius: 20rpx;
+}
+.info-box{
+  line-height: 1.4;
+}
+.info-dex {
+  
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+

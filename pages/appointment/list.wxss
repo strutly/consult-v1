@@ -1,0 +1,10 @@
+/* pages/appointment/list.wxss */
+.cu-form-group .textarea {
+  margin: 32rpx 0 30rpx;
+
+  width: 100%;
+  line-height: 1.2em;
+  flex: 1;
+  font-size: 28rpx;
+  padding: 0;
+}

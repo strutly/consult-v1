@@ -1,0 +1,87 @@
+<tips msg="{{msg}}" show="{{show}}" type="{{type}}"></tips>
+<view class="padding-sm safe-bottom">
+  <view class="cu-list menu" wx:for="{{appointments}}" wx:for-index="i">
+    <view class="cu-list  menu-avatar" bindtap="open" data-index="{{i}}">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{item.mine.avatarUrl}});" wx:if="{{item.mold==1}}"></view>
+        <view class="cu-avatar round lg" style="background-image:url({{item.toUser.avatarUrl}});" wx:else></view>
+        <view class="content">
+          <view class="text-grey" wx:if="{{item.mold==1}}">{{item.mine.name || item.mine.nickName}}的咨询</view>
+          <view class="text-grey" wx:else>咨询{{item.toUser.name || item.toUser.nickName}}专家</view>
+        </view>
+        <view class="action">
+          <text class="cu-tag bg-{{bgs[item.status.type]}} margin-right-sm radius-lg">{{item.status.title}}</text>
+        </view>
+        <view class="action">
+          <text class="{{open==i?'cuIcon-fold':'cuIcon-unfold'}} text-bold  text-grey"></text>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{i==open}}">
+      <view class="cu-item">
+        <view class="content">
+          <text class="cuIcon-cascades text-grey"></text>
+          <text class="text-grey">问题类型</text>
+        </view>
+        <view class="action">
+          {{types[item.type]}}
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class="content">
+          <text class="cuIcon-time text-grey"></text>
+          <text class="text-grey">预约时间</text>
+        </view>
+        <view class="action">
+          {{item.appointmentTime}}
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class="content">
+          <text class="cuIcon-calendar text-grey"></text>
+          <text class="text-grey">预约日期</text>
+        </view>
+        <view class="action">
+          {{item.appointmentDate}}
+        </view>
+      </view>
+
+      <view class="cu-item" data-text="123554" bindtap="copy" wx:if="{{item.meetingNo}}">
+        <view class="content">
+          <text class="cuIcon-expressman text-grey"></text>
+          <text class="text-grey">会议号</text>
+        </view>
+        <view class="action">
+          {{item.meetingNo}}
+        </view>
+      </view>
+
+
+      <view class="cu-form-group align-start">
+        <view class="title text-grey margin-left-xs"><text class="cuIcon-message margin-right-sm"></text>咨询内容</view>
+        <view class="textarea">{{item.content}}</view>
+      </view>
+      <view class="flex align-center bg-white padding-top" wx:if="{{item.status.type==0 && item.mold==1}}">
+        <button class="cu-btn bg-grey lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="2" data-id="{{item.id}}">拒绝</button>
+        <button class="cu-btn bg-green lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="1" data-id="{{item.id}}">同意</button>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class="cu-modal {{modal?'show':''}}">
+  <view class="cu-dialog sm">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">咨询确认</view>
+    </view>
+    <view class="padding-xl">
+      {{formData.status==1?'确认同意此咨询?':'确认拒绝此咨询?'}}
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="modal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="submit">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

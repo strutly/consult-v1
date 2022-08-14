@@ -1,0 +1,71 @@
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #666;
+  opacity: 0.8;
+  z-index: 100;
+}
+.modal{
+  position: fixed;
+  top: 25vh;
+  left: 10vw;
+  right: 10vw;
+  background-color: #fff;
+  padding: 30rpx;
+  z-index: 101;
+  border-radius: 30rpx;
+}
+.modal-content{
+  display: flex;
+  align-items: center;
+  margin: 80rpx auto;
+}
+.modal-content-center{
+  display: flex;
+  margin: 80rpx;
+}
+.modal-icon{
+  font-size: 66rpx;
+  margin:0 20rpx;
+}
+.modal-msg{
+  flex:1;
+}
+.modal-btns{
+  display: flex;
+}
+.modal-btn{
+  flex:1;
+  max-width: 80%;
+  margin: 30rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  color:#41b592;
+  border: 2rpx solid #41b592;
+}
+
+.modal-text{
+  color: #41b592;
+  text-decoration: underline;
+}
+.modal-btn-cancle{
+  color:#F59A23;
+  border-color: #F59A23;
+}
+.modal-title{
+  padding-top: 30rpx;
+  color: #666;
+}
+.modal-textarea{
+  margin-top: 30rpx;
+  box-sizing: border-box;
+}
+.modal-textarea textarea{
+  border: 2rpx solid #f6f6f6;
+  box-sizing: border-box;
+}

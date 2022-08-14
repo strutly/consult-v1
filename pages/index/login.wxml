@@ -1,0 +1,53 @@
+<topTips show="{{show}}" msg="{{msg}}" type="{{type}}"></topTips>
+<view class="margin padding">
+  <view class="text-xxl text-white text-bold">欢迎使用米咖咨询</view>
+  <view class="text-xxl text-white padding-lr text-right">为您提供更专业的咨询服务</view>
+</view>
+<view class="login-box padding-lg">
+  <form bindsubmit="loginSubmit">
+    <view class="text-xxl text-center margin-top-xl main text-bold">登录</view>
+    <view class="solids margin-xl padding-lg round">
+      <input placeholder="账号" class="" name="phone"></input>
+    </view>
+    <view class="solids margin-xl padding-lg round">
+      <input placeholder="密码" type="password" name="password"></input>
+    </view>
+    <view bindtap="forget" class="main text-center text-bold text-decoration text-underline">忘记密码?</view>
+    <button class="bg-main margin-xl  round text-white" form-type="submit">登录</button>
+    <view class="text-center foot safe-bottom">还没有账号?<text bindtap="toUrl" data-url="/pages/user/type" class="text-underline main">去注册</text></view>
+  </form>
+</view>
+
+
+
+<view class="cu-modal {{forget?'show':false}}">
+  <form bindsubmit="forgetSubmit">
+    <view class="cu-dialog sm">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">密码重置</view>
+      </view>
+      <view class="text-left">
+        <view class="cu-form-group padding">
+          <text class="title" space="ensp">手 机 号</text>
+          <input placeholder="请输入手机号" name="phone" value="{{apply.phone}}" bindinput="phoneChange"></input>
+          <button class='cu-btn bg-main shadow' disabled="{{disabled}}" bindtap="getCode">{{countdown}}</button>
+        </view>
+        <view class="cu-form-group padding">
+          <text class="title" space="ensp">验 证 码</text>
+          <input placeholder="请输入验证码" name="code"></input>
+        </view>
+        <view class="cu-form-group padding solid-bottom">
+          <text class="title" space="ensp">密    码</text>
+          <input type="password" placeholder="请输入新密码" name="password"></input>
+        </view>
+
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn line-gray" bindtap="forget">取消</button>
+          <button class="cu-btn bg-main margin-left" form-type="submit">确定</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

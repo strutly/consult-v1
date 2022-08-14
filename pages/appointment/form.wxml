@@ -1,0 +1,44 @@
+<tips msg="{{msg}}" show="{{show}}" type="{{type}}"></tips>
+<form bindsubmit="submit">
+  <input name="toid" value="{{toid}}" hidden></input>
+  <view class="cu-form-group padding-top">
+    <view class="title">问题类型</view>
+    <picker bindchange="pickerChange" value="{{formData.type}}" data-name="type" name="type" mode="selector" range="{{types}}">
+      <view class="picker">
+        {{types[formData.type]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">日期选择</view>
+    <picker bindchange="pickerChange" mode="date" start="{{minDate}}" data-name="date" name="appointmentDate" value="{{formData.date}}">
+      <view class="picker">
+        {{formData.date||'请选择预约日期'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">时间选择</view>
+    <picker bindchange="pickerChange" mode="time" value="{{formData.time||'09:00'}}" data-name="time" start="09:00" end="21:00" name="appointmentTime">
+      <view class="picker">
+        {{formData.time||'请选择预约时间'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">咨询价格</view>
+    <input class="text-right" placeholder="咨询价格" name="input"></input>
+    <view>元/小时</view>
+  </view>
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class="action text-black">
+      问题描述
+    </view>
+  </view>
+  <view class="cu-form-group solid-bottom">
+    <textarea style="min-height: 300rpx;" maxlength="-1" placeholder="请简要描述您的咨询内容"></textarea>
+  </view>
+  <view class="padding text-center bg-white padding-top-xl">
+    <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit">提交</button>
+  </view>
+</form>

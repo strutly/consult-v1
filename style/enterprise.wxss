@@ -1,0 +1,136 @@
+@font-face {
+  font-family: "com"; /* Project id 3334324 */
+  /* Color fonts */
+  src: 
+       url('//at.alicdn.com/t/font_3334324_t36sozmpg2.woff2?t=1650096982468') format('woff2'),
+       url('//at.alicdn.com/t/font_3334324_t36sozmpg2.woff?t=1650096982468') format('woff'),
+       url('//at.alicdn.com/t/font_3334324_t36sozmpg2.ttf?t=1650096982468') format('truetype');
+}
+
+.com {
+  font-family: "com" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.com-declareResult:before {
+  content: "\e61a";
+}
+
+.com-declareAmount:before {
+  content: "\e61b";
+}
+
+.com-communicationTime:before {
+  content: "\e61c";
+}
+
+.com-abroadNum:before {
+  content: "\e61d";
+}
+
+.com-introduce:before {
+  content: "\e61e";
+}
+
+.com-contactPhone:before {
+  content: "\e61f";
+}
+
+.com-address:before {
+  content: "\e620";
+}
+
+.com-contactName:before {
+  content: "\e621";
+}
+
+.com-lastRevenue:before {
+  content: "\e622";
+}
+
+.com-explain:before {
+  content: "\e623";
+}
+
+.com-result:before {
+  content: "\e624";
+}
+
+.com-title:before {
+  content: "\e625";
+}
+
+.com-doctorNum:before {
+  content: "\e626";
+}
+
+.com-masterNum:before {
+  content: "\e627";
+}
+
+.com-director:before {
+  content: "\e628";
+}
+
+.com-demandDirection:before {
+  content: "\e629";
+}
+
+.com-regtime:before {
+  content: "\e62a";
+}
+
+.com-demand:before {
+  content: "\e62b";
+}
+
+.com-talentLevels:before {
+  content: "\e62c";
+}
+
+.com-visitStatus:before {
+  content: "\e62d";
+}
+
+.com-declareName:before {
+  content: "\e62e";
+}
+
+.com-propertyNum:before {
+  content: "\e62f";
+}
+
+.com-intended:before {
+  content: "\e630";
+}
+
+.com-declareType:before {
+  content: "\e631";
+}
+
+.com-staffNum:before {
+  content: "\e632";
+}
+
+.com-lastInvestment:before {
+  content: "\e633";
+}
+
+.com-cooperationMode:before {
+  content: "\e634";
+}
+
+.com-classify:before {
+  content: "\e635";
+}
+
+.com-feedback:before {
+  content: "\e636";
+}
+
+.com-artisanNum:before {
+  content: "\e637";
+}

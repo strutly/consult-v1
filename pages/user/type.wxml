@@ -1,0 +1,15 @@
+<view class="container margin-top-xl align-center">
+  <view class="padding-xl margin-top-xl"></view>
+  <view bindtap="toUrl" data-url="/pages/user/reg?type=3" class="flex margin padding align-center">
+    <image class="type-icon" src="/images/enterprise.png"></image>
+    <view class="solids round flex-sub padding padding-tb-xl text-center text-lg margin-lr">投资机构或企业</view>
+  </view>
+  <view bindtap="toUrl"  data-url="/pages/user/reg?type=2" class="flex margin padding align-center">
+    <image class="type-icon" src="/images/expert.png"></image>
+    <view class="solids round flex-sub padding padding-tb-xl text-center text-lg margin-lr">专家</view>
+  </view>
+  <view bindtap="toUrl"  data-url="/pages/user/reg?type=1" class="flex margin padding align-center">
+    <image class="type-icon" src="/images/user.png"></image>
+    <view class="solids round flex-sub padding padding-tb-xl text-center text-lg margin-lr">游客(个人)</view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+<view class="bg-white padding">
+  <view class="card bg-white flex align-center padding-sm">
+    <view class="head-box margin-right-sm">
+      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
+      <view class="name text-center">李教授</view>
+    </view>
+    <view class="info-box">
+      <view class="">擅长领域:×××××××</view>
+      <text class="" space="ensp">学 历:×××××××</text>
+      <view class="">专家分级:×××××××</view>
+      <view class="">技术关键词:×××××××</view>
+    </view>
+  </view>
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-titles text-yellow"></text> 个人介绍
+    </view>
+  </view>
+  <view class="padding-lr bg-white">
+    本人是一个很直爽的人,具有较强的专业能力,专业知识非常的牢固,年年获得大连医科大学优良学分先进个人称号,并在三甲医院实习一年,实习期间获得了老师的一致好评.有很强的英语能力,能进行一般的口语交流.具有较强的组织能力,在校期间多次组织班里的集体活动,都得到了同学的好评.
+  </view>
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-titles text-blue"></text> 上市经历
+    </view>
+  </view>
+  <view class="padding-lr-xl bg-white ">
+    无
+  </view>
+  <view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-titles text-red"></text> 融资经历
+    </view>
+  </view>
+  <view class="padding-lr-xl bg-white ">
+    无
+  </view>
+
+  <view bindtap="toUrl" data-url="/pages/appointment/form" class="text-center margin-top-xl">
+    <view style="width:60%;" class='cu-btn bg-main shadow' >咨询</view>
+  </view>
+</view>

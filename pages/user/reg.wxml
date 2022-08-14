@@ -1,0 +1,38 @@
+<topTips msg="{{msg}}" type="{{type}}" show="{{show}}"></topTips>
+
+<view class="container margin-top-xl align-center">
+  <form bindsubmit="submit">
+    <view class="cu-form-group margin-top-xl padding">
+      <text class="title" space="ensp">姓 名</text>
+      <input placeholder="请输入姓名" name="phone" value="{{apply.phone}}" bindinput="phoneChange"></input>
+    </view>
+    <view class="cu-form-group padding">
+      <text class="title" space="ensp">国家/地区</text>
+      <input placeholder="请输入国家/地区" name="country"></input>
+    </view>
+    <view class="cu-form-group padding">
+      <text class="title" space="ensp">手 机 号</text>
+      <input placeholder="请输入手机号" name="phone" value="{{apply.phone}}" bindinput="phoneChange"></input>
+      <button class='cu-btn bg-main shadow' disabled="{{disabled}}" bindtap="getCode">{{countdown}}</button>
+    </view>
+    <view class="cu-form-group padding">
+      <text class="title" space="ensp">验 证 码</text>
+      <input placeholder="请输入验证码" name="code"></input>
+    </view>
+    <view class="cu-form-group padding solid-bottom">
+      <text class="title" space="ensp">密 码</text>
+      <input type="safe-password" placeholder="请输入密码" name="code"></input>
+    </view>
+    <view class="cu-form-group padding" wx:if="{{type>1}}">
+      <text class="title" space="ensp">单 位</text>
+      <input placeholder="请输入您的工作单位" name="unit"></input>
+    </view>
+    <view class="cu-form-group padding solid-bottom" wx:if="{{type>1}}">
+      <text class="title" space="ensp">职 务</text>
+      <input placeholder="请输入您的工作职务" name="post" value="{{apply.name}}"></input>
+    </view>
+    <view class="text-center margin-top-xl safe-bottom">
+      <button style="width:50%;" class='cu-btn bg-main shadow lg' disabled="{{disabled}}" form-type="submit">提交</button>
+    </view>
+  </form>
+</view>

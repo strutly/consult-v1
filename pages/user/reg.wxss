@@ -1,0 +1,15 @@
+page{
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  
+}
+.container{
+  background-color: var(--white);
+  flex:1;
+  border-radius: 60rpx 60rpx 0 0;
+
+}
+

@@ -1,0 +1,120 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3318878 */
+  /* Color fonts */
+  src: 
+       url('//at.alicdn.com/t/font_3318878_vis005zp8c.woff2?t=1649754449295') format('woff2'),
+       url('//at.alicdn.com/t/font_3318878_vis005zp8c.woff?t=1649754449295') format('woff'),
+       url('//at.alicdn.com/t/font_3318878_vis005zp8c.ttf?t=1649754449295') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-honor:before {
+  content: "\e61f";
+}
+
+.icon-englishName:before {
+  content: "\e61e";
+}
+
+.icon-groupName:before {
+  content: "\e61d";
+}
+
+.icon-birthday:before {
+  content: "\e607";
+}
+
+.icon-achievement:before {
+  content: "\e608";
+}
+
+.icon-batch:before {
+  content: "\e609";
+}
+
+.icon-area:before {
+  content: "\e60a";
+}
+
+.icon-areaKey:before {
+  content: "\e60b";
+}
+
+.icon-direction:before {
+  content: "\e60c";
+}
+
+.icon-landingProvince:before {
+  content: "\e60d";
+}
+
+.icon-contactName:before {
+  content: "\e60e";
+}
+
+.icon-email:before {
+  content: "\e60f";
+}
+
+.icon-nationality:before {
+  content: "\e610";
+}
+
+.icon-contactMail:before {
+  content: "\e611";
+}
+
+.icon-background:before {
+  content: "\e612";
+}
+
+.icon-sex:before {
+  content: "\e613";
+}
+
+.icon-resource:before {
+  content: "\e614";
+}
+
+.icon-wordAddress:before {
+  content: "\e615";
+}
+
+.icon-specialty:before {
+  content: "\e616";
+}
+
+.icon-post:before {
+  content: "\e617";
+}
+
+.icon-landingCity:before {
+  content: "\e618";
+}
+
+.icon-type:before {
+  content: "\e619";
+}
+
+.icon-contactPhone:before {
+  content: "\e61a";
+}
+
+.icon-phone:before {
+  content: "\e61b";
+}
+
+.icon-workUnit:before {
+  content: "\e61c";
+}
+
+.icon-search:before {
+  content: "\e606";
+}

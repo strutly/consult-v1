@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/home",
+    "pages/index/login",
+    "pages/index/my",
+    "pages/expert/detail",
+    "pages/appointment/form",
+    "pages/appointment/list",
+    "pages/expert/list",
+    "pages/user/type",
+    "pages/user/reg",
+    "pages/user/auth"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#6887B3",
+    "navigationBarTitleText": "米珈咨询",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/home"
+      },
+      {
+        "pagePath": "pages/index/my"
+      }
+    ]
+  },
+  "usingComponents": {
+    "topTips": "/components/tips/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

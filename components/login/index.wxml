@@ -1,0 +1,27 @@
+<topTip show="{{show}}" type="{{type}}" msg="{{msg}}"></topTip>
+<form bindsubmit="submit">
+  <view class="cu-modal {{loginModal?'show':''}}">
+    <view class="cu-dialog sm">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">手机号登录</view>
+      </view>
+      <view class="text-left">
+        <view class="cu-form-group">
+          <view class="title">手机号</view>
+          <input placeholder="请输入手机号" name="phone" bindinput="phoneChange"></input>
+          <button class='cu-btn bg-green shadow' disabled="{{disabled}}" bindtap="getCode">{{countdown}}</button>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">验证码</view>
+          <input placeholder="请输入验证码" name="code"></input>
+        </view>
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+          <button class="cu-btn bg-green margin-left" form-type="submit">登录</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</form>

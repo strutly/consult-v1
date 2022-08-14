@@ -1,0 +1,21 @@
+page{
+  background-color: var(--main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;  
+}
+.container{
+  background-color: var(--white);
+  flex:1;
+  border-radius: 60rpx 60rpx 0 0;
+  position: relative;
+  background-image: url(http://gridpic.tsing-tec.com/consult%2Ftype-bg.png?imageMogr2);
+  background-repeat: no-repeat;
+  background-position:0 95%;
+  background-size: 100%;  
+}
+.type-icon{
+  width:120rpx;
+  height: 120rpx;
+}
