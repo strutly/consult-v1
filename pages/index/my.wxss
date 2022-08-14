@@ -1,1 +1,5 @@
-/* pages/demo/my.wxss */
+.user-tag{
+  position: absolute;
+  top:10rpx;
+  right:30rpx;
+}

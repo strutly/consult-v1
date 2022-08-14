@@ -97,42 +97,7 @@ CustomPage({
     }
     that.forget();
   },
-  phoneChange(e) {
-    console.log(e);
-    that.setData({
-      phone: e.detail.value
-    })
-  },
-  getCode() {
-    let phone = this.data.phone;
-    let reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
-    if (!reg.test(phone)) return that.showTips("请输入正确的手机号");
-    Api.getPhoneCode({
-      phone: phone
-    }).then(res => {
-      console.log(res);
-    });
-
-    that.timer();
-  },
-  timer() {
-    let that = this;
-    let min = 0
-    let max = 60;
-    let countdown = setInterval(() => {
-      if (max > min) {
-        max--;
-        that.setData({
-          countdown: max,
-          disabled: true
-        })
-      } else {
-        that.setData({
-          disabled: false,
-          countdown: "获取验证码"
-        })
-        clearInterval(countdown);
-      }
-    }, 1000)
-  },
+  
+  
+  
 })
