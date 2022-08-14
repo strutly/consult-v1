@@ -1,4 +1,4 @@
-<topTip show="{{show}}" type="{{type}}" msg="{{msg}}"></topTip>
+<topTip show="{{show}}" errorType="{{errorType}}" msg="{{msg}}"></topTip>
 <view class="padding text-center bg-main">
   <button class="cu-avatar round xl" style="background-image:url({{userInfo.avatarUrl||'/images/headimg.png'}})" bindtap="getUserProfile"></button>
   <view class="margin-top-sm">

@@ -34,11 +34,11 @@ const CustomPage = function (page) {
           url: '/pages/index/home',
         })
       },
-      showTips(msg="出错了~", type = "error") {
+      showTips(msg="出错了~", errorType = "error") {
         this.setData({
-          msg: msg,
-          type: type,
-          show: true
+          errorMsg: msg,
+          errorType: errorType,
+          errorShow: true
         })
       }
     })

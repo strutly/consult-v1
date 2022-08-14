@@ -1,4 +1,4 @@
-<topTips show="{{show}}" msg="{{msg}}" type="{{type}}"></topTips>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view>
   <image class="bg-img" mode="widthFix" src="http://gridpic.tsing-tec.com/consult%2Fhome-logo.png"></image>
   <view class="flex margin-lr-sl bg-white padding-sm search-box">

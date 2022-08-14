@@ -14,8 +14,7 @@ CustomPage({
     that.initValidate();
   },
   initValidate() {
-    const rules =  {
-      
+    const rules =  {      
       name: {
         required: true
       },

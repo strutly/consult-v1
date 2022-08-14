@@ -1,4 +1,4 @@
-<topTip show="{{show}}" type="{{type}}" msg="{{msg}}"></topTip>
+<topTip show="{{show}}" errorType="{{errorType}}" msg="{{msg}}"></topTip>
 <form bindsubmit="submit">
   <view class="cu-modal {{loginModal?'show':''}}">
     <view class="cu-dialog sm">

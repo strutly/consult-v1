@@ -3,17 +3,17 @@ Component({
     addGlobalClass: true
   },
   properties: {
-    type: {
+    errorType: {
       type: String,
       value: 'error',
       observer: '_typeChange'
     },
-    show: {
+    errorShow: {
       type: Boolean,
       value: false,
       observer: '_showChange'
     },
-    msg: {
+    errorMsg: {
       type: String,
       value: ''
     },
@@ -38,7 +38,7 @@ Component({
   attached() {
     const data = this.data;
     this.setData({
-      className: data.typeClassMap[data.type] || ''
+      className: data.typeClassMap[data.errorType] || ''
     });
   },
 
@@ -59,7 +59,7 @@ Component({
       if (newVal && this.data.delay) {
         setTimeout(() => {
           this.setData({
-            show: false
+            errorShow: false
           }, () => {
             // tooltips 隐藏了，触发 hide 事件
             this.triggerEvent('hide', {}, {});
@@ -68,7 +68,7 @@ Component({
       }
 
       this.setData({
-        show: newVal
+        errorShow: newVal
       });
     }
 

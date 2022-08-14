@@ -1,4 +1,4 @@
-<tips msg="{{msg}}" show="{{show}}" type="{{type}}"></tips>
+<tips msg="{{msg}}" show="{{show}}" errorType="{{errorType}}"></tips>
 <view class="padding-sm safe-bottom">
   <view class="cu-list menu" wx:for="{{appointments}}" wx:for-index="i">
     <view class="cu-list  menu-avatar" bindtap="open" data-index="{{i}}">
