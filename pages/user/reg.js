@@ -67,7 +67,7 @@ CustomPage({
       return that.showTips(error.msg);
     }
     
-    let res = await Api.addUser(data);
+    let res = await Api.addUserAdmin(data);
     console.log(res);
     if (res.code == 0) {
       that.showTips("注册成功,请前往登录", "success");
