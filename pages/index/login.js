@@ -92,10 +92,10 @@ CustomPage({
     console.log(res);
     if(res.code==0){
       that.showTips("密码修改成功,请重新登录","success");
+      that.forget();
     }else{
       that.showTips(res.msg);
-    }
-    that.forget();
+    }    
   },
   
   

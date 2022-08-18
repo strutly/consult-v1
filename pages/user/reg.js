@@ -73,7 +73,7 @@ CustomPage({
       that.showTips("注册成功,请前往登录", "success");
       setTimeout(() => {
         wx.reLaunch({
-          url: '/pages/index/login.js',
+          url: '/pages/index/login',
         })
       }, 2000)
     }else{

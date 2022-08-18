@@ -165,9 +165,10 @@ CustomPage({
             title: '请上传图片或者PDF形式附件'
           })
         }else{
-          that.setData({
-            path:res.tempFiles[0].path
+          Api.uploadFile(res.tempFiles[0].path).then(res=>{
+            console.log(res)
           })
+
         }
         console.log(res);
       }
