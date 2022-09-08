@@ -9,6 +9,11 @@ CustomPage({
     console.log(options);
     that = this;
   },
+  onShow(){
+    that.setData({
+      userInfo: wx.getStorageSync('userInfo')
+    })
+  },
   async getUserProfile(e) {
     console.log(e);
     try {

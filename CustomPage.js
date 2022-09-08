@@ -4,9 +4,9 @@ const CustomPage = function (page) {
   return Page(
     Object.assign({}, page, {
       onLoad(options) {
-        this.setData(
-          options
-        )
+        this.setData({
+          options:options
+        })
         page.onLoad && page.onLoad.call(this, options)
       },
       toUrl(e) {

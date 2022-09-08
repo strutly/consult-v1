@@ -5,174 +5,110 @@ import CustomPage from '../../CustomPage';
 import WxValidate from "../../utils/WxValidate";
 CustomPage({
   data: {
-    countdown:"获取验证码"
+    reg: {},
+    statusMsg:['提交','已通过','已拒绝']
   },
-  onLoad(options){
+  async onLoad(options) {
     console.log(options);
     that = this;
-  },
-  initValidate(index) {
-    const rules = [{
-      phone: {
-        required: true,
-        tel:true
-      },
-      code:{
-        required: true
-      },
-      name: {
-        required: true
-      },
-      title: {
-        required: true
-      }
-    }, {
-      phone: {
-        required: true,
-        tel:true
-      },
-      code:{
-        required: true
-      },
-      name: {
-        required: true
-      },
-      sex: {
-        min: 1
-      },
-      area: {
-        required: true
-      },
-      through: {
-        required: true
-      }
-    }]
-    const messages = [{
-      phone: {
-        required: "请输入正确的手机号",
-        tel:"请输入正确的手机号"
-      },
-      code:{
-        required: "请输入验证码"
-      },
-      name: {
-        required: "请输入您的姓名"
-      },
-      title: {
-        required: "请输入公司名称"
-      }
-    }, {
-      phone: {
-        required: "请输入正确的手机号",
-        tel:"请输入正确的手机号"
-      },
-      code:{
-        required: "请输入验证码"
-      },
-      name: {
-        required: "请输入您的姓名"
-      },
-      sex: {
-        min: "请选择您的性别"
-      },
-      area: {
-        required: "请输入您的领域方向"
-      },
-      through: {
-        required: "请输入您的经历"
-      }
-    }]
-    that.WxValidate = new WxValidate(rules[index], messages[index]);
-  },
-  phoneChange(e) {
-    console.log(e);
+    let res = await Api.getUserReg();
+    console.log(res);
+    let reg = res.data;
+    let disabled = false;
+    if(reg.regStatus==1){
+      disabled = true;
+    }
     that.setData({
-      ['apply.phone']: e.detail.value
-    })
-  },
-
-  hideModal() {
-    that.setData({
-      loginModal: false
-    })
-  },
-  getCode() {
-    let phone = that.data.apply.phone;
-    let reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
-    console.log(reg.test(phone));
-    if (!reg.test(phone)) return that.showTips("请输入正确的手机号");
-    Api.getPhoneCode({
-      phone: phone
-    }).then(res => {
-      console.log(res);
+      reg: reg,
+      disabled:disabled
     });
-
-    this.timer();
+    that.initValidate();
   },
-  timer() {
-    let that = this;
-    let min = 0
-    let max = 60;
-    let countdown = setInterval(() => {
-      if (max > min) {
-        max--;
+  initValidate() {
+    const rules = {
+      name: {
+        required: true
+      },
+      country: {
+        required: true
+      },
+      unit: {
+        required: true
+      },
+      post: {
+        required: true
+      },
+      education: {
+        required: true
+      },
+      goodAt: {
+        required: true
+      },
+      introduce: {
+        required: true,
+        minlength: 50
+      },
+      certificate: {
+        required: true
+      }
+    }, messages = {
+      name: {
+        required: "请输入您的姓名"
+      },
+      country: {
+        required: "请输入您的国家/地区"
+      },
+      unit: {
+        required: "请输入您的工作单位"
+      },
+      post: {
+        required: "请输入您的工作职务"
+      },
+      education: {
+        required: "请输入您的学历"
+      },
+      goodAt: {
+        required: "请输入您的擅长领域"
+      },
+      introduce: {
+        required: "请输入您的个人介绍",
+        minlength: "个人介绍不能少于50字符"
+      },
+      certificate: {
+        required: "请上传您的学历学位证书",
+      }
+
+    }
+    that.WxValidate = new WxValidate(rules, messages);
+  },
+
+  async upload() {
+    let fileRes = await wx.chooseMessageFile({
+      count: 1,
+      type: 'all'
+    });
+    let types = ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp', 'psd', 'svg', 'tiff', 'pdf'];
+    var filename = fileRes.tempFiles[0].name;
+    let fileType = filename.substr(filename.lastIndexOf('.') + 1);
+    let index = types.indexOf(fileType.toLowerCase());
+    if (index == -1) {
+      wx.showToast({
+        icon: 'none',
+        title: '请上传图片或者PDF形式附件'
+      })
+    } else {
+      let flag = true;
+      if (index == types.length - 1) flag = false;
+      let res = await Api.uploadFile(fileRes.tempFiles[0].path, flag);
+      console.log(res);
+      if (res.code == 0) {
         that.setData({
-          countdown: max,
-          disabled: true
+          ['reg.certificate']: res.data
         })
       } else {
-        that.setData({
-          disabled: false,
-          countdown: "获取验证码"
-        })
-        clearInterval(countdown);
+        that.showTips(res.msg, "error");
       }
-    }, 1000)
-  },
-  categoryChange(e) {
-    console.log(e);
-    let index = e.detail.value;
-    that.setData({
-      'apply.type': index
-    })
-    that.initValidate(index);
-  },
-  sexChange(e) {
-    console.log(e);
-    that.setData({
-      ['apply.sex']: e.detail.value
-    })
-  },
-
-  showTips(msg, type = "error") {
-    that.setData({
-      msg: msg,
-      type: type,
-      show: true
-    })
-  },
-  upload(){
-    wx.chooseMessageFile({
-      count: 1,
-      type:'all',
-      success:function(res){
-        let types = ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp', 'psd', 'svg', 'tiff','pdf'];
-        var filename = res.tempFiles[0].name;        
-        let fileType = filename.substr(filename.lastIndexOf('.') + 1)
-        if(types.indexOf(fileType.toLowerCase())==-1){
-          wx.showToast({
-            icon:'none',
-            title: '请上传图片或者PDF形式附件'
-          })
-        }else{
-          Api.uploadFile(res.tempFiles[0].path).then(res=>{
-            console.log(res)
-          })
-
-        }
-        console.log(res);
-      }
-    })
+    }
   },
   async submit(e) {
     console.log(e);
@@ -184,10 +120,10 @@ CustomPage({
     }
     let data = e.detail.value;
     let res = {};
-    if (data.type == 0) {
-      res = await Api.addEnterpriseApply(data);
+    if (data.id) {
+      res = await Api.updateUserReg(data);
     } else {
-      res = await Api.addExpertApply(data);
+      res = await Api.addUserReg(data);
     };
     console.log(res);
     if (res.code == 0) {
@@ -196,9 +132,9 @@ CustomPage({
         wx.navigateBack({
           delta: 1,
         })
-      }, 2000)
-    }else{
-      that.showTips(res.msg||"出错了","error");
+      }, 2000);
+    } else {
+      that.showTips(res.msg || "出错了", "error");
     }
   }
 })

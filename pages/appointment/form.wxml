@@ -1,4 +1,4 @@
-<tips msg="{{msg}}" show="{{show}}" errorType="{{errorType}}"></tips>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <form bindsubmit="submit">
   <input name="toid" value="{{toid}}" hidden></input>
   <view class="cu-form-group padding-top">
@@ -27,7 +27,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">咨询价格</view>
-    <input class="text-right" placeholder="咨询价格" name="input"></input>
+    <input class="text-right" placeholder="咨询价格" name="price" type="digit"></input>
     <view>元/小时</view>
   </view>
   <view class="cu-bar bg-white solid-bottom solid-top">
@@ -36,7 +36,7 @@
     </view>
   </view>
   <view class="cu-form-group solid-bottom">
-    <textarea style="min-height: 300rpx;" maxlength="-1" placeholder="请简要描述您的咨询内容"></textarea>
+    <textarea style="min-height: 300rpx;" name="content" maxlength="-1" placeholder="请简要描述您的咨询内容"></textarea>
   </view>
   <view class="padding text-center bg-white padding-top-xl">
     <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit">提交</button>

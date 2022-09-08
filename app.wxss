@@ -12,6 +12,13 @@ page{
   color:#fff;
   background-color: var(--main);
 }
+.bg-auth{
+  background-image: url('http://gridpic.tsing-tec.com/consult%2Fauth.png');
+  background-repeat: no-repeat;
+  background-position: 95% 15%;
+  background-size: 60rpx 60rpx;
+}
+
 .safe-bottom{  
   padding-bottom: calc(50rpx + constant(safe-area-inset-bottom) / 2);  
   padding-bottom: calc(50rpx + env(safe-area-inset-bottom) / 2); 

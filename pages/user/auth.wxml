@@ -1,42 +1,55 @@
-<view class="container margin-top-xl align-center">
-  <view class="cu-form-group margin-top-xl">
-    <text class="title" space="ensp">姓    名</text>
-    <input placeholder="请输入姓名" name="phone" value="{{apply.phone}}" bindinput="phoneChange"></input>
-  </view>
-  <view class="cu-form-group">
-    <text class="title" space="ensp">国家/地区</text>
-    <input placeholder="请输入国家/地区" name="code"></input>
-  </view>
-  <view class="cu-form-group">
-    <text class="title" space="ensp">单    位</text>
-    <input placeholder="请输入您的单位" name="code"></input>
-  </view>
-  <view class="cu-form-group solid-bottom">
-    <text class="title" space="ensp">职    务</text>
-    <input placeholder="请输入您的职务" name="name" value="{{apply.name}}"></input>
-  </view>
-  <view class="cu-form-group solid-bottom">
-    <text class="title" space="ensp">学    历</text>
-    <input placeholder="请输入您的学历" name="name" value="{{apply.name}}"></input>
-  </view>
-  <view class="cu-form-group solid-bottom">
-    <text class="title" space="ensp">擅长领域</text>
-    <input placeholder="请输入您的学历" name="name" value="{{apply.name}}"></input>
-  </view>
-  <view class="cu-bar bg-white solid-bottom solid-top">
-    <view class="action text-black">
-      个人介绍
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<form bindsubmit="submit">
+  <input name="id" value="{{reg.id}}" hidden wx:if="{{reg.id}}"></input>
+  <view class="container margin-top align-center">
+    <view class="cu-form-group margin-top-xl">
+      <text class="title" space="ensp">姓    名</text>
+      <input placeholder="请输入姓名" name="name" value="{{reg.name}}" disabled="{{disabled}}"></input>
+    </view>
+    <view class="cu-form-group">
+      <text class="title" space="ensp">国家/地区</text>
+      <input placeholder="请输入国家/地区" name="country" value="{{reg.country}}" disabled="{{disabled}}"></input>
+    </view>
+    <view class="cu-form-group">
+      <text class="title" space="ensp">单    位</text>
+      <input placeholder="请输入您的单位" name="unit" value="{{reg.unit}}" disabled="{{disabled}}"></input>
+    </view>
+    <view class="cu-form-group solid-bottom">
+      <text class="title" space="ensp">职    务</text>
+      <input placeholder="请输入您的职务" name="post" value="{{reg.post}}" disabled="{{disabled}}"></input>
+    </view>
+    <view class="cu-form-group solid-bottom">
+      <text class="title" space="ensp">学    历</text>
+      <input placeholder="请输入您的学历" name="education" value="{{reg.education}}" disabled="{{disabled}}"></input>
+    </view>
+    <view class="cu-form-group solid-bottom">
+      <text class="title" space="ensp">擅长领域</text>
+      <input placeholder="请输入您的擅长领域" name="goodAt" value="{{reg.goodAt}}" disabled="{{disabled}}"></input>
+    </view>
+    <view class="cu-bar bg-white solid-bottom solid-top">
+      <view class="action text-black">
+        个人介绍
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <textarea name="introduce" maxlength="500" value="{{reg.introduce}}" style="min-height: 300rpx;" placeholder="请输入您的个人介绍" auto-height="true"></textarea>
+    </view>
+    <view class="cu-bar bg-white solid-bottom solid-top">
+      <view class="action text-black">
+        拒绝理由
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view>{{reg.reply}}</view>
+    </view>
+    <view class="cu-form-group solid-bottom">
+      <text class="title" space="ensp">学历学位证书</text>
+      <input disabled="true" placeholder="请上传您的学历学位证书" name="certificate" value="{{reg.certificate}}" bindinput="phoneChange"></input>
+      <button class='cu-btn bg-main shadow' disabled="{{disabled}}"  bindtap="upload">上传</button>
+    </view>
+    <view class="text-center margin-top-xl safe-bottom">
+      <button style="width:50%;" class='cu-btn bg-main shadow lg' disabled="{{disabled}}" form-type="submit">{{statusMsg[reg.regStatus||0]}}</button>
     </view>
   </view>
-  <view class="cu-form-group">
-    <textarea maxlength="500" style="min-height: 300rpx;" placeholder="请输入您的个人介绍" auto-height="true"></textarea>
-  </view>
-  <view class="cu-form-group solid-bottom">
-    <text class="title" space="ensp">学历学位证书</text>
-    <input disabled="true" placeholder="请上传您的学历学位证书" name="phone" value="{{path}}" bindinput="phoneChange"></input>
-    <button class='cu-btn bg-main shadow' disabled="{{disabled}}" bindtap="upload">上传</button>
-  </view>
-  <view class="text-center margin-top-xl safe-bottom">
-    <button style="width:50%;" class='cu-btn bg-main shadow lg' disabled="{{disabled}}" bindtap="submit">提交</button>
-  </view>
-</view>
+
+</form>

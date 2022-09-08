@@ -1,117 +1,18 @@
 <view class="bg-main padding"></view>
 <view class="flex margin-lr-sl bg-white padding-sm search-box">
   <image class="margin-left-sm" style="width:40rpx;height:40rpx;" src="http://gridpic.tsing-tec.com/consult%2Fsearch.png"></image>
-  <input placeholder="请输入关键词" class="flex-sub padding-left" type="text"></input>
+  <input placeholder="请输入关键词" class="flex-sub padding-left" type="text" 	confirm-type="search" bindconfirm='search'></input>
 </view>
 <view class="cards footer-bottom">
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
+  <view class="card bg-white flex align-center margin padding-sm  {{item.auth?'bg-auth':''}}" wx:for="{{experts}}" wx:key="index" bindtap='toUrl' data-url="/pages/expert/detail?id={{item.id}}">
     <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
+      <image style="width: 200rpx;height: 200rpx;" src="{{item.avatarUrl||'http://gridpic.tsing-tec.com/consult%2Fhome-head.png'}}"></image>
+      <view class="name text-center">{{item.name}}</view>
     </view>
     <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人,具有较强的专业能力,专业知识非常的牢固,年年获得大连医科大学优良学分先进个人称号,并在三甲医院实习一年,实习期间获得了老师的一致好评.有很强的英语能力,能进行一般的口语交流.具有较强的组织能力,在校期间多次组织班里的集体活动,都得到了同学的好评.</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人,具有较强的专业能力,专业知识非常的牢固,年年获得大连医科大学优良学分先进个人称号,并在三甲医院实习一年,实习期间获得了老师的一致好评.有很强的英语能力,能进行一般的口语交流.具有较强的组织能力,在校期间多次组织班里的集体活动,都得到了同学的好评.</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人,具有较强的专业能力,专业知识非常的牢固,年年获得大连医科大学优良学分先进个人称号,并在三甲医院实习一年,实习期间获得了老师的一致好评.有很强的英语能力,能进行一般的口语交流.具有较强的组织能力,在校期间多次组织班里的集体活动,都得到了同学的好评.</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人,具有较强的专业能力,专业知识非常的牢固,年年获得大连医科大学优良学分先进个人称号,并在三甲医院实习一年,实习期间获得了老师的一致好评.有很强的英语能力,能进行一般的口语交流.具有较强的组织能力,在校期间多次组织班里的集体活动,都得到了同学的好评.</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人,具有较强的专业能力,专业知识非常的牢固,年年获得大连医科大学优良学分先进个人称号,并在三甲医院实习一年,实习期间获得了老师的一致好评.有很强的英语能力,能进行一般的口语交流.具有较强的组织能力,在校期间多次组织班里的集体活动,都得到了同学的好评.</view>
-    </view>
-  </view>
-  <view class="card bg-white flex align-center margin padding-sm" bindtap='toUrl' data-url="/pages/expert/detail">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-head.png"></image>
-      <view class="name text-center">李教授</view>
-    </view>
-    <view class="info-box">
-      <view class="">专业领域:×××××××</view>
-      <view class="">学历:×××××××</view>
-      <view class="info-dex">个人简介:本人是一个很直爽的人</view>
+      <view class="">专业领域:{{item.goodAt}}</view>
+      <view class="">学历:{{item.education}}</view>
+      <view class="info-dex">个人简介:{{item.introduce}}</view>
     </view>
   </view>
 </view>
