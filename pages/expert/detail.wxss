@@ -1,5 +1,6 @@
+@import "/style/expert.wxss";
 page {
-  background-color: #F2F5FA;
+  background-color: var(--white);
 }
 
 .bg-img {
@@ -15,19 +16,5 @@ page {
   margin-top: -50rpx;
   border-radius: 20rpx;
 }
-.info-box{
-  line-height: 2;
-}
-.info-dex {
-  
-  padding-top: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-}
+
 

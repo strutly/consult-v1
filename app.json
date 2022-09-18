@@ -9,7 +9,8 @@
     "pages/expert/list",
     "pages/user/type",
     "pages/user/reg",
-    "pages/user/auth"
+    "pages/user/auth",
+    "pages/user/info"
   ],
   "window": {
     "backgroundTextStyle": "light",

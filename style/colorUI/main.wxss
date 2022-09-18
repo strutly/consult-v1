@@ -3951,3 +3951,6 @@ scroll-view.cu-steps .cu-item {
 .lines-white {
 	color: var(--white);
 }
+.hide{
+  display: none;
+}

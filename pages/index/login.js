@@ -72,9 +72,10 @@ CustomPage({
       wx.setStorageSync('token', res.data.token);
       wx.setStorageSync('userInfo', res.data.userInfo);
       that.showTips("登录成功","success");
+      getApp().globalData.auth = true;
       setTimeout(()=>{
         that.home();
-      },2000);      
+      },1000);      
     }else{
       that.showTips(res.msg);
     }

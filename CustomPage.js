@@ -81,6 +81,9 @@ const CustomPage = function (page) {
           errorType: errorType,
           errorShow: true
         })
+      },
+      reLoad(){
+        this.onLoad(this.data.options)
       }
     })
   )

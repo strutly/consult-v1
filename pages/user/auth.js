@@ -6,6 +6,7 @@ import WxValidate from "../../utils/WxValidate";
 CustomPage({
   data: {
     reg: {},
+    areas:['请选择擅长领域','集成电路','物联网','人工智能','智能制造','新材料','生物医药','医疗器械','节能环保','新能源','汽车零部件','大数据','化学化工'],
     statusMsg:['提交','已通过','已拒绝']
   },
   async onLoad(options) {
@@ -14,13 +15,9 @@ CustomPage({
     let res = await Api.getUserReg();
     console.log(res);
     let reg = res.data;
-    let disabled = false;
-    if(reg.regStatus==1){
-      disabled = true;
-    }
     that.setData({
       reg: reg,
-      disabled:disabled
+      keys:(reg.keyword||"").split(",")
     });
     that.initValidate();
   },
@@ -41,12 +38,22 @@ CustomPage({
       education: {
         required: true
       },
-      goodAt: {
+      field: {
+        required: true,
+        min:1
+      },
+      'key[0]':{
         required: true
       },
       introduce: {
         required: true,
         minlength: 50
+      },
+      industrialize:{
+        required: true
+      },
+      achievement:{
+        required: true
       },
       certificate: {
         required: true
@@ -67,21 +74,35 @@ CustomPage({
       education: {
         required: "请输入您的学历"
       },
-      goodAt: {
-        required: "请输入您的擅长领域"
+      field: {
+        required: "请选择您的擅长领域",
+        min:"请选择您的擅长领域"
+      },
+      'key[0]':{
+        required: "请至少输入一个技术关键词"
       },
       introduce: {
         required: "请输入您的个人介绍",
         minlength: "个人介绍不能少于50字符"
       },
+      industrialize:{
+        required: "请输入您的产业化经历"
+      },
+      achievement:{
+        required: "请输入您的个人成就",
+      },
       certificate: {
-        required: "请上传您的学历学位证书",
+        required: "请上传您的学历学位证书"
       }
 
     }
     that.WxValidate = new WxValidate(rules, messages);
   },
-
+  areaChange(e){
+    that.setData({
+      areaIndex:e.detail.value
+    })
+  },
   async upload() {
     let fileRes = await wx.chooseMessageFile({
       count: 1,
@@ -110,7 +131,31 @@ CustomPage({
       }
     }
   },
-  async submit(e) {
+  keyChange(e){
+    let index = e.currentTarget.dataset.index;
+    let keys = that.data.keys;
+    keys[index] = e.detail.value;
+    that.setData({
+      keys:keys
+    })
+  },
+  chooseCountry(e){
+    that.setData({
+      ['reg.country']:e.detail.name
+    });
+    that.countryModal();
+  },
+  countryModal(){
+    that.setData({
+      countryModal:!that.data.countryModal
+    })
+  },
+  authModal(){
+    that.setData({
+      authModal:!that.data.authModal
+    })
+  },
+  submit(e) {
     console.log(e);
     if (!that.WxValidate.checkForm(e.detail.value)) {
       console.log(that.WxValidate)
@@ -118,23 +163,30 @@ CustomPage({
       that.showTips(error.msg)
       return false;
     }
-    let data = e.detail.value;
-    let res = {};
-    if (data.id) {
-      res = await Api.updateUserReg(data);
-    } else {
-      res = await Api.addUserReg(data);
+    that.authModal();
+    that.yes=async()=>{
+      let data = e.detail.value;
+      let res = {};
+      if (data.id) {
+        res = await Api.updateUserReg(data);
+      } else {
+        res = await Api.addUserReg(data);
+      };
+      console.log(res);
+      if (res.code == 0) {
+        that.showTips("提交成功,请耐心等待审核", "success");
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 2000);
+      } else {
+        that.showTips(res.msg || "出错了", "error");
+      }
     };
-    console.log(res);
-    if (res.code == 0) {
-      that.showTips("提交成功,请耐心等待审核", "success");
-      setTimeout(() => {
-        wx.navigateBack({
-          delta: 1,
-        })
-      }, 2000);
-    } else {
-      that.showTips(res.msg || "出错了", "error");
-    }
+
+
+
+    
   }
 })

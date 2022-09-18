@@ -1,30 +1,45 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <form bindsubmit="submit">
   <input name="id" value="{{reg.id}}" hidden wx:if="{{reg.id}}"></input>
+  <input name="phone" value="{{reg.phone}}" hidden></input>
   <view class="container margin-top align-center">
     <view class="cu-form-group margin-top-xl">
-      <text class="title" space="ensp">姓    名</text>
-      <input placeholder="请输入姓名" name="name" value="{{reg.name}}" disabled="{{disabled}}"></input>
+      <text class="title" space="ensp">姓 名</text>
+      <input placeholder="请输入姓名" name="name" value="{{reg.name}}" ></input>
     </view>
     <view class="cu-form-group">
       <text class="title" space="ensp">国家/地区</text>
-      <input placeholder="请输入国家/地区" name="country" value="{{reg.country}}" disabled="{{disabled}}"></input>
+      <input hidden name="country" value="{{reg.country}}"></input>
+      <view class="flex-sub text-left {{reg.country?'':'text-gray'}}" bindtap="countryModal">{{reg.country||'请选择国家/地区'}}</view>
+      <text class="text-gray cuIcon-right"></text>
     </view>
     <view class="cu-form-group">
-      <text class="title" space="ensp">单    位</text>
-      <input placeholder="请输入您的单位" name="unit" value="{{reg.unit}}" disabled="{{disabled}}"></input>
+      <text class="title" space="ensp">单 位</text>
+      <input placeholder="请输入您的单位" name="unit" value="{{reg.unit}}" ></input>
     </view>
     <view class="cu-form-group solid-bottom">
-      <text class="title" space="ensp">职    务</text>
-      <input placeholder="请输入您的职务" name="post" value="{{reg.post}}" disabled="{{disabled}}"></input>
+      <text class="title" space="ensp">职 务</text>
+      <input placeholder="请输入您的职务" name="post" value="{{reg.post}}" ></input>
     </view>
     <view class="cu-form-group solid-bottom">
-      <text class="title" space="ensp">学    历</text>
-      <input placeholder="请输入您的学历" name="education" value="{{reg.education}}" disabled="{{disabled}}"></input>
+      <text class="title" space="ensp">学 历</text>
+      <input placeholder="请输入您的学历" name="education" value="{{reg.education}}" ></input>
     </view>
     <view class="cu-form-group solid-bottom">
-      <text class="title" space="ensp">擅长领域</text>
-      <input placeholder="请输入您的擅长领域" name="goodAt" value="{{reg.goodAt}}" disabled="{{disabled}}"></input>
+      <text class="title" space="ensp">领 域</text>
+      <picker mode="selector" name="field" bindchange="areaChange" range="{{areas}}" value="{{reg.field||0}}">
+        <view class="">
+          {{areas[reg.field||0]}}
+        </view>
+      </picker>
+      <text class="text-gray cuIcon-right"></text>
+    </view>
+    <view class="cu-form-group solid-bottom">
+      <text class="title" space="ensp">技术关键词</text>
+      <input hidden name="keyword" value="{{keys}}"></input>
+      <input placeholder="关键词1" name="key[0]" data-index="0" bindchange="keyChange" value="{{keys[0]}}" ></input>
+      <input placeholder="关键词2" data-index="1" bindchange="keyChange" value="{{keys[1]}}" ></input>
+      <input placeholder="关键词3" data-index="2" bindchange="keyChange" value="{{keys[2]}}" ></input>
     </view>
     <view class="cu-bar bg-white solid-bottom solid-top">
       <view class="action text-black">
@@ -32,24 +47,62 @@
       </view>
     </view>
     <view class="cu-form-group">
-      <textarea name="introduce" maxlength="500" value="{{reg.introduce}}" style="min-height: 300rpx;" placeholder="请输入您的个人介绍" auto-height="true"></textarea>
+      <textarea name="introduce" maxlength="500" value="{{reg.introduce}}" style="min-height: 300rpx;" placeholder="个人资深经历+技术前瞻性的描述150字以内" auto-height="true"></textarea>
     </view>
     <view class="cu-bar bg-white solid-bottom solid-top">
       <view class="action text-black">
-        拒绝理由
+        产业化经历
       </view>
     </view>
     <view class="cu-form-group">
-      <view>{{reg.reply}}</view>
+      <textarea name="industrialize" maxlength="500" value="{{reg.industrialize}}" style="min-height: 300rpx;" placeholder="请输入您的产业化经历" auto-height="true"></textarea>
     </view>
+    <view class="cu-bar bg-white solid-bottom solid-top">
+      <view class="action text-black">
+        个人成就
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <textarea name="achievement" maxlength="500" value="{{reg.achievement}}" style="min-height: 300rpx;" placeholder="请输入您的个人成就" auto-height="true"></textarea>
+    </view>
+    <block wx:if="{{reg.status==2}}">
+      <view class="cu-bar bg-white solid-bottom solid-top">
+        <view class="action text-black">
+          拒绝理由
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view>{{reg.reply}}</view>
+      </view>
+    </block>
+
     <view class="cu-form-group solid-bottom">
       <text class="title" space="ensp">学历学位证书</text>
       <input disabled="true" placeholder="请上传您的学历学位证书" name="certificate" value="{{reg.certificate}}" bindinput="phoneChange"></input>
-      <button class='cu-btn bg-main shadow' disabled="{{disabled}}"  bindtap="upload">上传</button>
+      <button class='cu-btn bg-main shadow'  bindtap="upload">上传</button>
     </view>
     <view class="text-center margin-top-xl safe-bottom">
-      <button style="width:50%;" class='cu-btn bg-main shadow lg' disabled="{{disabled}}" form-type="submit">{{statusMsg[reg.regStatus||0]}}</button>
+      <button style="width:50%;" class='cu-btn bg-main shadow lg'  form-type="submit">{{statusMsg[reg.regStatus||0]}}</button>
     </view>
   </view>
 
 </form>
+
+<indexes bind:myevent="chooseCountry" countryModal="{{countryModal}}"></indexes>
+
+<view class="cu-modal {{authModal?'show':''}}">
+  <view class="cu-dialog sm">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">授权提醒</view>
+    </view>
+    <view class="padding-xl">
+      本次填写的信息只用于身份验证使用
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-gray" bindtap="authModal">取消</button>
+        <button class="cu-btn bg-main margin-left" bindtap="yes">同意</button>
+      </view>
+    </view>
+  </view>
+</view>

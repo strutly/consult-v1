@@ -1,15 +1,26 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 
-<view class="container margin-top-xl align-center">
+<view class="container margin-top align-center">
   <form bindsubmit="submit">
-    <input value="{{type}}" name="type" hidden></input>
-    <view class="cu-form-group margin-top-xl padding">
+    <input value="{{options.type}}" name="type" hidden></input>
+    <view class="cu-form-group padding">
       <text class="title" space="ensp">姓    名</text>
       <input placeholder="请输入姓名" name="name"></input>
     </view>
     <view class="cu-form-group padding">
+      <text class="title" space="ensp">性    别</text>
+      <picker class="text-left" mode="selector" name="gender" data-name="gender" bindchange="pickerChange" range="{{sexArr}}">
+        <view class="">
+          {{sexArr[gender||0]}}
+        </view>
+      </picker>
+      <text class="text-gray cuIcon-right"></text>
+    </view>
+    <view class="cu-form-group padding">
       <text class="title" space="ensp">国家/地区</text>
-      <input placeholder="请输入国家/地区" name="country"></input>
+      <input hidden name="country" value="{{country}}"></input>
+      <view class="flex-sub text-left" bindtap="countryModal">{{country||'请选择国家/地区'}}</view>
+      <text class="text-gray cuIcon-right"></text>
     </view>
     <view class="cu-form-group padding">
       <text class="title" space="ensp">手 机 号</text>
@@ -24,7 +35,7 @@
       <text class="title" space="ensp">密    码</text>
       <input type="password" placeholder="请输入密码" name="password"></input>
     </view>
-    <block wx:if="{{type>1}}">
+    <block wx:if="{{options.type>0}}">
       <view class="cu-form-group padding">
         <text class="title" space="ensp">单    位</text>
         <input placeholder="请输入您的工作单位" name="unit"></input>
@@ -41,3 +52,5 @@
     </view>
   </form>
 </view>
+
+<indexes bind:myevent="chooseCountry" countryModal="{{countryModal}}"></indexes>

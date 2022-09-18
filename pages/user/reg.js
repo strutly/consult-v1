@@ -5,7 +5,8 @@ import CustomPage from '../../CustomPage';
 import WxValidate from "../../utils/WxValidate";
 CustomPage({
   data: {
-    countdown:"获取验证码"
+    countdown:"获取验证码",
+    sexArr:['请选择性别','男','女']
   },
   onLoad(options){
     console.log(options);
@@ -17,9 +18,13 @@ CustomPage({
       name: {
         required: true
       },
+      gender: {
+        required: true,
+        min:1
+      },
       country:{
         required: true
-      },
+      },      
       phone: {
         required: true,
         tel:true
@@ -36,6 +41,10 @@ CustomPage({
       name: {
         required: "请输入姓名"
       },
+      gender: {
+        required: "请选择性别",
+        min:"请选择性别"
+      },
       country:{
         required: "请输入国家"
       },
@@ -51,13 +60,30 @@ CustomPage({
       },      
       
     };
-    if(type>1){
+    if(type>0){
       rules.unit= {required: true};
       rules.post={required: true};
       messages.unit={required: "请输入单位"};
       messages.post={required: "请输入职务"};
     }
     that.WxValidate = new WxValidate(rules, messages);
+  },
+  chooseCountry(e){
+    that.setData({
+      country:e.detail.name
+    });
+    that.countryModal();
+  },
+  countryModal(){
+    that.setData({
+      countryModal:!that.data.countryModal
+    })
+  },
+  pickerChange(e){
+    let name = e.currentTarget.dataset.name;
+    that.setData({
+      [name]:e.detail.value
+    })
   },
   async submit(e) {
     console.log(e);    

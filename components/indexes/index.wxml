@@ -1,0 +1,34 @@
+<view class="countryModal bg-white {{countryModal?'':'hide'}}">
+
+  <view class="cu-bar bg-white search fixed">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="输入搜索的关键词" confirm-type="search" bindconfirm="search"></input>
+    </view>
+  </view>
+
+
+  <scroll-view scroll-y class="indexes" scroll-into-view="{{'indexes-'+ listCurID}}" scroll-with-animation="true" enable-back-to-top="true">
+    <block wx:for="{{countryData}}" wx:key="index" wx:for-index="index">
+      <view class="{{'indexItem-' + item.code}}" id="{{'indexes-' + item.code}}" data-index="{{index}}">
+        <view class="padding bg-gray padding-tb-xs">{{item.code}}</view>
+        <view class="cu-list menu no-padding">
+          <view class="cu-item" wx:for="{{item.country}}" wx:for-item="country" wx:key="country">
+            <view class="content" bindtap="chooseCountry" data-name="{{country.CNName}}">
+              <view class="">{{country.CNName}}</view>
+              <view class="text-gray text-sm">
+                {{country.name}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+  </scroll-view>
+  <view class="indexBar">
+    <view class="indexBar-box">
+      <view class="indexBar-item padding-bottom-xs" wx:for="{{keys}}" wx:key="index" id="{{item}}" bindtap="moveIndex">{{item}}</view>
+    </view>
+  </view>
+</view>

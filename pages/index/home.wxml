@@ -34,6 +34,9 @@
     <view>企业沟通</view>
   </view>
 </view>
+
+
+
 <view class="flex align-center justify-between margin">
   <view class="action">
     <image class="margin-right-sm" src="http://gridpic.tsing-tec.com/consult%2Fhome-my-card.png" style="width:30rpx;height:30rpx;"></image> 专家名片
@@ -43,17 +46,37 @@
   </view>
 </view>
 <view class="cards footer-bottom">
-  <view class="card bg-white flex align-center margin padding-sm  {{item.auth?'bg-auth':''}}" wx:for="{{experts}}" wx:key="index" bindtap='toUrl' data-url="/pages/expert/detail?id={{item.id}}">
-    <view class="head-box margin-right-sm">
-      <image style="width: 200rpx;height: 200rpx;" src="{{item.avatarUrl||'http://gridpic.tsing-tec.com/consult%2Fhome-head.png'}}"></image>
-      <view class="name text-center">{{item.name}}</view>
+
+  <view class="margin" wx:for="{{experts}}" wx:key="index" bindtap='toUrl' data-url="/pages/expert/detail?id={{item.id}}">
+    <view class="bg-main padding solids-bottom-mian">专家名片</view>
+    <view class="card bg-white flex align-top padding-sm info  {{item.auth?'bg-auth':''}}">
+      <view class="head-box margin-right-sm">
+        <image class="info-img" src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image>
+        <view class="name text-center">{{item.name}}</view>
+      </view>
+      <view class="info-box">
+        <view class="flex align-top line1-4">
+          <view class="margin-right-xs entry-icon">
+            <image src="/images/area.png"></image>
+          </view>
+          <view class="flex-sub">领域:{{areas[item.field||0]}}</view>
+        </view>
+        <view class="flex align-top line1-4 margin-tb-xs">
+          <view class="margin-right-xs entry-icon">
+            <image src="/images/education.png"></image>
+          </view>
+          <view class="flex-sub">学历:{{item.education}}</view>
+        </view>
+        <view class="flex align-top line1-4 ">
+          <view class="margin-right-xs entry-icon">
+            <image src="/images/keyword.png"></image>
+          </view>
+          <view class="flex-sub">技术关键词:撒大大撒旦,的撒范德萨,发的撒范德萨</view>
+        </view>
+      </view>
     </view>
-    <view class="info-box">
-      <view class="">专业领域:{{item.goodAt}}</view>
-      <view class="">学历:{{item.education}}</view>
-      <view class="info-dex">个人简介:{{item.introduce}}</view>
-    </view>    
   </view>
+
 </view>
 
 <tabBar selected="0"></tabBar>

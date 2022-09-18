@@ -1,120 +1,43 @@
-@font-face {
-  font-family: "iconfont"; /* Project id 3318878 */
-  /* Color fonts */
-  src: 
-       url('//at.alicdn.com/t/font_3318878_vis005zp8c.woff2?t=1649754449295') format('woff2'),
-       url('//at.alicdn.com/t/font_3318878_vis005zp8c.woff?t=1649754449295') format('woff'),
-       url('//at.alicdn.com/t/font_3318878_vis005zp8c.ttf?t=1649754449295') format('truetype');
+.info{
+  border-width: 0 4rpx 4rpx;
+  border-style: solid;
+  border-color: var(--blueLight);
+}
+.info-box{
+  line-height: 1.4; 
+}
+.info-img{
+  width: 200rpx;
+  height: 200rpx;
+  padding: 20rpx 10rpx;
+  border: 2rpx solid;
+  border-color:  var(--black);
+}
+.info-dex {
+  
+  padding-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
 }
 
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.solids-bottom-mian{
+  border-bottom: #749FBE solid 8rpx;
 }
-
-.icon-honor:before {
-  content: "\e61f";
+.entry-icon{
+  width: 40rpx;
+  height: 40rpx;
+  background-color: var(--blueLight);
+  display: inline-block;
+  padding: 5rpx;
 }
-
-.icon-englishName:before {
-  content: "\e61e";
-}
-
-.icon-groupName:before {
-  content: "\e61d";
-}
-
-.icon-birthday:before {
-  content: "\e607";
-}
-
-.icon-achievement:before {
-  content: "\e608";
-}
-
-.icon-batch:before {
-  content: "\e609";
-}
-
-.icon-area:before {
-  content: "\e60a";
-}
-
-.icon-areaKey:before {
-  content: "\e60b";
-}
-
-.icon-direction:before {
-  content: "\e60c";
-}
-
-.icon-landingProvince:before {
-  content: "\e60d";
-}
-
-.icon-contactName:before {
-  content: "\e60e";
-}
-
-.icon-email:before {
-  content: "\e60f";
-}
-
-.icon-nationality:before {
-  content: "\e610";
-}
-
-.icon-contactMail:before {
-  content: "\e611";
-}
-
-.icon-background:before {
-  content: "\e612";
-}
-
-.icon-sex:before {
-  content: "\e613";
-}
-
-.icon-resource:before {
-  content: "\e614";
-}
-
-.icon-wordAddress:before {
-  content: "\e615";
-}
-
-.icon-specialty:before {
-  content: "\e616";
-}
-
-.icon-post:before {
-  content: "\e617";
-}
-
-.icon-landingCity:before {
-  content: "\e618";
-}
-
-.icon-type:before {
-  content: "\e619";
-}
-
-.icon-contactPhone:before {
-  content: "\e61a";
-}
-
-.icon-phone:before {
-  content: "\e61b";
-}
-
-.icon-workUnit:before {
-  content: "\e61c";
-}
-
-.icon-search:before {
-  content: "\e606";
+.entry-icon image{
+  width: 32rpx;
+  height: 32rpx;
 }
