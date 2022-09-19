@@ -29,10 +29,8 @@ CustomPage({
     })
   },
   refresh(){
-    that.reLoad();
-
-    // let totalPages = that.data.totalPages;
-    // let pageNum = Math.floor(Math.random()*totalPages+1);
-    // that.roundList(pageNum);
+    let totalPages = that.data.totalPages||0;
+    let pageNum = Math.floor(Math.random()*totalPages+1);
+    that.roundList(pageNum);
   }
 })

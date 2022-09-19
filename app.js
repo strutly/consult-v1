@@ -3,6 +3,7 @@ App({
   onLaunch() {
     let that = this;
     Api.login().then(res=>{
+      console.log(res);
       setTimeout(()=>{
         that.globalData.login = true;
         if(res.code==0){

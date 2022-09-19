@@ -43,7 +43,7 @@
     </view>
   </view>
   <view class="padding-lr-xl bg-white ">
-    {{expert.listingExperience||'无'}}
+    {{expert.industrialize||'无'}}
   </view>
   <view class="cu-bar bg-white">
     <view class="action">
@@ -51,7 +51,7 @@
     </view>
   </view>
   <view class="padding-lr-xl bg-white ">
-    {{expert.financingExperience||'无'}}
+    {{expert.achievement||'无'}}
   </view>
 
   <view bindtap="toUrl" data-url="/pages/appointment/form?id={{expert.uid}}" class="text-center margin-top-xl" wx:if="{{expert.auth}}">

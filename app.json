@@ -32,6 +32,10 @@
   "usingComponents": {
     "topTips": "/components/tips/index"
   },
+  "networkTimeout": {
+    "request": 6000,
+    "downloadFile": 10000
+  },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }
