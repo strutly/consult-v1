@@ -5,9 +5,9 @@
 </view>
 <view class="cards footer-bottom">
   <view class="margin" wx:for="{{experts}}" wx:key="index" bindtap='toUrl' data-url="/pages/expert/detail?id={{item.id}}">
-    <view class="bg-main padding solids-bottom-mian">专家名片</view>
+    <view class="bg-main padding-sm solids-bottom-mian">专家名片</view>
     <view class="card bg-white flex align-top padding-sm info  {{item.auth?'bg-auth':''}}">
-      <view class="head-box margin-right-sm">
+      <view class="head-box margin-right-lg">
         <image class="info-img" src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image>
         <view class="name text-center">{{item.name}}</view>
       </view>
@@ -22,13 +22,13 @@
           <view class="margin-right-xs entry-icon">
             <image src="/images/education.png"></image>
           </view>
-          <view class="flex-sub">学历:{{item.education}}</view>
+          <view class="flex-sub">学历:{{item.education||"未知"}}</view>
         </view>
         <view class="flex align-top line1-4 ">
           <view class="margin-right-xs entry-icon">
             <image src="/images/keyword.png"></image>
           </view>
-          <view class="flex-sub">技术关键词:撒大大撒旦,的撒范德萨,发的撒范德萨</view>
+          <view class="flex-sub">技术关键词:{{item.keyword||"未知"}}</view>
         </view>
       </view>
     </view>

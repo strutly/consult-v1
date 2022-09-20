@@ -4,14 +4,14 @@
   border-color: var(--blueLight);
 }
 .info-box{
-  line-height: 1.4; 
+  line-height: 1.4;
+  padding-top: 20rpx;
+  padding-left:20rpx;
 }
 .info-img{
   width: 200rpx;
   height: 200rpx;
   padding: 20rpx 10rpx;
-  border: 2rpx solid;
-  border-color:  var(--black);
 }
 .info-dex {
   
@@ -28,7 +28,7 @@
 }
 
 .solids-bottom-mian{
-  border-bottom: #749FBE solid 8rpx;
+  border-bottom: #749FBE solid 12rpx;
 }
 .entry-icon{
   width: 40rpx;

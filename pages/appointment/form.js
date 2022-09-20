@@ -4,7 +4,7 @@ import Api from '../../config/api';
 import WxValidate from '../../utils/WxValidate';
 CustomPage({
   data: {
-    types:['请选择问题类型','视频会议','线下交流'],    
+    types:['请选择咨询形式','视频会议','线下交流'],    
     formData:{
       type:0
     },

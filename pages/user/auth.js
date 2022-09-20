@@ -14,7 +14,7 @@ CustomPage({
     that = this;
     let res = await Api.getUserReg();
     console.log(res);
-    let reg = res.data;
+    let reg = res.data||{};
     that.setData({
       reg: reg,
       keys:(reg.keyword||"").split(",")

@@ -3,11 +3,11 @@
   <view class="cu-list menu" wx:for="{{appointments}}" wx:for-index="i" wx:key="i">
     <view class="cu-list  menu-avatar" bindtap="open" data-index="{{i}}">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url({{item.mine.avatarUrl}});" wx:if="{{item.mold==1}}"></view>
-        <view class="cu-avatar round lg" style="background-image:url({{item.toUser.avatarUrl}});" wx:else></view>
+        <view class="cu-avatar round lg" style="background-image:url({{item.mine.gender==1?'/images/male.png':'/images/female.png'}});" wx:if="{{item.mold==1}}"></view>
+        <view class="cu-avatar round lg" style="background-image:url({{item.toUser.gender==1?'/images/male.png':'/images/female.png'}});" wx:else></view>
         <view class="content">
-          <view class="text-grey" wx:if="{{item.mold==1}}">{{item.mine.name || item.mine.nickName}}的咨询</view>
-          <view class="text-grey" wx:else>咨询{{item.toUser.name || item.toUser.nickName}}专家</view>
+          <view class="text-grey" wx:if="{{item.mold==1}}">{{item.mine.name}}的咨询</view>
+          <view class="text-grey" wx:else>咨询{{item.toUser.name}}专家</view>
         </view>
         <view class="action">
           <text class="cu-tag bg-{{bgs[item.status.type]}} margin-right-sm radius-lg">{{item.status.title}}</text>
@@ -46,7 +46,7 @@
         </view>
       </view>
 
-      <view class="cu-item" data-text="123554" bindtap="copy" wx:if="{{item.meetingNo}}">
+      <view class="cu-item" data-text="{{item.meetingNo}}" bindtap="copy" wx:if="{{item.meetingNo}}">
         <view class="content">
           <text class="cuIcon-expressman text-grey"></text>
           <text class="text-grey">会议号</text>
@@ -62,8 +62,8 @@
         <view class="textarea">{{item.content}}</view>
       </view>
       <view class="flex align-center bg-white padding-top" wx:if="{{item.status.type==0 && item.mold==1}}">
-        <button class="cu-btn bg-grey lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="2" data-id="{{item.id}}">拒绝</button>
-        <button class="cu-btn bg-green lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="1" data-id="{{item.id}}">同意</button>
+        <button class="cu-btn line-gray text-gray lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="2" data-id="{{item.id}}">拒绝</button>
+        <button class="cu-btn bg-main lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="1" data-id="{{item.id}}">同意</button>
       </view>
     </block>
   </view>
@@ -79,8 +79,8 @@
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
-        <button class="cu-btn line-green text-green" bindtap="modal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="submit">确定</button>
+        <button class="cu-btn line-gray text-gray" bindtap="modal">取消</button>
+        <button class="cu-btn bg-main margin-left" bindtap="submit">确定</button>
       </view>
     </view>
   </view>

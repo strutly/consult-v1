@@ -18,15 +18,19 @@ CustomPage({
     })
   },
   async roundList(pageNum){
-    let res = await Api.expertPage({
-      pageNum:pageNum,
-      pageSize:2
-    });
-    console.log(res);
-    that.setData({
-      totalPages:res.data.totalPages,
-      experts:res.data.content
-    })
+    try {
+      let res = await Api.expertPage({
+        pageNum:pageNum,
+        pageSize:2
+      });
+      console.log(res);
+      that.setData({
+        totalPages:res.data.totalPages,
+        experts:res.data.content
+      })
+    } catch (error) {
+      console.log(error) 
+    }    
   },
   refresh(){
     let totalPages = that.data.totalPages||0;
