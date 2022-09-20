@@ -4,7 +4,7 @@
   <input placeholder="请输入关键词" class="flex-sub padding-left" type="text" 	confirm-type="search" bindconfirm='search'></input>
 </view>
 <view class="cards footer-bottom">
-  <view class="margin" wx:for="{{experts}}" wx:key="index" bindtap='toUrl' data-url="/pages/expert/detail?id={{item.id}}">
+  <view class="margin" wx:for="{{experts}}" wx:key="index" bindtap='toUrl' data-url="{{userInfo.type.type!=0?'/pages/expert/detail?id='+item.id:''}}" data-msg="您没有权限查看此内容">
     <view class="bg-main padding-sm solids-bottom-mian">专家名片</view>
     <view class="card bg-white flex align-top padding-sm info  {{item.auth?'bg-auth':''}}">
       <view class="head-box margin-right-lg">

@@ -1,10 +1,10 @@
-<tips msg="{{msg}}" show="{{show}}" errorType="{{errorType}}"></tips>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding-sm safe-bottom">
   <view class="cu-list menu" wx:for="{{appointments}}" wx:for-index="i" wx:key="i">
     <view class="cu-list  menu-avatar" bindtap="open" data-index="{{i}}">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url({{item.mine.gender==1?'/images/male.png':'/images/female.png'}});" wx:if="{{item.mold==1}}"></view>
-        <view class="cu-avatar round lg" style="background-image:url({{item.toUser.gender==1?'/images/male.png':'/images/female.png'}});" wx:else></view>
+        <view class="cu-avatar round lg" style='background-image:url({{item.mine.gender==1?"/images/male.png":"/images/female.png"}});' wx:if="{{item.mold==1}}"></view>
+        <view  wx:else class="cu-avatar round lg" style='background-image:url({{item.toUser.gender==1?"/images/male.png":"/images/female.png"}});'></view>
         <view class="content">
           <view class="text-grey" wx:if="{{item.mold==1}}">{{item.mine.name}}的咨询</view>
           <view class="text-grey" wx:else>咨询{{item.toUser.name}}专家</view>

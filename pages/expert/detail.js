@@ -13,5 +13,10 @@ CustomPage({
     that.setData({
       expert:res.data
     })
+  },
+  onShow(){
+    that.setData({
+      userInfo:wx.getStorageSync('userInfo')||{}
+    })
   }
 })

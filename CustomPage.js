@@ -12,6 +12,7 @@ const CustomPage = function (page) {
       toUrl(e) {
         console.log(e)
         let url = e.currentTarget.dataset.url;
+        let msg = e.currentTarget.dataset.msg||'正在开发中~'
         if (url) {
           wx.navigateTo({
             url: url,
@@ -19,7 +20,7 @@ const CustomPage = function (page) {
         } else {
           wx.showToast({
             icon: "none",
-            title: '正在开发中~',
+            title: msg,
           })
         }
       },

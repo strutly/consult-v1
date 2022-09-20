@@ -12,10 +12,10 @@ App({
           that.globalData.auth = true;
         }else{
           that.globalData.auth = false;
+          wx.removeStorageSync('token');
+          wx.removeStorageSync('userInfo');
         }
-      },100)
-      
-      
+      },100);
     });    
   },
   globalData: {

@@ -1,55 +1,55 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="padding text-center bg-main cu-custom">
   <text class="text-white user-tag">{{userInfo.type.title}}</text>
-  <button class="cu-avatar round xl" style="background-image:url({{userInfo.avatarUrl||'/images/headimg.png'}})" bindtap="getUserProfile"></button>
+  <button class="cu-avatar round xl" style="background-image:url({{userInfo?userInfo.gender==1?'/images/male.png':'/images/female.png':'/images/headimg.png'}})"></button>
   <view class="margin-top-sm">
     <view bindtap="toUrl" data-url="/pages/index/login" class="cu-btn lines-white">{{userInfo?'切换账号':'立即登录'}}</view>
   </view>
 </view>
-<view class="cu-list menu solid-top margin-top footer-bottom">
-  <view class="cu-item arrow">
+<view class="cu-list menu margin-top footer-bottom">
+  <view class="cu-item arrow solid-top"  wx:if="{{userInfo && userInfo.type.type==1}}">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-info.png"></image>
       <text class="">我的信息</text>
     </view>
   </view>
-  <view bindtap="toUrl" data-url="/pages/user/auth" class="cu-item arrow" wx:if="{{userInfo && userInfo.type.type!=3}}">
+  <view bindtap="toUrl" data-url="/pages/user/auth" class="cu-item arrow" wx:if="{{userInfo && userInfo.type.type!=2}}">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-reg.png"></image>
       <text class="">身份认证</text>
     </view>
   </view>
-  <view bindtap="toUrl" data-url="/pages/appointment/list" class="cu-item margin-top">
+  <view bindtap="toUrl" data-url="/pages/appointment/list" class="cu-item margin-top" wx:if="{{userInfo && userInfo.type.type!=0}}">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-appoint.png"></image>
       <text class="">我的预约</text>
     </view>
   </view>
-  <view url="/pages/index/reg" class="cu-item">
+  <view class="cu-item">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-await.png"></image>
       <text class="">待添加功能</text>
     </view>
   </view>
-  <view url="/pages/index/reg" class="cu-item">
+  <view class="cu-item">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-await.png"></image>
       <text class="">待添加功能</text>
     </view>
   </view>
-  <view url="/pages/index/reg" class="cu-item">
+  <view class="cu-item">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-await.png"></image>
       <text class="">待添加功能</text>
     </view>
   </view>
-  <view class="cu-item cu-bottom margin-top" bindtap="loginModal">
+  <view class="cu-item cu-bottom margin-top">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-propose.png"></image>
       <text class="">意见反馈</text>
     </view>
   </view>
-  <view class="cu-item cu-bottom" bindtap="loginModal">
+  <view class="cu-item cu-bottom">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-agreement.png"></image>
       <text class="">用户协议</text>

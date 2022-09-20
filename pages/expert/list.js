@@ -10,20 +10,29 @@ CustomPage({
     that = this;
     that.getList('',1);
   },
-  async getList(name,pageNum){
-    let res = await Api.expertPage({
-      pageNum:pageNum,
-      name:name,
-      pageSize:6
-    });
-    let experts = that.data.experts||[];    
-    experts = experts.concat(res.data.content);
+  onShow(){
     that.setData({
-      pageNum:pageNum,
-      name:name,
-      endline: res.data.last,
-      experts:experts      
-    });
+      userInfo:wx.getStorageSync('userInfo')||{}
+    })
+  },
+  async getList(name,pageNum){
+    try {
+      let res = await Api.expertPage({
+        pageNum:pageNum,
+        name:name,
+        pageSize:6
+      });
+      let experts = that.data.experts||[];    
+      experts = experts.concat(res.data.content);
+      that.setData({
+        pageNum:pageNum,
+        name:name,
+        endline: res.data.last,
+        experts:experts      
+      });
+    } catch (error) {
+      console.log(error)
+    }    
   },
   search(e){
     console.log(e);
