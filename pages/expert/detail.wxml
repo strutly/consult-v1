@@ -52,6 +52,6 @@
   {{expert.achievement||'无'}}
 </view>
 
-<view bindtap="toUrl" data-url="/pages/appointment/form?id={{expert.uid}}" class="text-center margin-top-xl" wx:if="{{userInfo.type.type==2 && expert.auth}}">
+<view bindtap="toUrl" data-url="/pages/appointment/form?id={{expert.uid}}&price={{expert.price}}" class="text-center margin-top-xl" wx:if="{{userInfo.type.type==2 && expert.auth}}">
   <view style="width:60%;" class='cu-btn bg-main shadow'>咨询</view>
 </view>

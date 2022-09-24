@@ -22,19 +22,19 @@
   <view bindtap="toUrl" data-url="/pages/appointment/list" class="cu-item margin-top" wx:if="{{userInfo && userInfo.type.type!=0}}">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-appoint.png"></image>
-      <text class="">我的预约</text>
+      <text class="">我的咨询</text>
     </view>
   </view>
-  <view class="cu-item">
+  <view bindtap="toUrl" data-url="/pages/appointment/list?status=COMPLETE_STATUS" wx:if="{{userInfo && userInfo.type.type!=0}}"  class="cu-item">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-await.png"></image>
-      <text class="">待添加功能</text>
+      <text class="">已完成</text>
     </view>
   </view>
-  <view class="cu-item">
+  <view bindtap="toUrl" data-url="/pages/appointment/list?status=ONGOING_STATUS" wx:if="{{userInfo && userInfo.type.type!=0}}"  class="cu-item">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-await.png"></image>
-      <text class="">待添加功能</text>
+      <text class="">进行中</text>
     </view>
   </view>
   <view class="cu-item">

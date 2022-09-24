@@ -9,10 +9,10 @@
           <view class="text-grey" wx:if="{{item.mold==1}}">{{item.mine.name}}的咨询</view>
           <view class="text-grey" wx:else>咨询{{item.toUser.name}}专家</view>
         </view>
-        <view class="action">
+        <view class="action" style="width: fit-content;">
           <text class="cu-tag bg-{{bgs[item.status.type]}} margin-right-sm radius-lg">{{item.status.title}}</text>
         </view>
-        <view class="action">
+        <view class="action" style="width: fit-content;">
           <text class="{{open==i?'cuIcon-fold':'cuIcon-unfold'}} text-bold  text-grey"></text>
         </view>
       </view>
@@ -56,14 +56,13 @@
         </view>
       </view>
 
-
       <view class="cu-form-group align-start">
         <view class="title text-grey margin-left-xs"><text class="cuIcon-message margin-right-sm"></text>咨询内容</view>
         <view class="textarea">{{item.content}}</view>
       </view>
-      <view class="flex align-center bg-white padding-top" wx:if="{{item.status.type==0 && item.mold==1}}">
-        <button class="cu-btn line-gray text-gray lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="2" data-id="{{item.id}}">拒绝</button>
-        <button class="cu-btn bg-main lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="1" data-id="{{item.id}}">同意</button>
+      <view class="flex align-center bg-white padding-top" wx:if="{{item.status.type==1}}">
+        <button class="cu-btn line-gray text-gray lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="4" data-id="{{item.id}}">拒绝</button>
+        <button class="cu-btn bg-main lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="3" data-id="{{item.id}}">同意</button>
       </view>
     </block>
   </view>
@@ -75,7 +74,7 @@
       <view class="content">咨询确认</view>
     </view>
     <view class="padding-xl">
-      {{formData.status==1?'确认同意此咨询?':'确认拒绝此咨询?'}}
+      {{formData.status==3?'确认同意此咨询?':'确认拒绝此咨询?'}}
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">

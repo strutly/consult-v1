@@ -27,7 +27,7 @@
   </view>
   <view class="cu-form-group">
     <view class="title">咨询费用</view>
-    <input class="text-right" placeholder="咨询费用" name="price" type="digit"></input>
+    <input class="text-right" placeholder="咨询费用" name="price" value="{{options.price}}" disabled="true" type="digit"></input>
     <view>元/小时</view>
   </view>
   <view class="cu-bar bg-white solid-bottom solid-top">
