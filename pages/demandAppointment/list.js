@@ -32,7 +32,7 @@ CustomPage({
       param.status = status;
     }
 
-    let res = await Api.getAppointment(param);
+    let res = await Api.pageDemandAppointment(param);
     console.log(res);
     let appointments = that.data.appointments;
     that.setData({
@@ -84,7 +84,7 @@ CustomPage({
   async submit() {
     let formData = that.data.formData;
     let appointments = that.data.appointments;
-    let res = await Api.updateAppointment(JSON.stringify(formData));
+    let res = await Api.updateDemandAppointment(JSON.stringify(formData));
 
     console.log(res);
     if (res.code == 0) {

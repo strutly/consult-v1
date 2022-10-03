@@ -15,11 +15,11 @@
     </view>
     <view>专家咨询</view>
   </view>
-  <view class="flex-sub">
+  <view class="flex-sub" bindtap="toUrl" data-url="/pages/demand/list">
     <view class='cuIcon-cu-image'>
       <image class='bg-white' style="width: 120rpx;height: 120rpx;" src="http://gridpic.tsing-tec.com/consult%2Fhome-icon-02.png"></image>
     </view>
-    <view>专家评审</view>
+    <view>企业需求</view>
   </view>
   <view class="flex-sub">
     <view class='cuIcon-cu-image'>

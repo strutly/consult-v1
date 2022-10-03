@@ -3,20 +3,13 @@ import CustomPage from '../../CustomPage';
 import Api from '../../config/api';
 import WxValidate from '../../utils/WxValidate';
 CustomPage({
+
   data: {
-    disabled:false,
-    types: ['请选择咨询形式', '视频会议', '线下交流'],
-    formData: {
-      type: 0
-    },
-    minDate: new Date().toLocaleDateString()
+
   },
+
   onLoad(options) {
-    console.log(options)
     that = this;
-    that.setData({
-      toid: options.id
-    });
     that.initValidate();
   },
   initValidate() {
@@ -24,20 +17,13 @@ CustomPage({
       toid: {
         required: true
       },
-      type: {
-        required: true,
-        min: 1
+      did: {
+        required: true
       },
       appointmentTime: {
         required: true
       },
       appointmentDate: {
-        required: true
-      },
-      price: {
-        required: true
-      },
-      content: {
         required: true
       }
     };
@@ -45,21 +31,14 @@ CustomPage({
       toid: {
         required: '参数错误,请重新进入'
       },
-      type: {
-        required: '请选择问题类型',
-        min: '请选择问题类型'
+      did: {
+        required: '非法参数,请重新进入'
       },
       appointmentTime: {
         required: '请选择预约时间'
       },
       appointmentDate: {
         required: '请选择预约日期'
-      },
-      price: {
-        required: '请输入咨询价格'
-      },
-      content: {
-        required: '请简要描述咨询内容'
       }
     };
     that.WxValidate = new WxValidate(rules, messages);
@@ -68,7 +47,7 @@ CustomPage({
     console.log(e);
     let name = e.currentTarget.dataset.name;
     that.setData({
-      ['formData.' + name]: e.detail.value
+      [name]: e.detail.value
     })
   },
   async submit(e) {
@@ -84,7 +63,7 @@ CustomPage({
       disabled:true
     })
     try {
-      let res = await Api.addAppointment(data);
+      let res = await Api.addDemandAppointment(data);
       console.log(res);
       if (res.code == 0) {
         that.showTips("提交成功,请耐心等待审核", "success");
@@ -105,4 +84,5 @@ CustomPage({
       })
     }    
   }
+  
 })

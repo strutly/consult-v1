@@ -1,0 +1,50 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<form bindsubmit="submit">
+<view class="cu-card safe-bottom">
+  <view class="cu-item shadow margin-top padding-bottom">
+    <view class="bg-mainLight padding flex">
+      <text>项目名称:</text>
+      <input name="title" class="padding-left bg-mainLight flex-sub" placeholder-class="place-holder" placeholder="请输入项目名称"></input>
+    </view>
+    <view class="area text-center margin-tb">
+      <text class="cu-tag bg-main radius">技能领域</text>
+    </view>
+    <view class="text-center content solids text-cneter radius-xl margin padding-tb-xs">
+      <input name="field" class="text-center" placeholder="请输入技能领域"></input>
+    </view>
+
+    <view class="area text-center margin-tb">
+      <text class="cu-tag bg-main radius">问题描述</text>
+    </view>
+    <view class="text-center content solids text-cneter radius-xl margin padding">
+      <textarea name="des" auto-height="true" placeholder="请输入问题描述"></textarea>
+    </view>
+
+    <view class="area text-center margin-tb">
+      <text class="cu-tag bg-main radius">项目简介</text>
+    </view>
+    <view class="text-center content solids text-cneter radius-xl margin padding">
+      <textarea name="introduction" auto-height="true" placeholder="请输入项目简介"></textarea>
+    </view>
+    <view class="area text-center margin-tb">
+      <text class="cu-tag bg-main radius">拟定费用</text>
+    </view>
+    <view class="text-center content solids text-cneter radius-xl margin padding-tb-xs flex">
+      <input name="price" class="text-center flex-sub" placeholder="请输入费用"></input><text class="margin-lr">元/小时</text>
+    </view>
+
+    <view class="area text-center margin-tb">
+      <text class="cu-tag bg-main radius">咨询方式</text>
+    </view>
+    <picker name="type" bindchange="pickerChange" value="{{index}}" range="{{types}}">
+      <view class="text-center content solids text-cneter radius-xl margin padding-tb-xs">
+        {{types[index]}}
+      </view>
+    </picker>
+
+    <view class="margin-top padding text-center">
+      <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit" disabled="{{disabled}}">发布</button>
+    </view>
+  </view>
+</view>
+</form>

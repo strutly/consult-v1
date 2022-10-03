@@ -1,0 +1,6 @@
+.content{
+  background-color: #F2F5FA;
+}
+.place-holder{
+  color: #F2F5FA;
+}

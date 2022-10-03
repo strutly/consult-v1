@@ -4,10 +4,10 @@
     <view class="cu-list  menu-avatar" bindtap="open" data-index="{{i}}">
       <view class="cu-item">
         <view class="cu-avatar round lg" style='background-image:url({{item.mine.gender==1?"/images/male.png":"/images/female.png"}});' wx:if="{{item.mold==1}}"></view>
-        <view wx:else class="cu-avatar round lg" style='background-image:url({{item.toUser.gender==1?"/images/male.png":"/images/female.png"}});'></view>
+        <view  wx:else class="cu-avatar round lg" style='background-image:url({{item.toUser.gender==1?"/images/male.png":"/images/female.png"}});'></view>
         <view class="content">
-          <view class="text-grey" wx:if="{{item.mold==1}}">{{item.mine.name}}的咨询</view>
-          <view class="text-grey" wx:else>咨询{{item.toUser.name}}专家</view>
+          <view class="text-grey" wx:if="{{userInfo.type.type==2}}">{{item.mine.name}}的预约</view>
+          <view class="text-grey" wx:else>预约{{item.toUser.name}}</view>
         </view>
         <view class="action" style="width: fit-content;">
           <text class="cu-tag bg-{{bgs[item.status.type]}} margin-right-sm radius-lg">{{item.status.title}}</text>
@@ -18,13 +18,27 @@
       </view>
     </view>
     <block wx:if="{{i==open}}">
-      <view class="cu-item">
+      <view class="cu-item arrow" bindtap="toUrl" data-url="/pages/demand/detail?id={{item.did}}">
         <view class="content">
           <text class="cuIcon-cascades text-grey"></text>
-          <text class="text-grey">问题类型</text>
+          <text class="text-grey">项目信息</text>
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class="content">
+          
+          <text class="text-grey">项目名称</text>
         </view>
         <view class="action">
-          {{types[item.type]}}
+          {{item.demand.title}}
+        </view>
+      </view>
+      <view class="cu-item">
+        <view class="content">          
+          <text class="text-grey">邻域分类</text>
+        </view>
+        <view class="action">
+          {{item.demand.field}}
         </view>
       </view>
       <view class="cu-item">
@@ -56,11 +70,7 @@
         </view>
       </view>
 
-      <view class="cu-form-group align-start">
-        <view class="title text-grey margin-left-xs"><text class="cuIcon-message margin-right-sm"></text>咨询内容</view>
-        <view class="textarea">{{item.content}}</view>
-      </view>
-      <view class="flex align-center bg-white padding-top" wx:if="{{userInfo.type.type==1&&item.status.type==1}}">
+      <view class="flex align-center bg-white padding-top" wx:if="{{userInfo.type.type==2&&item.status.type==1}}">
         <button class="cu-btn line-gray text-gray lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="4" data-id="{{item.id}}">拒绝</button>
         <button class="cu-btn bg-main lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="3" data-id="{{item.id}}">同意</button>
       </view>

@@ -1,6 +1,6 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <form bindsubmit="submit">
-  <input name="toid" value="{{toid}}" hidden></input>
+  <input name="toid" value="{{options.id}}" hidden></input>
   <view class="cu-form-group padding-top">
     <view class="title">咨询形式</view>
     <picker bindchange="pickerChange" value="{{formData.type}}" data-name="type" name="type" mode="selector" range="{{types}}">
@@ -39,6 +39,6 @@
     <textarea style="min-height: 300rpx;" name="content" maxlength="-1" placeholder="请简要描述您的咨询内容"></textarea>
   </view>
   <view class="padding text-center bg-white padding-top-xl">
-    <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit">提交</button>
+    <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit" disabled="{{disabled}}">提交</button>
   </view>
 </form>

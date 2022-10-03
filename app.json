@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/home",
+    "pages/demand/list",
     "pages/index/login",
     "pages/index/my",
     "pages/expert/detail",
@@ -10,7 +11,11 @@
     "pages/user/type",
     "pages/user/reg",
     "pages/user/auth",
-    "pages/user/info"
+    "pages/user/info",
+    "pages/demand/form",
+    "pages/demand/detail",
+    "pages/demandAppointment/form",
+    "pages/demandAppointment/list"
   ],
   "window": {
     "backgroundTextStyle": "light",

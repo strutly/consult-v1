@@ -1,0 +1,13 @@
+.add{
+  font-size: 110rpx;
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  right: 80rpx;
+  text-align: center;
+  bottom: calc(80rpx + constant(safe-area-inset-bottom));
+  bottom: calc(80rpx + env(safe-area-inset-bottom));
+}
+.content{
+  background-color: #F2F5FA;
+}

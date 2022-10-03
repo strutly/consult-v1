@@ -4,13 +4,21 @@
 
 page{
   --main:#6887B3;
+  --mainLight:#90B0CE
 }
 .main{
   color:var(--main);
 }
+.mainLight{
+  color:var(--mainLight);
+}
 .bg-main{
-  color:#fff;
+  color:var(--white);
   background-color: var(--main);
+}
+.bg-mainLight{
+  color:var(--white);
+  background-color: var(--mainLight);
 }
 .bg-auth{
   background-image: url('http://gridpic.tsing-tec.com/consult%2Fauth.png');

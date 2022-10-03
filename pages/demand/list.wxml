@@ -1,0 +1,18 @@
+<view class="cu-card safe-bottom">
+  <view class="cu-item shadow margin-top padding-bottom" wx:for="{{demand}}" wx:key="index" data-url="/pages/demand/detail?id={{item.id}}" bindtap="toUrl">
+    <view class="bg-mainLight padding">项目名称:{{item.title}}</view>
+    <view class="area text-center margin-tb">
+      <text class="cu-tag bg-main radius">技能领域</text>
+    </view>
+    <view class="text-center content solids text-cneter radius-xl margin padding-tb-xs">{{item.field}}</view>
+
+    <view class="area text-center margin-tb">
+      <text class="cu-tag bg-main radius">问题描述</text>
+    </view>
+    <view class="text-center content solids text-cneter radius-xl margin padding">{{item.des}}</view>
+  </view>
+</view>
+
+
+
+<text class="add text-gray cuIcon-add bg-mainLight round" bindtap="toUrl" data-url="/pages/demand/form" wx:if="{{userInfo.type.type==2}}"></text>

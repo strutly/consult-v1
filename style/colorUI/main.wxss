@@ -30,7 +30,7 @@ page {
 	--gray: #aaaaaa;
 	--ghostWhite: #f1f1f1;
 	--white: #ffffff;
-	/* 浅色 */
+  /* 浅色 */
 	--redLight: #fadbd9;
 	--orangeLight: #fde6d2;
 	--yellowLight: #fef2ce;
