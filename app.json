@@ -15,7 +15,8 @@
     "pages/demand/form",
     "pages/demand/detail",
     "pages/demandAppointment/form",
-    "pages/demandAppointment/list"
+    "pages/demandAppointment/list",
+    "pages/notice/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

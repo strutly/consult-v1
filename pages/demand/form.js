@@ -5,11 +5,18 @@ import WxValidate from '../../utils/WxValidate';
 CustomPage({
 
   data: {
-    index:0,
+    demand: { type: 0 },
+    priceVal:'',
     types: ['请选择咨询方式', '线上会议', '线下面谈'],
   },
-  onLoad(options) {
+  async onLoad(options) {
     that = this;
+    if (options.id) {
+      let res = await Api.demandDetail({ id: options.id });
+      that.setData({
+        demand: res.data
+      })
+    }
     that.initValidate();
   },
   initValidate() {
@@ -31,7 +38,7 @@ CustomPage({
       },
       type: {
         required: true,
-        min:1
+        min: 1
       }
     };
     const messages = {
@@ -52,18 +59,29 @@ CustomPage({
       },
       type: {
         required: "请选择咨询方式",
-        min:"请选择咨询方式"
+        min: "请选择咨询方式"
       }
     };
     that.WxValidate = new WxValidate(rules, messages);
   },
-  pickerChange(e){
+  pickerChange(e) {
     that.setData({
-      index:e.detail.value
+      ['demand.type']: e.detail.value
+    })
+  },
+  priceFocus(e){
+    let price = that.data.demand.price;
+    that.setData({
+      priceVal:price
+    })
+  },
+  priceChange(e){
+    that.setData({
+      ['demand.price']: e.detail.value,
+      priceVal:e.detail.value+"元/小时"
     })
   },
   async submit(e) {
-    console.log(e);
     let data = e.detail.value;
     if (!that.WxValidate.checkForm(data)) {
       console.log(that.WxValidate)
@@ -72,28 +90,38 @@ CustomPage({
       return false;
     }
     that.setData({
-      disabled:true
+      disabled: true
     })
     try {
-      let res = await Api.demandAdd(data);
+      let res = {};
+      if (data.id) {
+        console.log("update")
+        res = await Api.demandUpdate(data);
+      } else {
+        res = await Api.demandAdd(data);
+      }
       console.log(res);
       if (res.code == 0) {
         that.showTips("提交成功", "success");
         setTimeout(() => {
           wx.navigateBack({
             delta: 1,
+            success(){
+              var pages = getCurrentPages();
+              pages[pages.length - 1].reLoad();
+            }
           })
-        }, 2000)
+        }, 500)
       } else {
         that.setData({
-          disabled:false
+          disabled: false
         })
         that.showTips(res.msg || "出错了");
       }
     } catch (error) {
       that.setData({
-        disabled:false
+        disabled: false
       })
-    }    
-  }  
+    }
+  }
 })

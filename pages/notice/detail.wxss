@@ -1,0 +1,6 @@
+page{
+  background-color: var(--cyanLight);
+}
+rich-text>image{
+  max-width: 100%;
+}

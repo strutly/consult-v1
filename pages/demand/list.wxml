@@ -1,8 +1,9 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="cu-card safe-bottom">
-  <view class="cu-item shadow margin-top padding-bottom" wx:for="{{demand}}" wx:key="index" data-url="/pages/demand/detail?id={{item.id}}" bindtap="toUrl">
+  <view class="cu-item shadow margin-top padding-bottom demand" wx:for="{{demands}}" wx:key="index" data-url="/pages/demand/detail?id={{item.id}}" bindtap="toUrl" bindlongpress="{{userInfo.type.type==2 && !item.appointmentId?'openEdit':''}}" data-index="{{index}}">
     <view class="bg-mainLight padding">项目名称:{{item.title}}</view>
     <view class="area text-center margin-tb">
-      <text class="cu-tag bg-main radius">技能领域</text>
+      <text class="cu-tag bg-main radius">技术领域</text>
     </view>
     <view class="text-center content solids text-cneter radius-xl margin padding-tb-xs">{{item.field}}</view>
 
@@ -10,6 +11,11 @@
       <text class="cu-tag bg-main radius">问题描述</text>
     </view>
     <view class="text-center content solids text-cneter radius-xl margin padding">{{item.des}}</view>
+
+    <view class="demand-edit padding" wx:if="{{editIndex==index}}">
+      <view class="padding-bottom" catchtap="edit" data-url="/pages/demand/form?id={{item.id}}" hover-stop-propagation="true"><text class="cuIcon-edit"></text>编辑</view>
+      <view catchtap="delete" data-index="{{index}}" hover-stop-propagation="true"><text class="cuIcon-delete"></text>删除</view>
+    </view>
   </view>
 </view>
 

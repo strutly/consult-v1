@@ -61,8 +61,8 @@
         <view class="textarea">{{item.content}}</view>
       </view>
       <view class="flex align-center bg-white padding-top" wx:if="{{userInfo.type.type==1&&item.status.type==1}}">
-        <button class="cu-btn line-gray text-gray lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="4" data-id="{{item.id}}">拒绝</button>
-        <button class="cu-btn bg-main lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="3" data-id="{{item.id}}">同意</button>
+        <button class="cu-btn line-gray text-gray lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="3" data-id="{{item.id}}">拒绝</button>
+        <button class="cu-btn bg-main lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="4" data-id="{{item.id}}">同意</button>
       </view>
     </block>
   </view>

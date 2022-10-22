@@ -3,7 +3,11 @@ import Api from '../../config/api';
 import CustomPage from '../../CustomPage';
 CustomPage({
   data:{
-    areas:['未知','集成电路','物联网','人工智能','智能制造','新材料','生物医药','医疗器械','节能环保','新能源','汽车零部件','大数据','化学化工']
+    areas:['未知','集成电路','物联网','人工智能','智能制造','新材料','生物医药','医疗器械','节能环保','新能源','汽车零部件','大数据','化学化工'],
+    notices:[{
+      id:"",
+      pic: 'http://gridpic.tsing-tec.com/consult/mijia-logo.jpg'
+    }]
   },
   onLoad(options){
     that = this;
@@ -14,10 +18,22 @@ CustomPage({
     })
   },
   onReady(){
+    console.log(1);
     getApp().watch(function (value) {
       if(value){
-        that.roundList(1);        
+        that.roundList(1);
+        that.noticeList();        
       }
+    })
+  },
+  async noticeList(){
+    let res = await Api.noticePage({
+      pageNum:1,
+      pageSize:5
+    });
+    let notices = that.data.notices;
+    that.setData({
+      notices:notices.concat(res.data.content)
     })
   },
   async roundList(pageNum){

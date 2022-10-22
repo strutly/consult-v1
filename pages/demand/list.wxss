@@ -11,3 +11,29 @@
 .content{
   background-color: #F2F5FA;
 }
+
+.demand{
+  position: relative;
+}
+
+
+.demand-edit {
+  display: block;  
+  width: calc(100vw/5);
+  position: absolute;
+  right:20rpx;
+  top: 40%;  
+  background-color: #f1f1f1;
+  z-index: 10;
+  border-radius: 15rpx;
+}
+
+.demand-edit::before {
+  content: "";
+  border: 10px solid transparent;
+  border-left-color: var(--ghostWhite);
+  position: absolute;
+  right: 0;
+  top: 30%;
+  margin-right: -20px;
+}

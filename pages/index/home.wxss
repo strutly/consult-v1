@@ -13,6 +13,6 @@ page {
 }
 
 .search-box {
-  margin-top: -50rpx;
+  margin-top: 50rpx;
   border-radius: 20rpx;
 }

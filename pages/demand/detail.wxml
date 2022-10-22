@@ -4,7 +4,7 @@
   <view class="cu-item shadow margin-top padding-bottom">
     <view class="bg-mainLight padding">项目名称:{{demand.title}}</view>
     <view class="area text-center margin-tb">
-      <text class="cu-tag bg-main radius">技能领域</text>
+      <text class="cu-tag bg-main radius">技术领域</text>
     </view>
     <view class="text-center content solids text-cneter radius-xl margin padding-tb-xs">{{demand.field}}</view>
 
@@ -28,7 +28,7 @@
     </view>
     <view class="text-center content solids text-cneter radius-xl margin padding">{{types[demand.type]}}</view>
     <view class="padding text-center bg-white padding-top-xl">
-      <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" bindtap="toUrl" data-url="/pages/demandAppointment/form?did={{demand.id}}&toid={{demand.uid}}" wx:if="{{userInfo.type.type==1}}">咨询</button>
+      <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" bindtap="toUrl" data-url="/pages/demandAppointment/form?did={{demand.id}}&toid={{demand.uid}}" wx:if="{{userInfo.type.type==1 && !demand.appointmentId}}">咨询</button>
     </view>
   </view>
 

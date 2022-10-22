@@ -1,7 +1,12 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view>
-  <image class="bg-img" mode="widthFix" src="http://gridpic.tsing-tec.com/consult%2Fhome-logo.png"></image>
-  <view class="flex margin-lr-sl bg-white padding-sm search-box">
+  <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{notices}}" wx:key="index" bindtap="{{item.id?'toUrl':''}}" data-url="/pages/notice/detail?id={{item.id}}">
+      <image src="{{item.pic}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="flex margin-lr-sl bg-white padding-sm radius-xl margin-top">
     <image class="margin-left-sm" style="width:40rpx;height:40rpx;" src="http://gridpic.tsing-tec.com/consult%2Fsearch.png"></image>
     <input placeholder="请输入关键词" class="flex-sub padding-left" type="text"></input>
   </view>
