@@ -5,7 +5,11 @@ CustomPage({
   data: {
 
   },  
-  onLoad(options) {
-
+  async onLoad(options) {
+    that = this;
+    let res = await Api.userAdminInfo({1:1});
+    that.setData({
+      info:res.data
+    })
   }
 })

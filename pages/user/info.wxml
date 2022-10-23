@@ -1,0 +1,40 @@
+<view class="cu-list menu">
+  <view class="cu-item">
+    <view class="content">姓名</view>
+    <view class="action">
+      <text class="text-grey text-sm">{{info.name}}</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">手机号</view>
+    <view class="action">
+      <text class="text-grey text-sm">{{info.phone}}</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">国家</view>
+    <view class="action">
+      <text class="text-grey text-sm">{{info.phone}}</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">单位</view>
+    <view class="action">
+      <text class="text-grey text-sm">{{info.unit}}</text>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">职务</view>
+    <view class="action">
+      <text class="text-grey text-sm">{{info.post}}</text>
+    </view>
+  </view>
+  <block wx:if="{{info.introduce}}">
+    <view class="cu-item">
+      <view class="content">个人介绍</view>
+    </view>
+    <view class="padding bg-white">
+      {{info.introduce}}
+    </view>
+  </block>
+</view>

@@ -7,7 +7,7 @@
   </view>
 </view>
 <view class="cu-list menu margin-top footer-bottom">
-  <view class="cu-item arrow solid-top" wx:if="{{userInfo && userInfo.type.type==1}}">
+  <view class="cu-item arrow solid-top" wx:if="{{userInfo && userInfo.type.type!=0}}" bindtap="toUrl" data-url="/pages/user/info">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-info.png"></image>
       <text class="">我的信息</text>
