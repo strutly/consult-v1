@@ -1,7 +1,7 @@
 <view class="padding">
   <view class="bg-white radius-xl padding">
     <view class="margin text-center text-xl text-bold">{{notice.title}}</view>
-    <rich-text class="bg-cyan light text-black " nodes="{{notice.content}}"></rich-text>
+    <rich-text nodes="{{notice.content}}"></rich-text>
     <view class="text-right">{{notice.createTime}}</view>
     <view class="text-right">发布人:{{notice.author}}</view>
   </view>

@@ -24,12 +24,14 @@ const CustomPage = function (page) {
           })
         }
       },
-      onReady(){
-        console.log(2)
-        this.setData({
-          userInfo:wx.getStorageSync('userInfo')
-        })
-        page.onReady && page.onReady.call(this)
+      onShow(){
+        let userInfo = wx.getStorageSync('userInfo');
+        if(userInfo){
+          this.setData({
+            userInfo:wx.getStorageSync('userInfo')
+          })
+        }        
+        page.onShow && page.onShow.call(this)
       },
       phoneChange(e) {
         console.log(e);

@@ -6,18 +6,14 @@ CustomPage({
     areas:['未知','集成电路','物联网','人工智能','智能制造','新材料','生物医药','医疗器械','节能环保','新能源','汽车零部件','大数据','化学化工'],
     notices:[{
       id:"",
-      pic: 'http://gridpic.tsing-tec.com/consult/mijia-logo.jpg'
-    }]
+      pic: 'https://gridpic.tsing-tec.com/consult/635647ad5c47da0f717bdd9f.jpg'
+    }],
+    current:0
   },
   onLoad(options){
     that = this;
   },
   onShow(){
-    that.setData({
-      userInfo:wx.getStorageSync('userInfo')
-    })
-  },
-  onReady(){
     console.log(1);
     getApp().watch(function (value) {
       if(value){
@@ -31,7 +27,10 @@ CustomPage({
       pageNum:1,
       pageSize:5
     });
-    let notices = that.data.notices;
+    let notices = [{
+      id:"",
+      pic: 'http://gridpic.tsing-tec.com/consult/635647ad5c47da0f717bdd9f.jpg'
+    }];
     that.setData({
       notices:notices.concat(res.data.content)
     })
@@ -55,5 +54,11 @@ CustomPage({
     let totalPages = that.data.totalPages||0;
     let pageNum = Math.floor(Math.random()*totalPages+1);
     that.roundList(pageNum);
+  },
+  dotsChange(e){
+    console.log(e);
+    that.setData({
+      current:e.detail.current
+    })
   }
 })

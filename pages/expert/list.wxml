@@ -1,3 +1,4 @@
+<wxs src="/utils/Tools.wxs" module="Tools"></wxs>
 <view class="bg-main padding"></view>
 <view class="flex margin-lr-sl bg-white padding-sm search-box">
   <image class="margin-left-sm" style="width:40rpx;height:40rpx;" src="http://gridpic.tsing-tec.com/consult%2Fsearch.png"></image>
@@ -9,7 +10,7 @@
     <view class="card bg-white flex align-top padding-sm info  {{item.auth?'bg-auth':''}}">
       <view class="head-box margin-right-lg">
         <image class="info-img" src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image>
-        <view class="name text-center">{{item.name}}</view>
+        <view class="name text-center">{{Tools.teacher(item.name)}}</view>
       </view>
       <view class="info-box">
         <view class="flex align-top line1-4">

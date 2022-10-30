@@ -1,9 +1,10 @@
+<wxs src="/utils/Tools.wxs" module="Tools"></wxs>
 <view class="bg-white padding">
   <view class="bg-main padding-sm solids-bottom-mian">专家名片</view>
   <view class="card bg-white flex align-top padding-sm info  {{expert.auth?'bg-auth':''}}">
     <view class="head-box margin-right-lg">
       <image class="info-img" src="{{expert.gender==1?'/images/male.png':'/images/female.png'}}"></image>
-      <view class="name text-center">{{expert.name}}</view>
+      <view class="name text-center">{{Tools.teacher(expert.name)}}</view>
     </view>
     <view class="info-box">
       <view class="flex align-top line1-4">

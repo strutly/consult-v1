@@ -1,5 +1,5 @@
 page{
-  background-color: var(--cyanLight);
+  background-color: #F2F6FA;
 }
 rich-text>image{
   max-width: 100%;
