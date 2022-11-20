@@ -24,6 +24,13 @@ const CustomPage = function (page) {
           })
         }
       },
+      modalStatus(e){
+        console.log(e)
+        let name = e.currentTarget.dataset.name;
+        this.setData({
+          ['modal'+name]:!this.data['modal'+name]
+        })
+      },
       onShow(){
         let userInfo = wx.getStorageSync('userInfo');
         if(userInfo){

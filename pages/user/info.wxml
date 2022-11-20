@@ -14,7 +14,7 @@
   <view class="cu-item">
     <view class="content">国家</view>
     <view class="action">
-      <text class="text-grey text-sm">{{info.phone}}</text>
+      <text class="text-grey text-sm">{{info.country}}</text>
     </view>
   </view>
   <view class="cu-item">

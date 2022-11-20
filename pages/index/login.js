@@ -66,6 +66,8 @@ CustomPage({
       let error = that.loginValidate.errorList[0]
       return that.showTips(error.msg);
     }
+    let code = await Api.wxLogin();
+    params.code = code;
     let res = await Api.loginByAccount(params);
     console.log(res);
     if(res.code==0){

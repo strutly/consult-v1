@@ -90,18 +90,18 @@
 
 <indexes bind:myevent="chooseCountry" countryModal="{{countryModal}}"></indexes>
 
-<view class="cu-modal {{authModal?'show':''}}">
+<view class="cu-modal {{modalreg?'show':''}}" wx:if="{{reg.auth}}">
   <view class="cu-dialog sm">
     <view class="cu-bar bg-white justify-end">
-      <view class="content">授权提醒</view>
+      <view class="content">认证提醒</view>
     </view>
     <view class="padding-xl">
-      本次填写的信息只用于身份验证使用
+      您的信息已认证通过,是否继续
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
-        <button class="cu-btn line-gray" bindtap="authModal">取消</button>
-        <button class="cu-btn bg-main margin-left" bindtap="yes">同意</button>
+        <button class="cu-btn line-gray" bindtap="back">取消</button>
+        <button class="cu-btn bg-main margin-left" bindtap="modalStatus" data-name="reg">继续</button>
       </view>
     </view>
   </view>

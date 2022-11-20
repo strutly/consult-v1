@@ -55,7 +55,17 @@
           {{item.meetingNo}}
         </view>
       </view>
-
+      <view class="cu-item" wx:if="{{userInfo.type.type==2 && item.status.type==4}}">
+        <view class="content">
+          <text class="cuIcon-pay text-grey"></text>
+          <text class="text-grey">待支付</text>
+        </view>
+        <view class="action">
+          <view class="cu-btn round bg-green shadow sm" bindtap="pay" data-id="{{item.id}}">
+            <text class="cuIcon-recharge"></text> 支付
+          </view>
+        </view>
+      </view>
       <view class="cu-form-group align-start">
         <view class="title text-grey margin-left-xs"><text class="cuIcon-message margin-right-sm"></text>咨询内容</view>
         <view class="textarea">{{item.content}}</view>
@@ -64,6 +74,8 @@
         <button class="cu-btn line-gray text-gray lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="3" data-id="{{item.id}}">拒绝</button>
         <button class="cu-btn bg-main lg flex-sub margin" bindtap="showModal" data-index="{{i}}" data-status="4" data-id="{{item.id}}">同意</button>
       </view>
+
+
     </block>
   </view>
 </view>
