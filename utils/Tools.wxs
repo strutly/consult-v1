@@ -1,5 +1,5 @@
 function teacher(name){
-  return name[0]+"老师";
+  if(name) return name[0]+"老师";
 }
 
 module.exports = {
