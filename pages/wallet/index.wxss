@@ -1,0 +1,22 @@
+.wallet {
+  margin-top: -50rpx;
+  border-radius: 30rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.contact {
+  position: fixed;
+  bottom: 20rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.contact button{
+  display: inline-block;
+  background-color: var(--ghostWhite);
+  padding-bottom: constant(safe-area-inset-bottom);  
+  padding-bottom: env(safe-area-inset-bottom);
+}

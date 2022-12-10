@@ -5,7 +5,7 @@
     <image class="margin-left-sm" style="width:40rpx;height:40rpx;" src="http://gridpic.tsing-tec.com/consult%2Fsearch.png"></image>
     <input placeholder="请输入关键词" class="flex-sub padding-left" type="text"></input>
   </view>
-  <swiper class="screen-swiper square-dot margin shadow" style="overflow: hidden;border-radius: 30rpx;border:2px solid #E5E5E5;box-shadow: 0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.25);z-index:100;" bindchange="dotsChange" 	circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper class="screen-swiper square-dot margin shadow" style="overflow: hidden;border-radius: 30rpx;border:2px solid #E5E5E5;box-shadow: 0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.25);z-index:100;" bindchange="dotsChange" 	circular="true" autoplay="{{autoplay}}" interval="5000" duration="500">
     <swiper-item wx:for="{{notices}}" wx:key="index" bindtap="{{item.id?'toUrl':''}}" data-url="/pages/notice/detail?id={{item.id}}">
       <image style="border-radius: 30rpx;" src="{{item.pic}}" mode="scaleToFill"></image>
     </swiper-item>

@@ -8,10 +8,12 @@ CustomPage({
       id:"",
       pic: 'https://gridpic.tsing-tec.com/consult/635647ad5c47da0f717bdd9f.jpg'
     }],
-    current:0
+    current:0,
+    autoplay:true
   },
   onLoad(options){
     that = this;
+    
   },
   onShow(){
     console.log(1);
@@ -20,6 +22,9 @@ CustomPage({
         that.roundList(1);
         that.noticeList();        
       }
+    })
+    that.setData({
+      autoplay:true
     })
   },
   async noticeList(){
@@ -59,6 +64,12 @@ CustomPage({
     console.log(e);
     that.setData({
       current:e.detail.current
+    })
+  },
+  onHide(){
+    console.log("hide")
+    that.setData({
+      autoplay:false
     })
   }
 })

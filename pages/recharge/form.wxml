@@ -1,0 +1,35 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<view class="cu-bar solid-bottom">
+  <view class="action">
+    账户余额
+  </view>
+</view>
+<view class="cu-list menu">
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-recharge text-grey"></text>
+      <text class="text-grey">0.00</text>
+    </view>
+  </view>
+</view>
+<view class="cu-bar">
+  <view class="action">
+    充值金额
+  </view>
+</view>
+<view class="grid col-3 bg-white">
+  <view class="padding-sm" wx:for="{{prices}}" wx:key="i" wx:for-index="i">
+    <view class="cu-btn round  {{index==i?'bg-main':'line-grey'}}" bindtap="choosePrice" data-index="{{i}}" data-total="{{item.total}}" data-other-price="{{item.otherPrice}}">{{item.title}}</view>
+  </view>
+  
+</view>
+<form bindsubmit="submit">
+  <view class="cu-form-group {{otherPrice?'':'hide'}}">
+    <view class="cuIcon-recharge text-orange margin-right"></view>
+    <input placeholder="自定义充值金额" name="total" type="digit" bindblur="totalChange" value="{{total}}"></input>
+  </view>
+
+  <view class="padding flex flex-direction margin-top-xl">
+			<button class="cu-btn bg-main lg" formType="submit" disabled="{{disabled}}">马上充值</button>
+		</view>
+</form>

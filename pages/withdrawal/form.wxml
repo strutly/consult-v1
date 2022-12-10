@@ -1,0 +1,27 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<form bindsubmit="submit">
+  <view class="cu-form-group margin-top">
+    
+    <text class="title" space="ensp">姓    名</text>
+    <input placeholder="姓名" name="name"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">银行卡号</view>
+    <input placeholder="银行卡号" name="cardNo" bindblur="cardNoChange"></input>
+  </view>
+  <view class="cu-form-group">
+    <text class="title" space="ensp">开 户 行</text>
+    <input placeholder="开户行" name="bankName" value="{{bankName}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">提现金额</view>
+    <input placeholder="提现金额" name="total"></input>
+  </view>
+  <view class="cu-form-group">
+    <text class="title" space="ensp">备    注</text>
+    <input placeholder="备注" name="des"></input>
+  </view>
+  <view class="padding text-center bg-white padding-top-xl">
+    <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit" disabled="{{disabled}}">提交</button>
+  </view>
+</form>

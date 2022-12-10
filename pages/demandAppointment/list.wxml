@@ -3,8 +3,8 @@
   <view class="cu-list menu" wx:for="{{appointments}}" wx:for-index="i" wx:key="i">
     <view class="cu-list  menu-avatar" bindtap="open" data-index="{{i}}">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style='background-image:url({{item.mine.gender==1?"/images/male.png":"/images/female.png"}});' wx:if="{{item.mold==1}}"></view>
-        <view  wx:else class="cu-avatar round lg" style='background-image:url({{item.toUser.gender==1?"/images/male.png":"/images/female.png"}});'></view>
+        <image class="cu-avatar round lg" src='{{item.mine.gender==1?"/images/male.png":"/images/female.png"}}' wx:if="{{item.mold==1}}"></image>
+        <image  wx:else class="cu-avatar round lg" src='{{item.toUser.gender==1?"/images/male.png":"/images/female.png"}}'></image>
         <view class="content">
           <view class="text-grey" wx:if="{{userInfo.type.type==2}}">{{item.mine.name}}的预约</view>
           <view class="text-grey" wx:else>预约{{item.toUser.name}}</view>

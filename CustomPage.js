@@ -101,7 +101,16 @@ const CustomPage = function (page) {
       },
       reLoad(){
         this.onLoad(this.data.options)
-      }
+      },
+      viewImage(e) {
+        console.log(e)
+        let src = e.currentTarget.dataset.url;
+        if(!src) return;
+        wx.previewImage({
+          urls: [src],
+          current: src
+        })
+      },
     })
   )
 }

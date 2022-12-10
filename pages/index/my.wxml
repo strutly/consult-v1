@@ -14,6 +14,12 @@
       <text class="">我的信息</text>
     </view>
   </view>
+  <view class="cu-item arrow solid-top" wx:if="{{userInfo && userInfo.type.type!=0}}" bindtap="toUrl" data-url="/pages/wallet/index">
+    <view class="content flex align-center">
+      <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="/images/wallet.png"></image>
+      <text class="">我的钱包</text>
+    </view>
+  </view>
 
   <view class="cu-item arrow" wx:if="{{userInfo && userInfo.type.type==2}}" bindtap="toUrl" data-url="/pages/demand/list">
     <view class="content flex align-center">
