@@ -76,7 +76,7 @@
       <view class="content">咨询确认</view>
     </view>
     <view class="padding-xl">
-      {{formData.status==3?'确认同意此咨询?':'确认拒绝此咨询?'}}
+      {{formData.status==4?'确认同意此咨询?':'确认拒绝此咨询?'}}
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">

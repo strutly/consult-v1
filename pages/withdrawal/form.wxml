@@ -25,3 +25,11 @@
     <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit" disabled="{{disabled}}">提交</button>
   </view>
 </form>
+
+
+
+<view class="contact safe-bottom" bindtap="toUrl" data-url="/pages/withdrawal/list">
+  <view class="main text-sm underline">
+    提现记录
+  </view>
+</view>

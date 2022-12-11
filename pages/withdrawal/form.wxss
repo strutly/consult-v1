@@ -1,1 +1,8 @@
 /* pages/withdrawal/form.wxss */
+.contact {
+  position: fixed;
+  bottom: 20rpx;
+  left: 0;
+  right: 0;
+  text-align: center;
+}

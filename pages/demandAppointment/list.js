@@ -83,16 +83,14 @@ CustomPage({
   },
   async submit() {
     let formData = that.data.formData;
-    let appointments = that.data.appointments;
     let res = await Api.updateDemandAppointment(JSON.stringify(formData));
 
     console.log(res);
     if (res.code == 0) {
-      console.log(formData.index)
-      appointments[formData.index].status = that.data.status[formData.status];
       that.setData({
-        appointments: appointments
+        appointments: []
       })
+      that.getList(1);
       that.showTips("操作成功!", "success");
       that.modal();
     } else {

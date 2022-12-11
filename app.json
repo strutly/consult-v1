@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/home",
     "pages/withdrawal/form",
-    
     "pages/demand/list",
     "pages/index/login",
     "pages/index/my",
@@ -21,7 +20,8 @@
     "pages/notice/detail",
     "pages/wallet/index",
     "pages/wallet/list",
-    "pages/recharge/form"
+    "pages/recharge/form",
+    "pages/withdrawal/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
