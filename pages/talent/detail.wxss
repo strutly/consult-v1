@@ -1,0 +1,20 @@
+@import "/style/expert.wxss";
+page {
+  background-color: var(--white);
+}
+
+.bg-img {
+  width: 100%;
+  z-index: -1;
+}
+
+.container {
+  background-color: #F2F5FA;
+}
+
+.search-box {
+  margin-top: -50rpx;
+  border-radius: 20rpx;
+}
+
+

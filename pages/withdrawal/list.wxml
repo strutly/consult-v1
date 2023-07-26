@@ -43,4 +43,8 @@
       </view>
     </view>
   </block>
+  <view class="bg-white padding margin radius-xl text-xxl" wx:if="{{moneyRecords.length==0}}">
+    <text class="cuIcon-info"></text>
+    暂无相关内容
+  </view>
 </view>

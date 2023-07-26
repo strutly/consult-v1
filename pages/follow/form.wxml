@@ -1,0 +1,72 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<form bindsubmit="submit">
+  <view class="margin">
+    <view class="padding bg-main flex align-center">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>新增回访
+      </view>
+    </view>
+
+    <view class="padding bg-white flex align-center solid-bottom">
+      <view class="title">回访企业</view>
+      <view class="flex-sub title-box flex">
+        <input hidden name="enterpriseId" value="{{enterprise.id}}"></input>
+        <input class="flex-sub padding-lr" value="{{enterprise.title}}" placeholder="企业名称" bindinput="titleChange"></input>
+        <view class="mask bg-white solids-bottom solids-top" wx:if="{{mask}}">
+          <view class="cu-list menu sm-border  margin-sm  shadow-lg">
+            <view class="cu-item" wx:for="{{enterprises}}" wx:key="index" bindtap="choose" data-index="{{index}}">
+              <view class="content">
+                {{item.title}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <text class="title" decode="true">走&ensp;访&ensp;人</text>
+      <input placeholder="走访人" name="names"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">走访阶段</view>
+      <input placeholder="走访阶段" name="state"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">走访时间</view>
+      <picker mode="date" data-name="visiteTime" name="visiteTime" bindchange="pickerChange">
+        <view class="picker">
+          {{visiteTime?visiteTime:'请选择走访时间'}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <text class="title" decode="true">对&ensp;接&ensp;人</text>
+      <input placeholder="对接人" name="contactPerson"></input>
+    </view>
+
+    <view class="cu-form-group align-start">
+      <view class="title">企业诉求</view>
+      <textarea name="appeal" maxlength="-1" placeholder="企业诉求"></textarea>
+    </view>
+
+    <view class="cu-form-group align-start">
+      <text class="title" decode="true">反&emsp;&emsp;馈</text>
+      <textarea name="feedback" maxlength="-1" placeholder="反馈"></textarea>
+    </view>
+    <view class="cu-form-group align-start">
+      <text class="title" decode="true">结&emsp;&emsp;果</text>
+      <textarea name="result" maxlength="-1" placeholder="结果"></textarea>
+    </view>
+
+
+
+    <view class="padding text-center bg-white padding-top-xl solid-top">
+      <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit" disabled="{{disabled}}">提交</button>
+    </view>
+  </view>
+
+
+
+
+</form>

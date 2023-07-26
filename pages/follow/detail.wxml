@@ -1,0 +1,24 @@
+<view class="margin bg-white radius-xl padding">
+  <view><text class="cuIcon-titles text-blue"></text>走访记录</view>
+  <view class="text-gray margin-top-sm">走访人</view>
+  <view class="margin-top-sm">{{follow.names}}</view>
+  <view class="text-gray margin-top-sm">企业对接人</view>
+  <view class="margin-top-sm">{{follow.contactPerson}}</view>
+  <view class="text-gray margin-top-sm">走访时间</view>
+  <view class="margin-top-sm">{{follow.visiteTime}}</view>
+  <view class="text-gray margin-top-sm">走访阶段</view>
+  <view class="margin-top-sm">{{follow.state}}</view>
+  <view class="text-gray margin-top-sm">企业具体诉求</view>
+  <view class="margin-top-sm">
+    {{follow.appeal||'暂无'}} 
+  </view>
+  <view class="text-gray margin-top-sm">反馈/方案</view>
+  <view class="margin-top-sm">
+    {{follow.feedback||'暂无'}}
+  </view>
+  <view class="text-gray margin-top-sm">结果</view>
+  <view class="margin-top-sm">
+    {{follow.result||'暂无'}}
+  </view>
+
+</view>

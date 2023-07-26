@@ -21,7 +21,14 @@
     "pages/wallet/index",
     "pages/wallet/list",
     "pages/recharge/form",
-    "pages/withdrawal/list"
+    "pages/withdrawal/list",
+    "pages/enterprise/index",
+    "pages/enterprise/detail",
+    "pages/follow/form",
+    "pages/follow/detail",
+    "pages/enterprise/form",
+    "pages/talent/list",
+    "pages/talent/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

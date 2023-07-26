@@ -1,0 +1,43 @@
+.filter {
+  position: fixed;
+  top: 20rpx;
+  right: 20rpx;
+}
+.filter-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+  background-color: var(--ghostWhite);
+}
+
+.add-mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index:1;
+}
+.add-modal {
+  z-index:10;
+  position: fixed;
+  bottom: 150rpx;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.add-modal::before {
+  content: " ";
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid #eee;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  position: absolute;
+  bottom: -18rpx;
+  left: 42%;
+  z-index:10;
+}

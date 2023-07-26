@@ -1,0 +1,144 @@
+<view class="text-lg text-right filter">
+  <text class="cuIcon-filter"  bindtap="modalStatus" data-name="filter"></text>
+</view>
+
+<view class="margin-top-sm padding footer-bottom">
+  <view class="margin-bottom padding bg-white radius-xl" wx:for="{{enterprises}}" wx:key="index" bindtap="toUrl" data-url="/pages/enterprise/detail?id={{item.id}}">
+    <view>
+      <text class="cuIcon-titles text-blue"></text>
+      <text>{{item.title}}</text>
+    </view>
+    <view class="padding-left-sm">
+      <view class="margin-top-sm flex">
+        <view class="flex-sub">
+          <view class="text-grey">项目对接人</view>
+          <view class="text-bold">{{item.abutment||'暂无'}}</view>
+        </view>
+        <view class="flex-sub">
+          <view class="text-grey">跟进阶段</view>
+          <view class="text-bold">{{followStages[item.followStage]}}</view>
+        </view>
+      </view>
+      <view class="margin-top-sm">
+        <view class="text-grey">后期服务人</view>
+        <view class="text-bold">{{item.servicer||'暂无'}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bg-white padding margin radius-xl text-xxl" wx:if="{{enterprises.length==0}}">
+    <text class="cuIcon-info"></text>
+    暂无相关内容
+  </view>
+
+</view>
+<view class="add-mask" catchtouchmove='true' wx:if="{{addModal}}"></view>
+<view class="add-modal bg-white radius-xl text-sm solids"  wx:if="{{addModal}}">
+  <view class="flex align-center solids-bottom padding-sm" bindtap="toUrl" data-url="/pages/enterprise/form">
+    <text class="cuIcon-roundadd margin-right-xs"></text>
+    <text class="flex-sub">新增企业信息</text> 
+  </view>
+  <view class="flex align-center padding-sm" bindtap="toUrl" data-url="/pages/follow/form">
+    <text class="cuIcon-roundadd margin-right-xs"></text>
+    <text class="flex-sub">新增跟踪信息</text>
+  </view>
+</view>
+
+<view class="filter-modal" wx:if="{{modalfilter}}">
+  <view class="margin">
+    <text bindtap="modalStatus" data-name="filter">取消</text>
+    <text class="fr cuIcon-filter" bindtap="search"></text>
+  </view>
+  <view class="solids-top bg-white padding">
+    <view>企业荣誉分类</view>
+    <checkbox-group data-name="corporateHonors" bindchange="checkboxChange">
+      <view class="grid col-2">
+        <view class="margin-top-sm">
+          <checkbox class='main' value="0"></checkbox>
+          <text class="margin-left-sm">雏鹰入库</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="1"></checkbox>
+          <text class="margin-left-sm">小巨人</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="2"></checkbox>
+          <text class="margin-left-sm">高薪产业</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="3"></checkbox>
+          <text class="margin-left-sm">专精特精</text>
+        </view>
+      </view>    
+    </checkbox-group>  
+  </view>
+  <view class="solids-top bg-white padding">
+    <view>企业带头人分类</view>
+    <checkbox-group data-name="leaderTitles" bindchange="checkboxChange">
+      <view class="grid col-2">
+        <view class="margin-top-sm">
+          <checkbox class='main' value="0"></checkbox>
+          <text class="margin-left-sm">院士</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="1"></checkbox>
+          <text class="margin-left-sm">高校教授</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="2"></checkbox>
+          <text class="margin-left-sm">海外院士</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="3"></checkbox>
+          <text class="margin-left-sm">专家</text>
+        </view>
+      </view>    
+    </checkbox-group>  
+  </view>
+  <view class="solids-top bg-white padding">
+    <view>企业需求分类</view>
+    <checkbox-group data-name="demands" bindchange="checkboxChange">
+      <view class="grid col-2">
+        <view class="margin-top-sm">
+          <checkbox class='main' value="0"></checkbox>
+          <text class="margin-left-sm">融资需求</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="1"></checkbox>
+          <text class="margin-left-sm">人才引进类</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="2"></checkbox>
+          <text class="margin-left-sm">政策申报类</text>
+        </view>
+        <view class="margin-top-sm">
+          <checkbox class='main' value="3"></checkbox>
+          <text class="margin-left-sm">技术引进或转型需求</text>
+        </view>
+      </view>    
+    </checkbox-group>  
+  </view>
+</view>
+
+
+
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action main" bindtap="toUrl" data-url="/pages/index/home">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-home"></text>
+    </view>
+    <view>首页</view>
+  </view>
+  <view class="action add" bindtap="add" data-url="/pages/index/my">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-roundadd"></text>
+    </view>
+    <view>新增</view>
+  </view>
+  <view class="action" bindtap="toUrl" data-url="/pages/index/my">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-list"></text>
+    </view>
+    <view>我的</view>
+  </view>
+</view>

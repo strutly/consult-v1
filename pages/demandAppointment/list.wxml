@@ -4,7 +4,7 @@
     <view class="cu-list  menu-avatar" bindtap="open" data-index="{{i}}">
       <view class="cu-item">
         <image class="cu-avatar round lg" src='{{item.mine.gender==1?"/images/male.png":"/images/female.png"}}' wx:if="{{item.mold==1}}"></image>
-        <image  wx:else class="cu-avatar round lg" src='{{item.toUser.gender==1?"/images/male.png":"/images/female.png"}}'></image>
+        <image wx:else class="cu-avatar round lg" src='{{item.toUser.gender==1?"/images/male.png":"/images/female.png"}}'></image>
         <view class="content">
           <view class="text-grey" wx:if="{{userInfo.type.type==2}}">{{item.mine.name}}的预约</view>
           <view class="text-grey" wx:else>预约{{item.toUser.name}}</view>
@@ -26,7 +26,7 @@
       </view>
       <view class="cu-item">
         <view class="content">
-          
+
           <text class="text-grey">项目名称</text>
         </view>
         <view class="action">
@@ -34,7 +34,7 @@
         </view>
       </view>
       <view class="cu-item">
-        <view class="content">          
+        <view class="content">
           <text class="text-grey">邻域分类</text>
         </view>
         <view class="action">
@@ -76,6 +76,14 @@
       </view>
     </block>
   </view>
+
+  
+  <view class="bg-white padding margin radius-xl text-xxl" wx:if="{{appointments.length==0}}">
+    <text class="cuIcon-info"></text>
+    暂无相关内容
+  </view>
+
+
 </view>
 
 <view class="cu-modal {{modal?'show':''}}">

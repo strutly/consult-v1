@@ -68,6 +68,10 @@
 
     </block>
   </view>
+  <view class="bg-white padding margin radius-xl text-xxl" wx:if="{{appointments.length==0}}">
+    <text class="cuIcon-info"></text>
+    暂无相关内容
+  </view>
 </view>
 
 <view class="cu-modal {{modal?'show':''}}">

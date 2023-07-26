@@ -2,22 +2,22 @@
 <view class="bg-main padding"></view>
 <view class="flex margin-lr-sl bg-white padding-sm search-box">
   <image class="margin-left-sm" style="width:40rpx;height:40rpx;" src="http://gridpic.tsing-tec.com/consult%2Fsearch.png"></image>
-  <input placeholder="请输入关键词" class="flex-sub padding-left" type="text" 	confirm-type="search" bindconfirm='search'></input>
+  <input placeholder="请输入关键词" class="flex-sub padding-left" type="text" confirm-type="search" bindconfirm='search'></input>
 </view>
 <view class="cards footer-bottom">
-  <view class="margin" wx:for="{{experts}}" wx:key="index" bindtap='toUrl' data-url="{{userInfo.type.type!=0?'/pages/expert/detail?id='+item.id:''}}" data-msg="您没有权限查看此内容">
-    <view class="bg-main padding-sm solids-bottom-mian">专家名片</view>
+  <view class="margin" wx:for="{{talents}}" wx:key="index" bindtap='toUrl' data-url="{{userInfo.type.type!=0?'/pages/talent/detail?id='+item.id:''}}" data-msg="您没有权限查看此内容">
+    <view class="bg-main padding-sm solids-bottom-mian">人才名片{{item.type==1?'-海外人才':''}}</view>
     <view class="card bg-white flex align-top padding-sm info  {{item.auth?'bg-auth':''}}">
       <view class="head-box margin-right-lg">
         <image class="info-img" src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image>
-        <view class="name text-center">{{Tools.teacher(item.name)}}</view>
+        <view class="name text-center">{{item.name}}</view>
       </view>
       <view class="info-box">
         <view class="flex align-top line1-4">
           <view class="margin-right-xs entry-icon">
             <image src="/images/area.png"></image>
           </view>
-          <view class="flex-sub">领域:{{areas[item.field||0]}}</view>
+          <view class="flex-sub">领域:{{item.field}}</view>
         </view>
         <view class="flex align-top line1-4 margin-tb">
           <view class="margin-right-xs entry-icon">
@@ -35,9 +35,8 @@
     </view>
   </view>
 
-  <view class="bg-white padding margin radius-xl text-xxl" wx:if="{{experts.length==0}}">
+  <view class="bg-white padding margin radius-xl text-xxl" wx:if="{{talents.length==0}}">
     <text class="cuIcon-info"></text>
     暂无相关内容
   </view>
-
 </view>

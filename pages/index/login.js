@@ -68,19 +68,17 @@ CustomPage({
     }
     let code = await Api.wxLogin();
     params.code = code;
-    let res = await Api.loginByAccount(params);
-    console.log(res);
-    if(res.code==0){
+    Api.loginByAccount(params).then(res=>{
       wx.setStorageSync('token', res.data.token);
       wx.setStorageSync('userInfo', res.data.userInfo);
       that.showTips("登录成功","success");
       getApp().globalData.auth = true;
       setTimeout(()=>{
         that.home();
-      },1000);      
-    }else{
-      that.showTips(res.msg);
-    }
+      },1000);
+    },err=>{
+      that.showTips(err.msg);
+    });
   },
   async forgetSubmit(e){
     console.log(e);
@@ -90,15 +88,12 @@ CustomPage({
       console.log(error)
       return that.showTips(error.msg);
     }
-    console.log(123);
-    let res = await Api.passwordUpdate(params);
-    console.log(res);
-    if(res.code==0){
+    Api.passwordUpdate(params).then(res=>{
       that.showTips("密码修改成功,请重新登录","success");
       that.forget();
-    }else{
-      that.showTips(res.msg);
-    }    
+    },err=>{
+      that.showTips(err.msg);
+    });   
   },
   
   

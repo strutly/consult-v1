@@ -17,6 +17,11 @@
       <view catchtap="delete" data-index="{{index}}" hover-stop-propagation="true"><text class="cuIcon-delete"></text>删除</view>
     </view>
   </view>
+
+  <view class="bg-white padding margin radius-xl text-xxl" wx:if="{{demands.length==0}}">
+    <text class="cuIcon-info"></text>
+    暂无相关内容
+  </view>
 </view>
 
 

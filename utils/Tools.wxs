@@ -1,7 +1,14 @@
-function teacher(name){
-  if(name) return name[0]+"老师";
+function teacher(name) {
+  if (name) return name[0] + "老师";
+}
+
+function showNames(names=[], ids=[]) {
+  return names.filter(function (val, index, arr) {
+    return ids.indexOf(index+"") > -1;
+  }).join('、');
 }
 
 module.exports = {
-  teacher: teacher
+  teacher: teacher,
+  showNames: showNames
 }

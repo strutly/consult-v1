@@ -1,0 +1,252 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<form bindsubmit="submit">
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="0">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>基本信息
+      </view>
+      <text class="cuIcon-{{openIndex==0?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==0?'':'hide'}}">
+      <view class="cu-form-group">
+        <view class="title">企业名称</view>
+        <input placeholder="企业名称" name="title"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">跟进中心</view>
+        <input placeholder="跟进中心" name="followCenter"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">跟进阶段</view>
+        <picker bindchange="pickerChange" data-name="followStage" range="{{followStages}}" name="followStage" value="{{formData.followStage}}">
+          <view class="picker">
+            {{formData.followStage>-1?followStages[formData.followStage]:'请选择跟进阶段'}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">企业需求</view>
+        <checkbox-group name="demands" class="flex-sub padding-tb-sm grid col-2 text-sm align-center">
+          <view class="flex  align-center {{index>1?' margin-top-sm':''}}" wx:for="{{demands}}" wx:key="index">
+            <checkbox value="{{index}}" class="main round margin-right-xs"></checkbox> {{item}}
+          </view>
+        </checkbox-group>
+      </view>
+
+      <view class="cu-form-group">
+        <view class="title">企业荣誉</view>
+        <checkbox-group name="corporateHonors" class="flex-sub padding-tb-sm grid col-2 text-sm align-center">
+          <view class="flex align-center {{index>1?' margin-top-sm':''}}" wx:for="{{corporateHonors}}" wx:key="index">
+            <checkbox class='main round' value="0"></checkbox>
+            <text class="margin-left-sm">{{item}}</text>
+          </view>
+        </checkbox-group>
+      </view>
+
+      <view class="cu-form-group">
+        <view class="title">带头人称号</view>
+        <checkbox-group name="leaderTitles" class="flex-sub padding-tb-sm grid col-2 text-sm align-center">
+          <view class="flex align-center {{index>1?' margin-top-sm':''}}" wx:for="{{leaderTitles}}" wx:key="index">
+            <checkbox class='main round' value="0"></checkbox>
+            <text class="margin-left-sm">院士</text>
+          </view>
+        </checkbox-group>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">行业分类</view>
+        <input placeholder="行业分类" name="classify"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">注册时间</view>
+        <picker name="regtime" mode="date" start="1700-01-01" end="{{now}}" bindchange="pickerChange" data-name="regtime">
+          <view class="picker">
+            {{formData.regtime?formData.regtime:'请选择注册时间'}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">企业地址</view>
+        <input placeholder="企业地址" name="address"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">负责人</view>
+        <picker range="{{talents}}" range-key="name" bindchange="pickerChange" data-name="staffIndex" name="talentId" value="{{talents[formData.staffId].id}}">
+          <view class="picker">
+            {{formData.staffIndex?talents[formData.staffIndex].name:'请选择负责人'}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">项目对接人</view>
+        <input placeholder="项目对接人" name="abutment"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">后期服务人</view>
+        <input placeholder="后期服务人" name="servicer"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">联系人</view>
+        <input placeholder="联系人" name="contactName"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">联系电话</view>
+        <input placeholder="联系电话" name="contactPhone"></input>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">企业介绍</view>
+        <textarea name="introduce" maxlength="-1" placeholder="多行文本输入框"></textarea>
+      </view>
+    </view>
+  </view>
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="1">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>企业需求
+      </view>
+      <text class="cuIcon-{{openIndex==1?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==1?'':'hide'}}">
+      <view class="bg-white padding-sm solids-top solid-bottom">
+        <view class="flex-sub text-blue">
+          <text class="cuIcon-titles"></text>人才引进需求
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">引进人才层次</view>
+        <input placeholder="企业地址" name="talentLevel"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">意向合作模式</view>
+        <picker name="cooperationMode" bindchange="pickerChange" data-name="cooperationMode" range="{{cooperationModes}}">
+          <view class="picker">
+            {{cooperationModes[formData.cooperationMode]?cooperationModes[formData.cooperationMode]:'请选择意向合作模式'}}
+          </view>
+        </picker>
+
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">说明</view>
+        <textarea maxlength="-1" placeholder="说明" name="talentExplain"></textarea>
+      </view>
+
+      <view class="bg-white padding-sm solids-top solid-bottom">
+        <view class="flex-sub text-blue">
+          <text class="cuIcon-titles"></text>技术引进或转型需求
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">技术需求方向</view>
+        <input placeholder="企业地址" name="demandDirection"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">意向对接企业/高校</view>
+        <input placeholder="企业地址" name="intended"></input>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">说明</view>
+        <textarea maxlength="-1" placeholder="说明" name="skillExplain"></textarea>
+      </view>
+      <view class="bg-white padding-sm solids-top solid-bottom">
+        <view class="flex-sub text-blue">
+          <text class="cuIcon-titles"></text>政策申报需求
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">申报类型</view>
+        <picker name="declareType" bindchange="pickerChange" data-name="declareType" range="{{declareTypes}}">
+          <view class="picker">
+            {{declareTypes[formData.declareType]?declareTypes[formData.declareType]:'请选择申报类型'}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">申报政策名称</view>
+        <input placeholder="申报政策名称" name="declareName"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">申报结果</view>
+        <picker name="declareResult" bindchange="pickerChange" data-name="declareResult" range="{{declareResults}}">
+          <view class="picker">
+            {{declareResults[formData.declareResult]?declareResults[formData.declareResult]:'请选择申报结果'}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">获批金额(万元)</view>
+        <input type="digit" placeholder="获批金额" name="declareAmount"></input>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">说明</view>
+        <textarea maxlength="-1" name="declareExplain" placeholder="说明"></textarea>
+      </view>
+      <view class="bg-white padding-sm solids-top solid-bottom">
+        <view class="flex-sub text-blue">
+          <text class="cuIcon-titles"></text>融资类需求
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">融资需求</view>
+        <input placeholder="企业地址" name="financingDemand"></input>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">详情</view>
+        <textarea maxlength="-1" name="financingDetail" placeholder="多行文本输入框"></textarea>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">说明</view>
+        <textarea maxlength="-1" name="financingExplain" placeholder="多行文本输入框"></textarea>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="2">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>企业运营情况
+      </view>
+      <text class="cuIcon-{{openIndex==2?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==2?'':'hide'}}">
+      <view class="cu-form-group">
+        <view class="title">上年度营收(万元)</view>
+        <input placeholder="上年度营收" type="digit" name="lastRevenue"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">上年度研发投入(万元)</view>
+        <input placeholder="上年度研发投入" type="digit" name="lastInvestment"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">知识产权数量</view>
+        <input placeholder="知识产权数量" type="number" name="propertyNum"></input>
+      </view>
+      <view class="bg-white padding-sm solids-top solid-bottom">
+        <view class="flex-sub text-blue">
+          <text class="cuIcon-titles"></text>员工人数
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">留学员工人数</view>
+        <input placeholder="留学员工人数" type="number" name="abroadNum"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">博士</view>
+        <input placeholder="博士" type="number" name="doctorNum"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">硕士</view>
+        <input placeholder="硕士" type="number" name="masterNum"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">技术人员</view>
+        <input placeholder="技术人员" type="number" name="artisanNum"></input>
+      </view>
+
+    </view>
+
+  </view>
+
+  <view class="text-center safe-bottom">
+    <button style="width: 40%;" class="cu-btn bg-main margin-top-xl text-center" formType="submit">提交</button>
+  </view>
+</form>

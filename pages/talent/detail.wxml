@@ -1,0 +1,50 @@
+<wxs src="/utils/Tools.wxs" module="Tools"></wxs>
+<view class="bg-white padding">
+  <view class="bg-main padding-sm solids-bottom-mian">人才信息{{talent.type==1?'-海外人才':''}}</view>
+  <view class="card bg-white flex align-top padding-sm info  {{talent.auth?'bg-auth':''}}">
+    <view class="head-box margin-right-lg">
+      <image class="info-img" src="{{talent.gender==1?'/images/male.png':'/images/female.png'}}"></image>
+      <view class="name text-center">{{talent.name}}</view>
+    </view>
+    <view class="info-box">
+      <view class="flex align-top line1-4">
+
+        <view class="flex-sub">领域:{{talent.field}}</view>
+      </view>
+
+      <view class="flex align-top line1-4 margin-top-sm">
+        <view class="flex-sub">技术关键词:{{talent.keyword||"未知"}}</view>
+      </view>
+      <view class="flex align-top line1-4 margin-top-sm">
+        <view class="flex-sub">回国意向:{{talent.backIntention||"未知"}}</view>
+      </view>
+      <view class="flex align-top line1-4 margin-top-sm">
+        <view class="flex-sub">来源国家:{{talent.backCountry||"未知"}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-titles text-yellow"></text> 个人介绍
+  </view>
+</view>
+<view class="padding-lr-xl bg-white">
+  {{talent.introduction||'无'}}
+</view>
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-titles text-blue"></text> 教育经历
+  </view>
+</view>
+<view class="padding-lr-xl bg-white ">
+  {{talent.educationIntroduction||'无'}}
+</view>
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-titles text-red"></text> 个人成就
+  </view>
+</view>
+<view class="padding-lr-xl bg-white padding-bottom">
+  {{talent.achieve||'无'}}
+</view>

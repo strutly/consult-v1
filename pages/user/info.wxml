@@ -2,31 +2,31 @@
   <view class="cu-item">
     <view class="content">姓名</view>
     <view class="action">
-      <text class="text-grey text-sm">{{info.name}}</text>
+      <text class="text-grey text-sm">{{info.name||'未知'}}</text>
     </view>
   </view>
   <view class="cu-item">
     <view class="content">手机号</view>
     <view class="action">
-      <text class="text-grey text-sm">{{info.phone}}</text>
+      <text class="text-grey text-sm">{{info.phone||'未知'}}</text>
     </view>
   </view>
   <view class="cu-item">
     <view class="content">国家</view>
     <view class="action">
-      <text class="text-grey text-sm">{{info.country}}</text>
+      <text class="text-grey text-sm">{{info.country||'未知'}}</text>
     </view>
   </view>
   <view class="cu-item">
     <view class="content">单位</view>
     <view class="action">
-      <text class="text-grey text-sm">{{info.unit}}</text>
+      <text class="text-grey text-sm">{{info.unit||'未知'}}</text>
     </view>
   </view>
   <view class="cu-item">
     <view class="content">职务</view>
     <view class="action">
-      <text class="text-grey text-sm">{{info.post}}</text>
+      <text class="text-grey text-sm">{{info.post||'未知'}}</text>
     </view>
   </view>
   <block wx:if="{{info.introduce}}">
