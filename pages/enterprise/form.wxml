@@ -70,7 +70,7 @@
       </view>
       <view class="cu-form-group">
         <view class="title">负责人</view>
-        <picker range="{{talents}}" range-key="name" bindchange="pickerChange" data-name="staffIndex" name="talentId" value="{{talents[formData.staffId].id}}">
+        <picker range="{{talents}}" range-key="name" bindchange="pickerChange" data-name="staffIndex" name="talentId" value="{{talents[formData.staffIndex].id}}">
           <view class="picker">
             {{formData.staffIndex?talents[formData.staffIndex].name:'请选择负责人'}}
           </view>
