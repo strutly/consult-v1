@@ -5,14 +5,18 @@ CustomPage({
   data:{
     areas:['未知','集成电路','物联网','人工智能','智能制造','新材料','生物医药','医疗器械','节能环保','新能源','汽车零部件','大数据','化学化工']
   },
-  async onLoad(options){
-    console.log(options);
-    that = this;
-    let res = await Api.expertDetail(options);
-    console.log(res);
-    that.setData({
-      expert:res.data
-    })
+  onLoad(options){
+    that = this;       
+  },
+  onReady(){
+    Api.expertDetail({id:that.data.options.id}).then(res=>{
+      console.log(res);
+      that.setData({
+        expert:res.data
+      })
+    },err=>{
+      console.log(err);
+    }); 
   },
   onShow(){
     that.setData({

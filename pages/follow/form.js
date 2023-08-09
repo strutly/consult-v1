@@ -81,7 +81,7 @@ CustomPage({
             enterprises: res.data.content
           })
         }, err => {
-
+          console.log(err)
         });
       }, 300);
     } else {
@@ -130,6 +130,5 @@ CustomPage({
       })
       that.showTips(err.msg);
     })
-
   }
 })

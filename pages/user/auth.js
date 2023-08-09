@@ -6,21 +6,25 @@ import WxValidate from "../../utils/WxValidate";
 CustomPage({
   data: {
     reg: {},
-    areas:['请选择擅长领域','集成电路','物联网','人工智能','智能制造','新材料','生物医药','医疗器械','节能环保','新能源','汽车零部件','大数据','化学化工'],
-    statusMsg:['提交','已通过','已拒绝'],
-    modalreg:true
+    areas: ['请选择擅长领域', '集成电路', '物联网', '人工智能', '智能制造', '新材料', '生物医药', '医疗器械', '节能环保', '新能源', '汽车零部件', '大数据', '化学化工'],
+    statusMsg: ['提交', '已通过', '已拒绝'],
+    modalreg: true
   },
   async onLoad(options) {
     console.log(options);
     that = this;
-    let res = await Api.getUserReg();
-    console.log(res);
-    let reg = res.data||{};
-    that.setData({
-      reg: reg,
-      keys:(reg.keyword||"").split(",")
-    });
     that.initValidate();
+  },
+  onReady() {
+    Api.getUserReg().then(res => {
+      let reg = res.data || {};
+      that.setData({
+        reg: reg,
+        keys: (reg.keyword || "").split(",")
+      });
+    }, err => {
+      console.log(err);
+    });
   },
   initValidate() {
     const rules = {
@@ -41,19 +45,19 @@ CustomPage({
       },
       field: {
         required: true,
-        min:1
+        min: 1
       },
-      'key[0]':{
+      'key[0]': {
         required: true
       },
       introduce: {
         required: true,
         minlength: 50
       },
-      industrialize:{
+      industrialize: {
         required: true
       },
-      achievement:{
+      achievement: {
         required: true
       },
       certificate: {
@@ -77,19 +81,19 @@ CustomPage({
       },
       field: {
         required: "请选择您的擅长领域",
-        min:"请选择您的擅长领域"
+        min: "请选择您的擅长领域"
       },
-      'key[0]':{
+      'key[0]': {
         required: "请至少输入一个技术关键词"
       },
       introduce: {
         required: "请输入您的个人介绍",
         minlength: "个人介绍不能少于50字符"
       },
-      industrialize:{
+      industrialize: {
         required: "请输入您的产业化经历"
       },
-      achievement:{
+      achievement: {
         required: "请输入您的个人成就",
       },
       certificate: {
@@ -99,61 +103,62 @@ CustomPage({
     }
     that.WxValidate = new WxValidate(rules, messages);
   },
-  areaChange(e){
+  areaChange(e) {
     that.setData({
-      areaIndex:e.detail.value
+      areaIndex: e.detail.value
     })
   },
   async upload() {
-    let fileRes = await wx.chooseMessageFile({
+    wx.chooseMessageFile({
       count: 1,
       type: 'all'
-    });
-    let types = ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp', 'psd', 'svg', 'tiff', 'pdf'];
-    var filename = fileRes.tempFiles[0].name;
-    let fileType = filename.substr(filename.lastIndexOf('.') + 1);
-    let index = types.indexOf(fileType.toLowerCase());
-    if (index == -1) {
-      wx.showToast({
-        icon: 'none',
-        title: '请上传图片或者PDF形式附件'
-      })
-    } else {
+    }).then(fileRes => {
+      let types = ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp', 'psd', 'svg', 'tiff', 'pdf'];
+      var filename = fileRes.tempFiles[0].name;
+      let fileType = filename.substr(filename.lastIndexOf('.') + 1);
+      let index = types.indexOf(fileType.toLowerCase());
+      if (index == -1) {
+        wx.showToast({
+          icon: 'none',
+          title: '请上传图片或者PDF形式附件'
+        })
+        return;
+      }
       let flag = true;
       if (index == types.length - 1) flag = false;
-      let res = await Api.uploadFile(fileRes.tempFiles[0].path, flag);
-      console.log(res);
-      if (res.code == 0) {
+      Api.uploadFile(fileRes.tempFiles[0].path, flag).then(res => {
         that.setData({
           ['reg.certificate']: res.data
         })
-      } else {
-        that.showTips(res.msg, "error");
-      }
-    }
+      }, err => {
+        that.showTips(err.msg, "error");
+      });
+    }, cancel => {
+      console.log(cancel)
+    });
   },
-  keyChange(e){
+  keyChange(e) {
     let index = e.currentTarget.dataset.index;
     let keys = that.data.keys;
     keys[index] = e.detail.value;
     that.setData({
-      keys:keys
+      keys: keys
     })
   },
-  chooseCountry(e){
+  chooseCountry(e) {
     that.setData({
-      ['reg.country']:e.detail.name
+      ['reg.country']: e.detail.name
     });
     that.countryModal();
   },
-  countryModal(){
+  countryModal() {
     that.setData({
-      countryModal:!that.data.countryModal
+      countryModal: !that.data.countryModal
     })
   },
-  authModal(){
+  authModal() {
     that.setData({
-      authModal:!that.data.authModal
+      authModal: !that.data.authModal
     })
   },
   submit(e) {
@@ -165,7 +170,7 @@ CustomPage({
       return false;
     }
     that.authModal();
-    that.yes=async()=>{
+    that.yes = async () => {
       let data = e.detail.value;
       let res = {};
       if (data.id) {
@@ -188,6 +193,6 @@ CustomPage({
 
 
 
-    
+
   }
 })

@@ -5,16 +5,19 @@ CustomPage({
   data: {
     notice:{}
   },
-  async onLoad(options) {
+  onLoad(options) {
     that = this;
-    let res = await Api.noticeDetail({
+    Api.noticeDetail({
       id:options.id
-    });
-    let notice = res.data;
-    notice.content = notice.content.replace(/<img/g, `<img style="max-width:100%;"`);
-    that.setData({
-      notice:notice
-    })
+    }).then(res=>{
+      let notice = res.data;
+      notice.content = notice.content.replace(/<img/g, `<img style="max-width:100%;"`);
+      that.setData({
+        notice:notice
+      })
+    },err=>{
+      console.log(err.msg);
+    });    
   }
 
   

@@ -22,12 +22,11 @@ CustomPage({
       pageSize: 6
     }).then(res => {
       let talents = that.data.talents || [];
-      talents = talents.concat(res.data.content);
       that.setData({
         pageNum: pageNum,
         name: name,
         endline: res.data.last,
-        talents: talents
+        talents: talents.concat(res.data.content)
       });
     }, err => {
       console.log(err)

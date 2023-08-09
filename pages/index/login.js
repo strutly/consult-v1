@@ -80,7 +80,7 @@ CustomPage({
       that.showTips(err.msg);
     });
   },
-  async forgetSubmit(e){
+  forgetSubmit(e){
     console.log(e);
     let params = e.detail.value;
     if(!that.forgetValidate.checkForm(params)){

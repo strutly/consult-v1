@@ -3,7 +3,6 @@ import Api from '../../config/api';
 import CustomPage from '../../CustomPage';
 import WxValidate from '../../utils/WxValidate';
 CustomPage({
-
   data: {
     demand: { type: 0 },
     priceVal:'',
@@ -11,13 +10,18 @@ CustomPage({
   },
   async onLoad(options) {
     that = this;
-    if (options.id) {
-      let res = await Api.demandDetail({ id: options.id });
-      that.setData({
-        demand: res.data
-      })
-    }
     that.initValidate();
+  },
+  onready(){
+    Api.demandDetail({
+      id:that.data.options.id
+    }).then(res=>{
+      that.setData({
+        demand:res.data
+      })
+    },err=>{
+      that.showTips(err.msg);
+    });
   },
   initValidate() {
     const rules = {
@@ -101,27 +105,21 @@ CustomPage({
         res = await Api.demandAdd(data);
       }
       console.log(res);
-      if (res.code == 0) {
-        that.showTips("提交成功", "success");
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1,
-            success(){
-              var pages = getCurrentPages();
-              pages[pages.length - 1].reLoad();
-            }
-          })
-        }, 500)
-      } else {
-        that.setData({
-          disabled: false
+      that.showTips("提交成功", "success");
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1,
+          success(){
+            var pages = getCurrentPages();
+            pages[pages.length - 1].reLoad();
+          }
         })
-        that.showTips(res.msg || "出错了");
-      }
+      }, 500)
     } catch (error) {
       that.setData({
         disabled: false
       })
+      that.showTips(res.msg || "出错了");
     }
   }
 })

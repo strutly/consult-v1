@@ -4,7 +4,7 @@ import Api from '../../config/api';
 import WxValidate from '../../utils/WxValidate';
 CustomPage({
   data: {
-    disabled:false,
+    disabled: false,
     types: ['请选择咨询形式', '视频会议', '线下交流'],
     formData: {
       type: 0
@@ -12,11 +12,7 @@ CustomPage({
     minDate: new Date().toLocaleDateString()
   },
   onLoad(options) {
-    console.log(options)
     that = this;
-    that.setData({
-      toid: options.id
-    });
     that.initValidate();
   },
   initValidate() {
@@ -71,7 +67,7 @@ CustomPage({
       ['formData.' + name]: e.detail.value
     })
   },
-  async submit(e) {
+  submit(e) {
     console.log(e);
     let data = e.detail.value;
     if (!that.WxValidate.checkForm(data)) {
@@ -81,28 +77,21 @@ CustomPage({
       return false;
     }
     that.setData({
-      disabled:true
+      disabled: true
     })
-    try {
-      let res = await Api.addAppointment(data);
+    Api.addAppointment(data).then(res => {
       console.log(res);
-      if (res.code == 0) {
-        that.showTips("提交成功,请耐心等待审核", "success");
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 2000)
-      } else {
-        that.setData({
-          disabled:false
+      that.showTips("提交成功,请耐心等待审核", "success");
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1,
         })
-        that.showTips(res.msg || "出错了");
-      }
-    } catch (error) {
+      }, 2000)
+    }, err => {
       that.setData({
-        disabled:false
+        disabled: false
       })
-    }    
+      that.showTips(err.msg || "出错了");
+    });
   }
 })

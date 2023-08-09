@@ -4,60 +4,53 @@ import CustomPage from '../../CustomPage';
 CustomPage({
 
   data: {
-    demands:[],
-    editIndex:-1
+    demands: [],
+    editIndex: -1
   },
 
-  onLoad(options){
+  onLoad(options) {
     console.log(options);
     that = this;
-    that.setData({
-      demands:[]
-    })
     that.getList(1);
   },
-  onShow(){
+  onShow() {
     that.setData({
-      userInfo:wx.getStorageSync('userInfo')||{}
+      userInfo: wx.getStorageSync('userInfo') || {}
     })
   },
-  async getList(pageNum){
-    try {
-      let res = await Api.demandPage({
-        pageNum:pageNum,
-        pageSize:6
-      });
-      console.log(res);
-      let demands = that.data.demands||[];    
-      demands = demands.concat(res.data.content);
+  getList(pageNum) {
+    Api.demandPage({
+      pageNum: pageNum,
+      pageSize: 6
+    }).then(res => {
+      let demands = that.data.demands || [];
       that.setData({
-        pageNum:pageNum,
+        pageNum: pageNum,
         endline: res.data.last,
-        demands:demands      
+        demands: demands.concat(res.data.content)
       });
-    } catch (error) {
-      console.log(error)
-    }    
-  },  
-  onReachBottom(){
+    }, err => {
+      console.log(err.msg);
+    });
+  },
+  onReachBottom() {
     let endline = that.data.endline;
-    if(!endline){
+    if (!endline) {
       let pageNum = that.data.pageNum + 1;
       that.getList(pageNum);
-    }    
+    }
   },
-  openEdit(e){
+  openEdit(e) {
     let index = e.currentTarget.dataset.index;
     let editIndex = that.data.editIndex;
-    if(index==editIndex) index = -1;
+    if (index == editIndex) index = -1;
     that.setData({
-      editIndex:index
+      editIndex: index
     })
   },
-  delete(e){
+  delete(e) {
     console.log(e)
     let index = e.currentTarget.dataset.index;
-
     let demands = that.data.demands;
     wx.showModal({
       title: '提示',
@@ -65,34 +58,33 @@ CustomPage({
       async success(confirm) {
         console.log(confirm);
         if (confirm.confirm) {
-          let res = await Api.demandDelete(demands[index].id);
-          if(res.code==0){
-            demands.splice(index,1);
+          Api.demandDelete(demands[index].id).then(res => {
+            demands.splice(index, 1);
             console.log(demands);
-            that.showTips("操作成功",'success');
+            that.showTips("操作成功", 'success');
             that.setData({
-              demands:demands
-            })  
-          }else{
-            that.showTips(res.msg);
-          }                  
+              demands: demands
+            })
+          }, err => {
+            that.showTips(err.msg);
+          });
         }
       },
-      complete(){
+      complete() {
         that.setData({
-          editIndex:-1
+          editIndex: -1
         })
       }
     })
   },
-  edit(e){    
+  edit(e) {
     wx.navigateTo({
       url: e.currentTarget.dataset.url,
-      success(res){
+      success(res) {
         that.setData({
-          editIndex:-1
+          editIndex: -1
         });
       }
     })
-  }  
+  }
 })

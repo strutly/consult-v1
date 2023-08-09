@@ -25,21 +25,24 @@ CustomPage({
     that = this;
     that.getList(1);
   },
-  async getList(pageNo) {
+  getList(pageNo) {
     let param = { pageNum: pageNo };
     let status = that.data.options.status
     if (status) {
       param.status = status;
     }
-
-    let res = await Api.pageDemandAppointment(param);
-    console.log(res);
-    let appointments = that.data.appointments;
-    that.setData({
-      pageNo: pageNo,
-      endline: res.data.last,
-      appointments: appointments.concat(res.data.content)
+    Api.pageDemandAppointment(param).then(res=>{
+      console.log(res);
+      let appointments = that.data.appointments;
+      that.setData({
+        pageNo: pageNo,
+        endline: res.data.last,
+        appointments: appointments.concat(res.data.content)
+      });
+    },err=>{
+      that.showTips(err.msg);
     });
+    
   },
   tabSelect(e) {
     console.log(e);
@@ -81,24 +84,21 @@ CustomPage({
       modal: !that.data.modal
     })
   },
-  async submit() {
+  submit() {
     let formData = that.data.formData;
-    let res = await Api.updateDemandAppointment(JSON.stringify(formData));
-
-    console.log(res);
-    if (res.code == 0) {
+    Api.updateDemandAppointment(JSON.stringify(formData)).then(res=>{
+      console.log(res);
       that.setData({
         appointments: []
       })
       that.getList(1);
       that.showTips("操作成功!", "success");
       that.modal();
-    } else {
-      that.showTips(res.msg);
-    }
+    },err=>{
+      that.showTips(err.msg);
+    });
   },
-
-  copy: function (e) {
+  copy(e) {
     console.log(e.currentTarget.dataset.text)
     wx.setClipboardData({
       data: e.currentTarget.dataset.text,

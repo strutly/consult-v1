@@ -9,7 +9,7 @@ CustomPage({
     console.log(options);
     that = this;
   },
-  onShow(){
+  onShow() {
     that.setData({
       userInfo: wx.getStorageSync('userInfo')
     })
@@ -24,24 +24,23 @@ CustomPage({
         return;
       }
       let code = await Api.getCode();
-      let res = await Api.auth({
+      Api.auth({
         code: code,
         encryptedData: userInfo.encryptedData,
         iv: userInfo.iv,
         signature: userInfo.signature,
         rawData: userInfo.rawData
-      });
-      console.log(res);
-      wx.removeStorageSync('code');
-      if (res.code == 0) {
+      }).then(res => {
+        console.log(res);
+        wx.removeStorageSync('code');
         that.showTips("授权成功", "success");
         that.setData({
           auth: true,
           userInfo: res.data
         });
-      } else {
-        that.showTips(res.msg, "error");
-      }
+      }, err => {
+        that.showTips(err.msg);
+      });
     } catch (error) {
       console.log(error);
       that.showTips("您已经拒绝获取用户信息~", "error");

@@ -95,6 +95,7 @@ CustomPage({
       that.setData({
         disabled:false
       })
+      that.showTips(error.msg);
     }       
   } 
 })

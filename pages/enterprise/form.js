@@ -200,9 +200,9 @@ CustomPage({
     Api.enterpriseAdd(data).then(res=>{
       console.log(res);
       that.showTips("保存成功","success");
-      // setTimeout(()=>{
-      //   wx.navigateBack();
-      // },1500)
+      setTimeout(()=>{
+        wx.navigateBack();
+      },1500)
     },err=>{
       that.showTips(err.msg);
     })

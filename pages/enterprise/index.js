@@ -20,7 +20,7 @@ CustomPage({
   onShow() {
 
   },
-  getPage(params, pageNum) {
+  getPage(params={}, pageNum=1) {
     Api.enterprisePage({ ...params, pageNum: pageNum }).then(res => {
       console.log(res);
       let enterprises = that.data.enterprises||[];

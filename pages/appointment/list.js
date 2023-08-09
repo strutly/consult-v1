@@ -10,8 +10,8 @@ CustomPage({
       { type: 0, title: "待审核" },
       { type: 1, title: "审核通过" },
       { type: 2, title: "审核失败" },
-      { type: 3, title: "预约失效" }, 
-      { type: 4, title: "预约成功" },     
+      { type: 3, title: "预约失效" },
+      { type: 4, title: "预约成功" },
       { type: 5, title: "咨询进行中" },
       { type: 6, title: "咨询结束" },
       { type: 7, title: "咨询完成" }],
@@ -21,24 +21,25 @@ CustomPage({
     endline: false
   },
   onLoad(options) {
-    console.log(2)
     that = this;
     that.getList(1);
   },
-  async getList(pageNo) {
+  getList(pageNo) {
     let param = { pageNum: pageNo };
     let status = that.data.options.status
     if (status) {
       param.status = status;
     }
 
-    let res = await Api.getAppointment(param);
-    console.log(res);
-    let appointments = that.data.appointments;
-    that.setData({
-      pageNo: pageNo,
-      endline: res.data.last,
-      appointments: appointments.concat(res.data.content)
+    Api.getAppointment(param).then(res => {
+      let appointments = that.data.appointments;
+      that.setData({
+        pageNo: pageNo,
+        endline: res.data.last,
+        appointments: appointments.concat(res.data.content)
+      });
+    }, err => {
+      console.log(err)
     });
   },
   tabSelect(e) {
@@ -81,13 +82,11 @@ CustomPage({
       modal: !that.data.modal
     })
   },
-  async submit() {
+  submit() {
     let formData = that.data.formData;
     let appointments = that.data.appointments;
-    let res = await Api.updateAppointment(JSON.stringify(formData));
-
-    console.log(res);
-    if (res.code == 0) {
+    Api.updateAppointment(JSON.stringify(formData)).then(res=>{
+      console.log(res);
       console.log(formData.index)
       appointments[formData.index].status = that.data.status[formData.status];
       that.setData({
@@ -95,12 +94,12 @@ CustomPage({
       })
       that.showTips("操作成功!", "success");
       that.modal();
-    } else {
-      that.showTips(res.msg);
-    }
+    },err=>{
+      console.log(err);
+      that.showTips(err.msg);
+    });
   },
-
-  copy: function (e) {
+  copy(e) {
     console.log(e.currentTarget.dataset.text)
     wx.setClipboardData({
       data: e.currentTarget.dataset.text,
@@ -112,21 +111,21 @@ CustomPage({
       }
     })
   },
-  async pay(e) {
-    let res = await Api.appointmentPay({
+  pay(e) {
+    Api.appointmentPay({
       id: e.currentTarget.dataset.id
+    }).then(res=>{
+      wx.requestPayment({
+        timeStamp: res.data.timeStamp + "",
+        nonceStr: res.data.nonceStr,
+        package: res.data.packageValue,
+        signType: res.data.signType + "",
+        paySign: res.data.paySign
+      })
+    },err=>{
+      console.log(err);
+      that.showTips(err.msg);
     })
-    console.log(res);
-
-
-    let payRes = await wx.requestPayment({
-      timeStamp: res.data.timeStamp + "",
-      nonceStr: res.data.nonceStr,
-      package: res.data.packageValue,
-      signType: res.data.signType + "",
-      paySign: res.data.paySign
-    })
-    console.log(payRes)
   },
   async refund(e) {
     let res = await Api.orderRefund(e.currentTarget.dataset);

@@ -5,105 +5,103 @@ import CustomPage from '../../CustomPage';
 import WxValidate from "../../utils/WxValidate";
 CustomPage({
   data: {
-    countdown:"获取验证码",
-    sexArr:['请选择性别','男','女']
+    countdown: "获取验证码",
+    sexArr: ['请选择性别', '男', '女']
   },
-  onLoad(options){
+  onLoad(options) {
     console.log(options);
     that = this;
     that.initValidate(options.type);
   },
   initValidate(type) {
-    const rules =  {      
+    const rules = {
       name: {
         required: true
       },
       gender: {
         required: true,
-        min:1
+        min: 1
       },
-      country:{
+      country: {
         required: true
-      },      
+      },
       phone: {
         required: true,
-        tel:true
+        tel: true
       },
-      code:{
+      code: {
         required: true
       },
-      password:{
+      password: {
         required: true
       }
     };
     const messages = {
-      
+
       name: {
         required: "请输入姓名"
       },
       gender: {
         required: "请选择性别",
-        min:"请选择性别"
+        min: "请选择性别"
       },
-      country:{
+      country: {
         required: "请输入国家"
       },
       phone: {
         required: "请输入手机号",
-        tel:"请输入正确的手机号"
+        tel: "请输入正确的手机号"
       },
-      code:{
+      code: {
         required: "请输入验证码"
       },
-      password:{
+      password: {
         required: "请输入密码"
-      },      
-      
+      },
+
     };
-    if(type>0){
-      rules.unit= {required: true};
-      rules.post={required: true};
-      messages.unit={required: "请输入单位"};
-      messages.post={required: "请输入职务"};
+    if (type > 0) {
+      rules.unit = { required: true };
+      rules.post = { required: true };
+      messages.unit = { required: "请输入单位" };
+      messages.post = { required: "请输入职务" };
     }
     that.WxValidate = new WxValidate(rules, messages);
   },
-  chooseCountry(e){
+  chooseCountry(e) {
     that.setData({
-      country:e.detail.name
+      country: e.detail.name
     });
     that.countryModal();
   },
-  countryModal(){
+  countryModal() {
     that.setData({
-      countryModal:!that.data.countryModal
+      countryModal: !that.data.countryModal
     })
   },
-  pickerChange(e){
+  pickerChange(e) {
     let name = e.currentTarget.dataset.name;
     that.setData({
-      [name]:e.detail.value
+      [name]: e.detail.value
     })
   },
-  async submit(e) {
-    console.log(e);    
+  submit(e) {
+    console.log(e);
     let data = e.detail.value;
     if (!that.WxValidate.checkForm(data)) {
-      let error = that.WxValidate.errorList[0];      
+      let error = that.WxValidate.errorList[0];
       return that.showTips(error.msg);
     }
-    
-    let res = await Api.addUserAdmin(data);
-    console.log(res);
-    if (res.code == 0) {
+    Api.addUserAdmin(data).then(res => {
+      console.log(res);
       that.showTips("注册成功,请前往登录", "success");
       setTimeout(() => {
         wx.reLaunch({
           url: '/pages/index/login',
         })
       }, 2000)
-    }else{
-      that.showTips(res.msg||"出错了","error");
-    }
+    }, err => {
+      that.showTips(err.msg || "出错了", "error");
+    });
   }
 })
