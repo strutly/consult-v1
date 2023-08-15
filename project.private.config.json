@@ -10,7 +10,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/enterprise/form",
+          "pathName": "pages/enterpriseProject/form",
           "query": "",
           "launchMode": "default",
           "scene": null

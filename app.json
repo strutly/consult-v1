@@ -28,7 +28,13 @@
     "pages/follow/detail",
     "pages/enterprise/form",
     "pages/talent/list",
-    "pages/talent/detail"
+    "pages/talent/detail",
+    "pages/enterpriseProject/index",
+    "pages/enterpriseProject/detail",
+    "pages/enterpriseProject/form",
+    "pages/projectFollow/form",
+    "pages/projectFollow/detail"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

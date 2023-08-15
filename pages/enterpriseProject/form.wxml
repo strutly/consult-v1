@@ -1,0 +1,158 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<wxs module="Tools" src="/utils/Tools.wxs"></wxs>
+<form bindsubmit="submit">
+  <input hidden name="id" value="{{options.id}}"></input>
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="0">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>基本信息
+      </view>
+      <text class="cuIcon-{{openIndex==0?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==0?'':'hide'}}">
+      <view class="cu-form-group">
+        <view class="title">项目名称</view>
+        <input placeholder="项目名称" name="projectName" value="{{formData.projectName}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">联系人</view>
+        <input placeholder="联系人" name="contactPerson" value="{{formData.contactPerson}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">职务</view>
+        <input placeholder="职务" name="position" value="{{formData.position}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">联系方式</view>
+        <input placeholder="联系方式" name="contactInfo" value="{{formData.contactInfo}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">项目来源</view>
+        <input placeholder="项目来源" name="projectSource" value="{{formData.projectSource}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">企业性质</view>
+        <picker bindchange="pickerChange" data-name="enterpriseNature" range="{{enterpriseNatures}}" name="enterpriseNature" value="{{formData.enterpriseNature+''}}">
+          <view class="picker">
+            {{formData.enterpriseNature>-1?enterpriseNatures[formData.enterpriseNature]:'请选择企业性质'}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">企业类别</view>
+        <input placeholder="企业类别" name="enterpriseCategory" value="{{formData.projectName}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">主营业务</view>
+        <input placeholder="主营业务" name="mainBusiness" value="{{formData.projectName}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">办公地址</view>
+        <input placeholder="办公地址" name="officeAddress" value="{{formData.projectName}}"></input>
+      </view>
+
+
+      <view class="cu-form-group align-start">
+        <view class="title">主要竞争力</view>
+        <textarea name="mainCompetitiveness" maxlength="-1" placeholder="主要竞争力" value="{{formData.projectName}}"></textarea>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">团队组成情况</view>
+        <textarea name="teamComposition" maxlength="-1" placeholder="团队组成情况" value="{{formData.projectName}}"></textarea>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">合作意向</view>
+        <textarea name="cooperationIntent" maxlength="-1" placeholder="合作意向" value="{{formData.projectName}}"></textarea>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">项目时间计划</view>
+        <textarea name="projectTimePlan" maxlength="-1" placeholder="项目时间计划" value="{{formData.projectName}}"></textarea>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">项目简要介绍</view>
+        <textarea name="projectBriefIntroduction" maxlength="-1" placeholder="项目简要介绍" value="{{formData.projectName}}"></textarea>
+      </view>
+
+
+    </view>
+  </view>
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="1">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>资质及主要竞争力
+      </view>
+      <text class="cuIcon-{{openIndex==1?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==1?'':'hide'}}">
+
+      <view class="cu-form-group">
+        <view class="title">核心技术/经营优势</view>
+        <input placeholder="核心技术/经营优势" name="coreTechnologyAdvantages" value="{{formData.projectName}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">知识产权</view>
+        <input placeholder="知识产权" name="intellectualProperty" value="{{formData.projectName}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">是否有创业基金扶持</view>
+        <switch class='main radius' data-name="hasEntrepreneurshipFundSupport" bindchange="switchChange" checked="{{formData.hasEntrepreneurshipFundSupport}}"></switch>
+        <input name="hasEntrepreneurshipFundSupport" value="{{formData.hasEntrepreneurshipFundSupport}}" hidden></input>
+      </view>
+      <view class="cu-form-group" wx:if="{{formData.hasEntrepreneurshipFundSupport}}">
+        <checkbox-group bindchange="checkBoxChange">
+          <label>
+            <checkbox class="main" value="外资" checked="{{Tools.ifCheck(formData.policySupportSource,'外资')}}"></checkbox>
+            <text class="margin-left-xs">外资</text>
+          </label>
+          <label class="margin-left-xs align-center">
+            <checkbox class="main" value="国家" checked="{{Tools.ifCheck(formData.policySupportSource,'国家')}}"></checkbox>
+            <text class="margin-left-xs">国家</text>
+          </label>
+          <label class="margin-left-xs">
+            <checkbox class="main" value="江苏省" checked="{{Tools.ifCheck(formData.policySupportSource,'江苏省')}}"></checkbox>
+            <text class="margin-left-xs">江苏省</text>
+          </label>
+        </checkbox-group>
+        <input placeholder="其他" bindblur="otherChange" class="margin-left" value="{{Tools.otherSource(formData.policySupportSource)}}"></input>
+        <input hidden name="policySupportSource" value="{{formData.policySupportSource}}"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">是否拿到过人才/团队政策</view>
+        <switch class='main radius' data-name="hasTalentPolicySupport" bindchange="switchChange" ></switch>
+        <input hidden name="hasTalentPolicySupport" value="{{formData.hasTalentPolicySupport}}"></input>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">人才/团队政策详细</view>
+        <textarea maxlength="-1" placeholder="人才/团队政策详细" name="talentExplain"></textarea>
+      </view>
+
+     
+    </view>
+  </view>
+
+
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="2">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>运营情况
+      </view>
+      <text class="cuIcon-{{openIndex==2?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==2?'':'hide'}}">
+      <view class="cu-form-group">
+        <view class="title">产值</view>
+        <input placeholder="产值" type="text" name="outputValue"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">税收</view>
+        <input placeholder="税收" type="text" name="taxRevenue"></input>
+      </view>     
+
+    </view>
+
+  </view>
+
+  <view class="text-center safe-bottom">
+    <button style="width: 40%;" class="cu-btn bg-main margin-top-xl text-center" formType="submit">提交</button>
+  </view>
+</form>

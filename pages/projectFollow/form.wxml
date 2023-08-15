@@ -1,0 +1,63 @@
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+<form bindsubmit="submit">
+  <view class="margin">
+    <view class="padding bg-main flex align-center">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>新增跟进
+      </view>
+    </view>
+
+    <view class="padding bg-white flex align-center solid-bottom">
+      <view class="title">项目名称</view>
+      <view class="flex-sub title-box flex">
+        <input hidden name="projectId" value="{{enterpriseProject.id}}"></input>
+        <input class="flex-sub padding-lr" value="{{enterpriseProject.title}}" placeholder="项目名称" bindinput="titleChange"></input>
+        <view class="mask bg-white solids-bottom solids-top" wx:if="{{mask}}">
+          <view class="cu-list menu sm-border  margin-sm  shadow-lg">
+            <view class="cu-item" wx:for="{{enterpriseProjects}}" wx:key="index" bindtap="choose" data-index="{{index}}">
+              <view class="content">
+                {{item.projectName}}
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <text class="title" decode="true">跟进人员</text>
+      <input placeholder="跟进人员" name="names"></input>
+    </view>
+    
+    <view class="cu-form-group">
+      <view class="title">沟通时间</view>
+      <picker mode="date" data-name="visiteTime" name="visiteTime" bindchange="pickerChange">
+        <view class="picker">
+          {{visiteTime?visiteTime:'请选择沟通时间'}}
+        </view>
+      </picker>
+    </view>
+   
+
+    <view class="cu-form-group align-start">
+      <view class="title">项目发展近况与问题</view>
+      <textarea name="problem" maxlength="-1" placeholder="项目发展近况与问题"></textarea>
+    </view>
+
+    <view class="cu-form-group align-start">
+      <text class="title" decode="true">跟进人意见、处理方式</text>
+      <textarea name="handMethod" maxlength="-1" placeholder="跟进人意见、处理方式"></textarea>
+    </view>
+    
+
+
+
+    <view class="padding text-center bg-white padding-top-xl solid-top">
+      <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" formType="submit" disabled="{{disabled}}">提交</button>
+    </view>
+  </view>
+
+
+
+
+</form>

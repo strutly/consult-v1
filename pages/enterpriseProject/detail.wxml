@@ -1,0 +1,300 @@
+<wxs src="/utils/Tools.wxs" module="Tools"></wxs>
+<topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
+
+<template name="talent">
+  <view class="bg-white padding-sm solid-bottom">
+    <view class="flex-sub text-blue">
+      <text class="cuIcon-titles"></text>人才引进需求
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">引进人才层次</view>
+    <input placeholder="企业地址" name="talentLevel" value="{{title}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">意向合作模式</view>
+    <picker name="cooperationMode" value="{{cooperationMode}}" bindchange="pickerChange" data-name="cooperationMode" range="{{cooperationModes}}">
+      <view class="picker">
+        {{cooperationModes[cooperationMode]?cooperationModes[cooperationMode]:'请选择意向合作模式'}}
+      </view>
+    </picker>
+
+  </view>
+  <view class="cu-form-group align-start">
+    <view class="title">说明</view>
+    <textarea maxlength="-1" placeholder="说明" name="talentExplain" value="{{talentExplain}}"></textarea>
+  </view>
+</template>
+<template name="technology">
+  <view class="bg-white padding-sm solids-top solid-bottom">
+    <view class="flex-sub text-blue">
+      <text class="cuIcon-titles"></text>技术引进或转型需求
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">技术需求方向</view>
+    <input placeholder="技术需求方向" name="demandDirection" value="{{demandDirection}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">意向对接企业/高校</view>
+    <input placeholder="意向对接企业/高校" name="intended" value="{{intended}}"></input>
+  </view>
+  <view class="cu-form-group align-start">
+    <view class="title">说明</view>
+    <textarea maxlength="-1" placeholder="说明" name="skillExplain" value="{{skillExplain}}"></textarea>
+  </view>
+
+</template>
+<template name="policy">
+  <view class="bg-white padding-sm solids-top solid-bottom">
+    <view class="flex-sub text-blue">
+      <text class="cuIcon-titles"></text>政策申报需求
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">申报类型</view>
+    <picker name="declareType" value="{{declareType}}" bindchange="pickerChange" data-name="declareType" range="{{declareTypes}}">
+      <view class="picker">
+        {{declareTypes[declareType]?declareTypes[declareType]:'请选择申报类型'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">申报政策名称</view>
+    <input placeholder="申报政策名称" name="declareName" value="{{declareName}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">申报结果</view>
+    <picker name="declareResult" value="{{declareResult}}" bindchange="pickerChange" data-name="declareResult" range="{{declareResults}}">
+      <view class="picker">
+        {{declareResults[formData.declareResult]?declareResults[formData.declareResult]:'请选择申报结果'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">获批金额(万元)</view>
+    <input type="digit" placeholder="获批金额" name="declareAmount" value="{{declareAmount}}"></input>
+  </view>
+  <view class="cu-form-group align-start">
+    <view class="title">说明</view>
+    <textarea maxlength="-1" value="{{declareExplain}}" name="declareExplain" placeholder="说明"></textarea>
+  </view>
+</template>
+<template name="financing">
+  <view class="bg-white padding-sm solids-top solid-bottom">
+    <view class="flex-sub text-blue">
+      <text class="cuIcon-titles"></text>融资类需求
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">融资需求</view>
+    <input placeholder="融资需求" name="financingDemand" value="{{financingDemand}}"></input>
+  </view>
+  <view class="cu-form-group align-start">
+    <view class="title">详情</view>
+    <textarea maxlength="-1" name="financingDetail" placeholder="详情" value="{{financingDetail}}"></textarea>
+  </view>
+  <view class="cu-form-group align-start">
+    <view class="title">说明</view>
+    <textarea maxlength="-1" name="financingExplain" placeholder="说明" value="{{financingExplain}}"></textarea>
+  </view>
+</template>
+
+<view class="bg-white nav">
+  <view class="flex text-center">
+    <view wx:for="{{navs}}" wx:key="index" class="cu-item flex-sub {{showIndex==index?'main text-bold':''}}" bindtap="navChange" data-index="{{index}}">
+      {{item}}
+    </view>
+  </view>
+</view>
+
+<view class="margin {{showIndex==0?'':'hide'}}">
+  <!--
+
+  <scroll-view scroll-x="true" class="padding bg-white flex radius-xl" style="white-space: nowrap;">
+    <view class="margin-right radius-xl advertise" style="width: 30vw;">
+      <image src="/images/auth.png" class="radius solids" style="width: 28vw;height: 28vw;"></image>
+      <view class="text-bold">研发团队</view>
+      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
+    </view>
+    <view class="margin-right radius-xl advertise" style="width: 30vw;">
+      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
+      <view class="text-bold">研发团队</view>
+      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
+    </view>
+    <view class="margin-right radius-xl advertise" style="width: 30vw;">
+      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
+      <view class="text-bold">研发团队</view>
+      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
+    </view>
+    <view class="margin-right radius-xl advertise" style="width: 30vw;">
+      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
+      <view class="text-bold">研发团队</view>
+      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
+    </view>
+    <view class="margin-right radius-xl advertise" style="width: 30vw;">
+      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
+      <view class="text-bold">研发团队</view>
+      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
+    </view>
+  </scroll-view>
+  -->
+  <view class="margin-top bg-white padding radius-xl">
+    <view class="flex">
+      <view class="flex-sub">
+        <text class="cuIcon-titles text-blue"></text>项目基本信息
+      </view>
+      <view class="main" bindtap="toUrl" data-url="/pages/enterpriseProject/form?id={{options.id}}">
+        <text class="cuIcon-edit margin-right-xs"></text>
+        <text>编辑</text>
+      </view>      
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">项目名称</view>
+      <view class="margin-top-xs">{{enterpriseProject.projectName}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">联系人</view>
+      <view class="margin-top-xs">{{enterpriseProject.contactPerson}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">职务</view>
+      <view class="margin-top-xs">{{enterpriseProject.position}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">联系方式</view>
+      <view class="margin-top-xs">{{enterpriseProject.contactInfo}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">项目来源</view>
+      <view class="margin-top-xs">{{enterpriseProject.projectSource}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">企业性质</view>
+      <view class="margin-top-xs">{{enterpriseNatures[enterpriseProject.enterpriseNature||0]}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">企业类别</view>
+      <view class="margin-top-xs">{{enterpriseProject.enterpriseCategory}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">项目简要介绍</view>
+      <view class="margin-top-xs">{{enterpriseProject.projectBriefIntroduction}}</view>
+    </view>
+
+    <view class="padding-xs">
+      <view class="text-gray">主营业务</view>
+      <view class="margin-top-xs">{{enterpriseProject.mainBusiness}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">办公地址</view>
+      <view class="margin-top-xs">{{enterpriseProject.officeAddress}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">主要竞争力</view>
+      <view class="margin-top-xs">{{enterpriseProject.mainCompetitiveness}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">团队组成情况</view>
+      <view class="margin-top-xs">{{enterpriseProject.teamComposition}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">合作意向</view>
+      <view class="margin-top-xs">{{enterpriseProject.cooperationIntent}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">项目时间计划</view>
+      <view class="margin-top-xs">{{enterpriseProject.projectTimePlan}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="margin {{showIndex==1?'':'hide'}}">
+  <view class="padding bg-white radius-xl margin-bottom" wx:for="{{follows}}" wx:key="index">
+    <view class="flex align-center">
+      <view class="flex-sub">
+        <text class="cuIcon-titles text-blue"></text>
+        跟进记录
+      </view>
+      <view class="cu-tag text-blue line-blue round" bindtap="toUrl" data-url="/pages/projectFollow/detail?id={{item.id}}">查看详情</view>
+    </view>
+    <view class="text-gray margin-top-sm">跟进人员</view>
+    <view class="margin-top-sm">{{item.names}}</view>
+    <view class="text-gray margin-top-sm">走访时间</view>
+    <view class="margin-top-sm">{{item.visiteTime}}</view>
+    <view class="text-gray margin-top-sm">项目发展近况与问题</view>
+    <view class="margin-top-sm cut3">{{item.problem}}</view>
+  </view>
+
+  <view class="padding bg-white radius-xl flex align-center" wx:if="{{follows.length==0}}">
+    <text class="cuIcon-info"></text>
+    <text class="margin-left">暂无回访记录</text>
+  </view>
+
+  <view class="footer-tips text-center" wx:if="{{enterpriseProject.communicationTime}}">
+    <view class="lines-blue cu-btn radius-xl">
+      <text class="cuIcon-notification margin-right-sm "></text>企业访问管理系统提醒您:下次走访时间为{{enterpriseProject.communicationTime}}
+    </view>
+  </view>
+</view>
+
+
+<view class="margin {{showIndex==2?'':'hide'}}">
+  <view class="padding bg-white radius-xl">
+
+    <view class="text-gray margin-top-sm">核心技术/经营优势</view>
+    <view class="margin-top-sm">{{enterpriseProject.coreTechnologyAdvantages||'暂无'}}</view>
+    <view class="text-gray margin-top-sm">知识产权</view>
+    <view class="margin-top-sm">{{enterpriseProject.intellectualProperty||'暂无'}}</view>
+    <view class="text-gray margin-top-sm flex">
+      <text class="flex-sub">是否有创业基金扶持</text>
+      <text class="text-black">{{enterpriseProject.hasEntrepreneurshipFundSupport?"是":"否"}}</text>
+    </view>
+    <block wx:if="{{enterpriseProject.hasEntrepreneurshipFundSupport}}">
+      <view class="text-gray margin-top-sm">资金扶持来源</view>
+      <view class="margin-top-sm">{{enterpriseProject.policySupportSource}}</view>
+    </block>
+
+    <view class="text-gray margin-top-sm flex">
+      <text class="flex-sub">是否拿到过人才/团队政策</text>
+      <text class="text-black">{{enterpriseProject.hasTalentPolicySupport?"是":"否"}}</text>
+    </view>
+    <block wx:if="{{enterpriseProject.hasTalentPolicySupport}}">
+      <view class="text-gray margin-top-sm">人才/团队政策详细</view>
+      <view class="margin-top-sm">{{enterpriseProject.talentPolicySupportDes}}</view>
+    </block>
+
+  </view>
+
+</view>
+<view class="margin {{showIndex==3?'':'hide'}}">
+  <view class="padding bg-white radius-xl margin-bottom">
+    <view>产值</view>
+    <view class="text-green text-xxl text-bold margin-top-sm">{{enterpriseProject.outputValue||'保密'}}</view>
+  </view>
+  <view class="padding bg-white radius-xl margin-bottom">
+    <view>税收</view>
+    <view class="text-green text-xxl text-bold margin-top-sm">{{enterpriseProject.taxRevenue||'保密'}}</view>
+  </view>
+</view>
+
+<view class="modal-box  flex flex-direction" catchtouchmove="true" wx:if="{{modalUpdate}}">
+  <view class="modal-bg flex-sub"></view>
+  <view class="modal-content padding-xl flex flex-direction ">
+    <form bindsubmit="submit">
+      <view class="flex padding justify-between bg-blue">
+        <view class="cu-tag bg-gray round" bindtap="modalStatus" data-name="Update">取消</view>
+        <view class="flex-sub"></view>
+        <button class="cu-tag bg-white round" formType="submit">保存</button>
+      </view>
+      <view class="solid">
+        <template is="{{modalType}}" data="{{...enterprise,demands,followStages,cooperationModes,declareTypes,declareResults}}"></template>
+      </view>
+    </form>
+
+
+  </view>
+
+</view>
+
+<view class="safe-bottom"></view>

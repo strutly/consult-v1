@@ -68,15 +68,20 @@ CustomPage({
     }
     let code = await Api.wxLogin();
     params.code = code;
+    wx.showLoading({
+      title: '登录中~',
+    })
     Api.loginByAccount(params).then(res=>{
       wx.setStorageSync('token', res.data.token);
       wx.setStorageSync('userInfo', res.data.userInfo);
       that.showTips("登录成功","success");
       getApp().globalData.auth = true;
+      wx.hideLoading();
       setTimeout(()=>{
         that.home();
       },1000);
     },err=>{
+      wx.hideLoading();
       that.showTips(err.msg);
     });
   },

@@ -16,6 +16,8 @@ App({
           wx.removeStorageSync('userInfo');
         }
       },100);
+    },err=>{
+      console.log(err)
     });    
   },
   globalData: {

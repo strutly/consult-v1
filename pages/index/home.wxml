@@ -24,13 +24,13 @@
     </view>
     <view class="margin-top-sm shadow tab-text">专家咨询</view>
   </view>
-  <view class="flex-sub" bindtap="toUrl" data-url="/pages/demand/list">
+  <view class="flex-sub" data-msg="您没有权限查看此内容" bindtap="toUrl" data-url="{{userInfo.type.type==4?'/pages/enterpriseProject/index':''}}">
     <view class='cuIcon-cu-image flex justify-center'>
       <view class="padding-sm bg-white text-center solid radius-xl shadow shadow-lg menu">
         <image src="/images/demand.png"></image>
       </view>
     </view>
-    <view class="margin-top-sm shadow tab-text">企业需求</view>
+    <view class="margin-top-sm shadow tab-text">项目管理</view>
   </view>
   <view class="flex-sub"   data-msg="您没有权限查看此内容" data-url="{{userInfo.type.type==4?'/pages/enterprise/index':''}}" bindtap="toUrl">
     <view class='cuIcon-cu-image flex justify-center'>

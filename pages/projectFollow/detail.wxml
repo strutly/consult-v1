@@ -1,0 +1,13 @@
+<view class="margin bg-white radius-xl padding">
+  <view><text class="cuIcon-titles text-blue"></text>跟进记录</view>
+  <view class="text-gray margin-top-sm">走访人</view>
+  <view class="margin-top-sm">{{follow.names}}</view>
+  <view class="text-gray margin-top-sm">沟通时间</view>
+  <view class="margin-top-sm">{{follow.visiteTime}}</view>
+  <view class="text-gray margin-top-sm">项目发展近况与问题</view>
+  <view class="margin-top-sm">{{follow.problem}}</view>
+  <view class="text-gray margin-top-sm">跟进人意见、处理方式</view>
+  <view class="margin-top-sm">
+    {{follow.handMethod||'暂无'}} 
+  </view>
+</view>

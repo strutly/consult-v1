@@ -9,7 +9,7 @@ CustomPage({
     that = this;
   },
   onReady() {
-    Api.followDetail({
+    Api.projectFollowDetail({
       id: that.data.options.id
     }).then(res => {
       that.setData({
@@ -18,5 +18,8 @@ CustomPage({
     }, err => {
       that.showTips(err.msg);
     })
-  }
+  },
+  onShow() {
+
+  },
 })
