@@ -27,9 +27,13 @@
       <text class="cu-tag bg-main radius">咨询方式</text>
     </view>
     <view class="text-center content solids text-cneter radius-xl margin padding">{{types[demand.type]}}</view>
-    <view class="padding text-center bg-white padding-top-xl">
+    <!--
+<view class="padding text-center bg-white padding-top-xl">
       <button style="width: 40%;" class="cu-btn bg-main margin-top-xl" bindtap="toUrl" data-url="/pages/demandAppointment/form?did={{demand.id}}&toid={{demand.uid}}" wx:if="{{userInfo.type.type==1 && !demand.appointmentId}}">咨询</button>
     </view>
+
+    -->
+    
   </view>
 
 

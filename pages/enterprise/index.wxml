@@ -53,67 +53,29 @@
     <view>企业荣誉分类</view>
     <checkbox-group data-name="corporateHonors" bindchange="checkboxChange">
       <view class="grid col-2">
-        <view class="margin-top-sm">
-          <checkbox class='main' value="0"></checkbox>
-          <text class="margin-left-sm">雏鹰入库</text>
+        <view class="margin-top-sm" wx:for="{{corporateHonors}}" wx:key="index">
+          <checkbox class='main' value="{{index}}"></checkbox>
+          <text class="margin-left-sm">{{item}}</text>
         </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="1"></checkbox>
-          <text class="margin-left-sm">小巨人</text>
-        </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="2"></checkbox>
-          <text class="margin-left-sm">高薪产业</text>
-        </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="3"></checkbox>
-          <text class="margin-left-sm">专精特精</text>
-        </view>
-      </view>    
+      </view>  
     </checkbox-group>  
   </view>
   <view class="solids-top bg-white padding">
     <view>企业带头人分类</view>
     <checkbox-group data-name="leaderTitles" bindchange="checkboxChange">
-      <view class="grid col-2">
-        <view class="margin-top-sm">
-          <checkbox class='main' value="0"></checkbox>
-          <text class="margin-left-sm">院士</text>
+      <view class="margin-top-sm" wx:for="{{leaderTitles}}" wx:key="index">
+          <checkbox class='main' value="{{index}}"></checkbox>
+          <text class="margin-left-sm">{{item}}</text>
         </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="1"></checkbox>
-          <text class="margin-left-sm">高校教授</text>
-        </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="2"></checkbox>
-          <text class="margin-left-sm">海外院士</text>
-        </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="3"></checkbox>
-          <text class="margin-left-sm">专家</text>
-        </view>
-      </view>    
     </checkbox-group>  
   </view>
   <view class="solids-top bg-white padding">
     <view>企业需求分类</view>
     <checkbox-group data-name="demands" bindchange="checkboxChange">
       <view class="grid col-2">
-        <view class="margin-top-sm">
-          <checkbox class='main' value="0"></checkbox>
-          <text class="margin-left-sm">融资需求</text>
-        </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="1"></checkbox>
-          <text class="margin-left-sm">人才引进类</text>
-        </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="2"></checkbox>
-          <text class="margin-left-sm">政策申报类</text>
-        </view>
-        <view class="margin-top-sm">
-          <checkbox class='main' value="3"></checkbox>
-          <text class="margin-left-sm">技术引进或转型需求</text>
+        <view class="margin-top-sm" wx:for="{{demands}}" wx:key="index">
+          <checkbox class='main' value="{{index}}"></checkbox>
+          <text class="margin-left-sm">{{item}}</text>
         </view>
       </view>    
     </checkbox-group>  

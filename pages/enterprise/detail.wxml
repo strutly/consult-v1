@@ -172,7 +172,7 @@
     <view class="padding-xs">
       <view class="text-gray">负责人</view>
       <view class="margin-top-xs flex">
-        <text class="flex-sub">{{enterprise.talent.name}}</text>
+        <text class="flex-sub">{{enterprise.talent.name||'暂无'}}</text>
         <view class="tags">
           <text class="cu-tag text-blue line-blue sm" wx:for="{{enterprise.talent.tags}}" wx:key="index">{{item}}</text>
         </view>

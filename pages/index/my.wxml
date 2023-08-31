@@ -14,6 +14,11 @@
       <text class="">我的信息</text>
     </view>
   </view>
+  <!--
+
+
+
+  
   <view class="cu-item arrow solid-top" wx:if="{{userInfo && userInfo.type.type!=0}}" bindtap="toUrl" data-url="/pages/wallet/index">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="/images/wallet.png"></image>
@@ -74,7 +79,7 @@
     </view>
 
   </block>
-
+-->
   <view class="cu-item cu-bottom margin-top">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="http://gridpic.tsing-tec.com/consult%2Fmy-propose.png"></image>
@@ -87,14 +92,14 @@
       <text class="">用户协议</text>
     </view>
   </view>
-
+<!--
   <button class="cu-item cu-bottom" open-type="contact">
     <view class="content flex align-center">
       <image style="width:30rpx;height:30rpx;margin-right:10rpx;" src="/images/customer.png"></image>
       <text class="">联系客服</text>
     </view>    
   </button>
-
+-->
   
 </view>
 <tabBar selected="0"></tabBar>

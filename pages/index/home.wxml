@@ -5,52 +5,61 @@
     <image class="margin-left-sm" style="width:40rpx;height:40rpx;" src="http://gridpic.tsing-tec.com/consult%2Fsearch.png"></image>
     <input placeholder="请输入关键词" class="flex-sub padding-left" type="text"></input>
   </view>
-  <swiper class="screen-swiper square-dot margin shadow" style="overflow: hidden;border-radius: 30rpx;border:2px solid #E5E5E5;box-shadow: 0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.25);z-index:100;" bindchange="dotsChange" 	circular="true" autoplay="{{autoplay}}" interval="5000" duration="500">
-    <swiper-item wx:for="{{notices}}" wx:key="index" bindtap="{{item.id?'toUrl':''}}" data-url="/pages/notice/detail?id={{item.id}}">
-      <image style="border-radius: 30rpx;" src="{{item.pic}}" mode="scaleToFill"></image>
-    </swiper-item>
-  </swiper>
-  <view class="dots text-center">
-    <text class="cuIcon-title {{current==index?'main':'text-gray'}} lg margin-lr-xs" wx:for="{{notices}}" wx:key="index"></text>
-  </view>
+  <!--
+    <swiper class="screen-swiper square-dot margin shadow" style="overflow: hidden;border-radius: 30rpx;border:2px solid #E5E5E5;box-shadow: 0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.25);z-index:100;" bindchange="dotsChange" 	circular="true" autoplay="{{autoplay}}" interval="5000" duration="500">
+      <swiper-item wx:for="{{notices}}" wx:key="index" bindtap="{{item.id?'toUrl':''}}" data-url="/pages/notice/detail?id={{item.id}}">
+        <image style="border-radius: 30rpx;" src="{{item.pic}}" mode="scaleToFill"></image>
+      </swiper-item>
+    </swiper>
+    <view class="dots text-center">
+      <text class="cuIcon-title {{current==index?'main':'text-gray'}} lg margin-lr-xs" wx:for="{{notices}}" wx:key="index"></text>
+    </view>
+  -->
 </view>
 
-<view class="flex text-center margin-top">
-  <view bindtap="toUrl" data-url="/pages/expert/list" class="flex-sub">
-    <view class='cuIcon-cu-image flex justify-center'>
-      <view class="padding-sm bg-white text-center solid radius-xl shadow shadow-lg menu">
-        <image src="/images/consult.png"></image>
-      </view>
-    </view>
-    <view class="margin-top-sm shadow tab-text">专家咨询</view>
-  </view>
-  <view class="flex-sub" data-msg="您没有权限查看此内容" bindtap="toUrl" data-url="{{userInfo.type.type==4?'/pages/enterpriseProject/index':''}}">
-    <view class='cuIcon-cu-image flex justify-center'>
-      <view class="padding-sm bg-white text-center solid radius-xl shadow shadow-lg menu">
-        <image src="/images/demand.png"></image>
-      </view>
-    </view>
-    <view class="margin-top-sm shadow tab-text">项目管理</view>
-  </view>
-  <view class="flex-sub"   data-msg="您没有权限查看此内容" data-url="{{userInfo.type.type==4?'/pages/enterprise/index':''}}" bindtap="toUrl">
-    <view class='cuIcon-cu-image flex justify-center'>
-      <view class="padding-sm bg-white text-center solid radius-xl shadow shadow-lg menu">
-        <image src="/images/map.png"></image>
-      </view>
 
-    </view>
-    <view class="margin-top-sm shadow tab-text">企业管理</view>
+<view class="margin -bg-white radius-xl solids-bottom">
+
+
+  <view class="bg-main padding ">
+    <text class="cuIcon-titles"></text>智慧谷应用
   </view>
-  <view class="flex-sub" bindtap="toUrl"  data-msg="您没有权限查看此内容" data-url="{{userInfo.type.type==4?'/pages/talent/list':''}}">
-    <view class='cuIcon-cu-image flex justify-center'>
-      <view class="padding-sm bg-white text-center solid radius-xl shadow shadow-lg menu">
-        <image src="/images/connect.png"></image>
+  <view class="flex text-center padding bg-white solids-bottom">
+    <view bindtap="toUrl" data-url="/pages/expert/list" class="flex-sub">
+      <view class='cuIcon-cu-image flex justify-center'>
+        <view class="padding-sm bg-white text-center radius-xl menu">
+          <image src="/images/consult.png"></image>
+        </view>
       </view>
+      <view class="margin-top-sm shadow tab-text shadow shadow-lg">专家信息</view>
     </view>
-    <view class="margin-top-sm shadow tab-text">人才信息</view>
+    <view class="flex-sub" data-msg="您没有权限查看此内容" bindtap="toUrl" data-url="{{userInfo.type.type==4?'/pages/enterpriseProject/index':''}}">
+      <view class='cuIcon-cu-image flex justify-center'>
+        <view class="padding-sm bg-white text-center radius-xl menu">
+          <image src="/images/demand.png"></image>
+        </view>
+      </view>
+      <view class="margin-top-sm shadow tab-text">项目管理</view>
+    </view>
+    <view class="flex-sub" data-msg="您没有权限查看此内容" data-url="{{userInfo.type.type==4?'/pages/enterprise/index':''}}" bindtap="toUrl">
+      <view class='cuIcon-cu-image flex justify-center'>
+        <view class="padding-sm bg-white text-center menu">
+          <image src="/images/map.png"></image>
+        </view>
+
+      </view>
+      <view class="margin-top-sm shadow tab-text shadow shadow-lg">智慧谷企业</view>
+    </view>
+    <view class="flex-sub" bindtap="toUrl" data-msg="您没有权限查看此内容" data-url="{{userInfo.type.type==4?'/pages/talent/list':''}}">
+      <view class='cuIcon-cu-image flex justify-center'>
+        <view class="padding-sm bg-white text-center menu">
+          <image src="/images/connect.png"></image>
+        </view>
+      </view>
+      <view class="margin-top-sm shadow tab-text shadow shadow-lg">海外人才</view>
+    </view>
   </view>
 </view>
-
 
 
 <view class="flex align-center justify-between margin">

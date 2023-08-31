@@ -7,7 +7,7 @@ CustomPage({
     addModal: false,
     followStages: ['维护', '储备', '拟服务'],
     demands:['融资需求','人才引进类','政策申报类','技术引进或转型需求'],
-    corporateHonors:['雏鹰入库','小巨人','高薪产业','专精特精'],
+    corporateHonors:['雏鹰入库','小巨人','高新企业','专精特精','独角兽','科小','瞪羚'],
     leaderTitles:['院士','高校教授','海外院士','专家']
   },
   onLoad(options) {

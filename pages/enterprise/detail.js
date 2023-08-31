@@ -1,16 +1,17 @@
 var that;
 import CustomPage from '../../CustomPage';
-import Api, { enterprisePage } from '../../config/api';
-import WxValidate from '../../utils/WxValidate';
+import Api from '../../config/api';
 CustomPage({
   data: {
     showIndex: 0,
-    navs: ['企业介绍', '跟进阶段', '企业需求', '企业运营情况'],
-    demands: ['融资需求', '人才引进类', '政策申报类', '技术引进或转型需求'],
+    navs: ['企业介绍', '访问记录', '企业需求', '企业运营情况'],
+    demands:['融资需求','人才引进类','政策申报类','技术引进或转型需求','无'],
     followStages: ['维护', '储备', '拟服务'],
     cooperationModes: ['横向课题', '合作申报项目', '兼职顾问', '全职引进'],
-    declareTypes: ['人才', '科技', '工信'],
-    declareResults: ['未通过', '通过'],
+    corporateHonors:['雏鹰入库','小巨人','高新企业','专精特精','独角兽','科小','瞪羚','无'],
+    leaderTitles:['院士','高校教授','海外院士','专家'],
+    declareTypes:['人才','科技','工信'],
+    declareResults:['未通过','通过'],
     enterprise: {}
   },
 

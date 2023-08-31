@@ -4,8 +4,8 @@ function teacher(name) {
 
 function showNames(names=[], ids=[]) {
   return names.filter(function (val, index, arr) {
-    return ids.indexOf(index+"") > -1;
-  }).join('、');
+    return ids.indexOf(index) > -1 ||ids.indexOf(index+'') > -1;
+  }).join('、')||"暂无";
 }
 function ifCheck(str='',tag){
   return str.indexOf(tag)>-1;

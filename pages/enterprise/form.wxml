@@ -48,7 +48,7 @@
         <checkbox-group name="leaderTitles" class="flex-sub padding-tb-sm grid col-2 text-sm align-center">
           <view class="flex align-center {{index>1?' margin-top-sm':''}}" wx:for="{{leaderTitles}}" wx:key="index">
             <checkbox class='main round' value="0"></checkbox>
-            <text class="margin-left-sm">院士</text>
+            <text class="margin-left-sm">{{item}}</text>
           </view>
         </checkbox-group>
       </view>
@@ -94,7 +94,7 @@
       </view>
       <view class="cu-form-group align-start">
         <view class="title">企业介绍</view>
-        <textarea name="introduce" maxlength="-1" placeholder="多行文本输入框"></textarea>
+        <textarea name="introduce" maxlength="-1" placeholder="企业介绍"></textarea>
       </view>
     </view>
   </view>
@@ -113,7 +113,7 @@
       </view>
       <view class="cu-form-group">
         <view class="title">引进人才层次</view>
-        <input placeholder="企业地址" name="talentLevel"></input>
+        <input placeholder="引进人才层次" name="talentLevel"></input>
       </view>
       <view class="cu-form-group">
         <view class="title">意向合作模式</view>
@@ -136,11 +136,11 @@
       </view>
       <view class="cu-form-group">
         <view class="title">技术需求方向</view>
-        <input placeholder="企业地址" name="demandDirection"></input>
+        <input placeholder="技术需求方向" name="demandDirection"></input>
       </view>
       <view class="cu-form-group">
         <view class="title">意向对接企业/高校</view>
-        <input placeholder="企业地址" name="intended"></input>
+        <input placeholder="意向对接企业/高校" name="intended"></input>
       </view>
       <view class="cu-form-group align-start">
         <view class="title">说明</view>
@@ -186,15 +186,15 @@
       </view>
       <view class="cu-form-group">
         <view class="title">融资需求</view>
-        <input placeholder="企业地址" name="financingDemand"></input>
+        <input placeholder="融资需求" name="financingDemand"></input>
       </view>
       <view class="cu-form-group align-start">
         <view class="title">详情</view>
-        <textarea maxlength="-1" name="financingDetail" placeholder="多行文本输入框"></textarea>
+        <textarea maxlength="-1" name="financingDetail" placeholder="详情"></textarea>
       </view>
       <view class="cu-form-group align-start">
         <view class="title">说明</view>
-        <textarea maxlength="-1" name="financingExplain" placeholder="多行文本输入框"></textarea>
+        <textarea maxlength="-1" name="financingExplain" placeholder="说明"></textarea>
       </view>
     </view>
   </view>

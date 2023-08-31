@@ -8,10 +8,10 @@ CustomPage({
     openIndex: 0,
     formData: {
     },
-    demands:['融资需求','人才引进类','政策申报类','技术引进或转型需求'],
+    demands:['融资需求','人才引进类','政策申报类','技术引进或转型需求','无'],
     followStages: ['维护', '储备', '拟服务'],
     cooperationModes: ['横向课题', '合作申报项目', '兼职顾问', '全职引进'],
-    corporateHonors:['雏鹰入库','小巨人','高新企业','专精特精'],
+    corporateHonors:['雏鹰入库','小巨人','高新企业','专精特精','独角兽','科小','瞪羚','无'],
     leaderTitles:['院士','高校教授','海外院士','专家'],
     declareTypes:['人才','科技','工信'],
     declareResults:['未通过','通过'],
