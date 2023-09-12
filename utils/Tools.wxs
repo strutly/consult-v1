@@ -2,27 +2,35 @@ function teacher(name) {
   if (name) return name[0] + "老师";
 }
 
-function showNames(names=[], ids=[]) {
+function showNames(names = [], ids = []) {
   return names.filter(function (val, index, arr) {
-    return ids.indexOf(index) > -1 ||ids.indexOf(index+'') > -1;
-  }).join('、')||"暂无";
+    return ids.indexOf(index) > -1 || ids.indexOf(index + '') > -1;
+  }).join('、') || "暂无";
 }
-function ifCheck(str='',tag){
-  return str.indexOf(tag)>-1;
+function ifCheck(str = '', tag) {
+  return str.indexOf(tag) > -1;
 }
-function otherSource(str=""){
-  console.log("str is",str)
+function otherSource(str = "") {
+  console.log("str is", str)
   var sourceFrom = ['外资', '国家', '江苏省'];
   var reg = getRegExp('[^a-zA-Z0-9\u4e00-\u9fa5]');
-  return str.split(reg).filter(function(s,i,arr){
+  return str.split(reg).filter(function (s, i, arr) {
     console.log(s && sourceFrom.indexOf(s));
-    return s && sourceFrom.indexOf(s)==-1;
+    return s && sourceFrom.indexOf(s) == -1;
   }).join(",");
+}
+function include(item, arr = []) {
+  console.log(item);
+  console.log(arr);
+  return arr.some(function (value) {
+    return item == value;
+  })
 }
 
 module.exports = {
   teacher: teacher,
   showNames: showNames,
-  ifCheck:ifCheck,
-  otherSource:otherSource
+  ifCheck: ifCheck,
+  otherSource: otherSource,
+  include:include
 }

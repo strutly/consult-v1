@@ -172,6 +172,7 @@ CustomPage({
     that.WxValidate = new WxValidate(rules, messages);
   },
   onReady() {
+       
     Api.talentAll().then(res=>{
       that.setData({
         talents:res.data
@@ -179,15 +180,35 @@ CustomPage({
     },err=>{
       that.showTips(err.msg);
     })
+    
   },
   onShow() {
 
+  },
+  demandChange(e){
+    console.log(e);
+    that.setData({
+      ['formData.demands']: e.detail.value
+    })
   },
   pickerChange(e) {
     let name = e.currentTarget.dataset.name;
     that.setData({
       ['formData.' + name]: e.detail.value
     })
+  },
+  talentIdChange(e){
+    console.log(e);
+    let name = e.currentTarget.dataset.name;
+    let value = e.detail.value;
+    let talents = that.data.talents;
+    let formData = that.data.formData;
+    formData[name] = value;
+    formData.talentType = talents[value].type;
+    that.setData({
+      formData:formData
+    })
+
   },
   submit(e) {
     console.log(e);

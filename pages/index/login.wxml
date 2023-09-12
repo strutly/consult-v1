@@ -1,7 +1,6 @@
 <topTips errorShow="{{errorShow}}" errorMsg="{{errorMsg}}" errorType="{{errorType}}"></topTips>
 <view class="margin padding">
-  <view class="text-xxl text-white text-bold">欢迎使用米咖咨询</view>
-  <view class="text-xxl text-white padding-lr text-right">为您提供更专业的咨询服务</view>
+  <view class="text-xxl text-white text-bold text-center">欢迎使用智慧谷小程序</view>
 </view>
 <view class="login-box padding-lg">
   <form bindsubmit="loginSubmit">

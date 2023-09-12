@@ -171,7 +171,7 @@
     </view>
     <view class="padding-xs">
       <view class="text-gray">负责人</view>
-      <view class="margin-top-xs flex">
+      <view class="margin-top-xs flex" bindtap="toUrl" data-url="{{enterprise.talent?'/pages/'+(enterprise.talentType==0?'talent':'expert')+'/detail?id='+enterprise.talent.id:''}}">
         <text class="flex-sub">{{enterprise.talent.name||'暂无'}}</text>
         <view class="tags">
           <text class="cu-tag text-blue line-blue sm" wx:for="{{enterprise.talent.tags}}" wx:key="index">{{item}}</text>
