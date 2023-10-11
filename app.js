@@ -21,7 +21,7 @@ App({
     });    
   },
   globalData: {
-    
+    screenWidth:wx.getSystemInfoSync().screenWidth,
   },
   watch(method) {
     var obj = this.globalData;

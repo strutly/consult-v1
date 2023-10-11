@@ -101,50 +101,41 @@
 </template>
 
 <view class="bg-white nav">
-  <view class="flex text-center">
+  <scroll-view bindscroll="navScroll" scroll-x="true" class="flex text-center">
     <view wx:for="{{navs}}" wx:key="index" class="cu-item flex-sub {{showIndex==index?'main text-bold':''}}" bindtap="navChange" data-index="{{index}}">
       {{item}}
     </view>
+  </scroll-view>
+  <view class="text-xxl left text-gray" wx:if="{{moveLeft}}">
+    <text class="cuIcon-back"></text>
   </view>
+  <view class="text-xxl right text-gray" wx:if="{{moveRight}}">
+    <text class="cuIcon-right"></text>
+  </view>
+
 </view>
 
-<view class="margin {{showIndex==0?'':'hide'}}">
-  <!--
-
-  <scroll-view scroll-x="true" class="padding bg-white flex radius-xl" style="white-space: nowrap;">
-    <view class="margin-right radius-xl advertise" style="width: 30vw;">
-      <image src="/images/auth.png" class="radius solids" style="width: 28vw;height: 28vw;"></image>
-      <view class="text-bold">研发团队</view>
-      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
-    </view>
-    <view class="margin-right radius-xl advertise" style="width: 30vw;">
-      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
-      <view class="text-bold">研发团队</view>
-      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
-    </view>
-    <view class="margin-right radius-xl advertise" style="width: 30vw;">
-      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
-      <view class="text-bold">研发团队</view>
-      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
-    </view>
-    <view class="margin-right radius-xl advertise" style="width: 30vw;">
-      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
-      <view class="text-bold">研发团队</view>
-      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
-    </view>
-    <view class="margin-right radius-xl advertise" style="width: 30vw;">
-      <image src="/images/auth.png" style="width: 28vw;height: 28vw;"></image>
-      <view class="text-bold">研发团队</view>
-      <view class="des text-gray">我们拥有一只优秀的研发团队,注重团队合作</view>
-    </view>
-  </scroll-view>
-  -->
+<template name="data-0">
   <view class="margin-top bg-white padding radius-xl">
     <view><text class="cuIcon-titles text-blue"></text>企业基本信息</view>
     <view class="padding-xs">
       <view class="text-gray">企业名称</view>
       <view class="margin-top-xs">{{enterprise.title}}</view>
     </view>
+    <view class="padding-xs">
+      <view class="text-gray">企业标签</view>
+      <view class="margin-top-xs">
+        <view class="cu-tag bg-cyan light" wx:for="{{enterprise.tags}}" wx:key="index" wx:for-item="tag"> {{tag}}</view>
+      </view>
+    </view>
+
+    <view class="padding-xs">
+      <view class="text-gray">是否挂靠</view>
+      <view class="margin-top-xs">
+        {{enterprise.attachment?'是':'否'}}
+      </view>
+    </view>
+
     <view class="padding-xs">
       <view class="text-gray">跟进中心</view>
       <view class="margin-top-xs">{{enterprise.followCenter}}</view>
@@ -158,9 +149,14 @@
       <view class="margin-top-xs">{{Tools.showNames(demands,enterprise.demands)}}</view>
     </view>
     <view class="padding-xs">
-      <view class="text-gray">行业分类</view>
+      <view class="text-gray">行业领域</view>
       <view class="margin-top-xs">{{enterprise.classify}}</view>
     </view>
+    <view class="padding-xs">
+      <view class="text-gray">企业办公情况</view>
+      <view class="margin-top-xs">{{enterprise.situation||"暂无"}}</view>
+    </view>
+
     <view class="padding-xs">
       <view class="text-gray">注册时间</view>
       <view class="margin-top-xs">{{enterprise.regtime}}</view>
@@ -186,15 +182,34 @@
       <view class="text-gray">联系电话</view>
       <view class="margin-top-xs">{{enterprise.contactPhone}}</view>
     </view>
+    <view class="padding-xs">
+      <view class="text-gray">营业执照注册号</view>
+      <view class="margin-top-xs">{{enterprise.regNumber}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">注册资本</view>
+      <view class="margin-top-xs">{{enterprise.regCapital}}</view>
+    </view>
+    <view class="padding-xs">
+      <view class="text-gray">实缴资本</view>
+      <view class="margin-top-xs">{{enterprise.paidInCapital}}</view>
+    </view>
+    <view><text class="cuIcon-titles text-blue"></text>主营业务</view>
+    <view class="margin-top-xs padding-lr-sm">
+      {{enterprise.mainBusiness}}
+    </view>
+    <view><text class="cuIcon-titles text-blue"></text>企业荣誉和获奖情况</view>
+    <view class="margin-top-xs padding-lr-sm">
+      {{enterprise.honorAwards}}
+    </view>
     <view><text class="cuIcon-titles text-blue"></text>企业介绍</view>
     <view class="margin-top-xs padding-lr-sm">
       {{enterprise.introduce}}
     </view>
 
   </view>
-</view>
-
-<view class="margin {{showIndex==1?'':'hide'}}">
+</template>
+<template name="data-1">
   <view class="padding bg-white radius-xl margin-bottom" wx:for="{{follows}}" wx:key="index">
     <view class="flex align-center">
       <view class="flex-sub">
@@ -221,10 +236,8 @@
       <text class="cuIcon-notification margin-right-sm "></text>企业访问管理系统提醒您:下次走访时间为{{enterprise.communicationTime}}
     </view>
   </view>
-</view>
-
-
-<view class="margin {{showIndex==2?'':'hide'}}">
+</template>
+<template name="data-2">
   <view class="padding bg-white radius-xl">
     <view class="flex align-center">
       <view class="flex-sub">
@@ -290,42 +303,95 @@
     <view class="text-gray margin-top-sm">说明</view>
     <view class="margin-top-sm">{{enterprise.financingExplain}}</view>
   </view>
-</view>
-<view class="margin {{showIndex==3?'':'hide'}}">
+</template>
+<template name="data-3">
+  <view class="padding bg-white radius-xl margin-bottom">
+    <view>税收情况</view>
+    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.taxSituation||'暂无'}}</view>
+  </view>
+  <view class="padding bg-white radius-xl margin-bottom">
+    <view>当地缴纳社保人数</view>
+    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.socialNum||'暂无'}}</view>
+  </view>
   <view class="padding bg-white radius-xl margin-bottom">
     <view>上年度营收(万元)</view>
-    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.lastRevenue}}</view>
+    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.lastRevenue||'暂无'}}</view>
   </view>
   <view class="padding bg-white radius-xl margin-bottom">
     <view>上年度研发投入（万元）</view>
-    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.lastInvestment}}</view>
+    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.lastInvestment||'暂无'}}</view>
   </view>
   <view class="padding bg-white radius-xl margin-bottom">
     <view>知识产权数量</view>
-    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.propertyNum}}</view>
+    <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.propertyNum||'暂无'}}</view>
   </view>
   <view class="padding bg-white radius-xl margin-bottom">
-    <view>员工人数</view>
+    <view class="flex">
+      <view class="flex-sub">员工人数</view>
+      <view class="text-green text-xxl text-bold">{{enterprise.staffNum||'暂无'}}</view>
+    </view>
     <view class="grid col-2 margin-top-sm">
       <view>
         <view>留学归国员工数</view>
-        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.abroadNum}}</view>
+        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.abroadNum||'暂无'}}</view>
         <view class="margin-top-sm">硕士</view>
-        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.masterNum}}</view>
+        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.masterNum||'暂无'}}</view>
       </view>
-      <view>
+      <view class="text-right">
         <view>博士</view>
-        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.doctorNum}}</view>
+        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.doctorNum||'暂无'}}</view>
         <view class="margin-top-sm">技术人员</view>
-        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.artisanNum}}</view>
+        <view class="text-green text-xxl text-bold margin-top-sm">{{enterprise.artisanNum||'暂无'}}</view>
       </view>
     </view>
 
   </view>
+</template>
+<template name="data-4">
+  <view class="bg-white padding radius-xl" wx:if="{{enterprise.ifLeader}}">
+    <view><text class="margin-right" decode="true">姓&emsp;&emsp;名:</text>{{enterprise.leaderName}}</view>
+    <view class="margin-top"><text class="margin-right" decode="true">职&emsp;&emsp;称:</text>{{enterprise.leaderTitle}}</view>
+    <view class="margin-top"><text class="margin-right" decode="true">身&ensp;份&ensp;证:</text>{{enterprise.leaderCardNo}}</view>
+  </view>
+  <view class="padding bg-white radius-xl flex align-center" wx:else>
+    <text class="cuIcon-info"></text>
+    <text class="margin-left">非企业领军人</text>
+  </view>
+</template>
+<template name="data-5">
+  <view class="bg-white padding radius-xl">
+    <view><text class="margin-right" decode="true">办公门牌:</text>{{enterprise.numberPlate||'暂无'}}</view>
+    <view class="margin-top"><text class="margin-right" decode="true">协议地址:</text>{{enterprise.agreementAddress||'暂无'}}</view>
+    <view class="margin-top"><text class="margin-right" decode="true">租用面积:</text>{{enterprise.lettableArea||'暂无'}}</view>
+  </view>
+</template>
+<template name="data-6">
+  <view class="padding bg-white radius-xl margin-top" wx:for="{{enterprise.declarations}}" wx:key="index">
+    <view class="flex align-center">
+      <view class="flex-sub">
+        <text class="cuIcon-titles text-blue"></text>
+        {{item.title}}
+      </view>
+      <view class="cu-tag text-blue line-blue round" bindtap="declarationUpdate" data-index="{{index}}">修改</view>
+    </view>
+    <view class="text-gray margin-top-sm">获批金额(万)</view>
+    <view class="margin-top-sm">{{item.approvedAmount||'暂无'}}</view>
+    <view class="text-gray margin-top-sm">已拨款金额(万)</view>
+    <view class="margin-top-sm">{{item.appropriationAmount||'暂无'}}</view>
+    <view class="text-gray margin-top-sm">二期拨付金额(万)</view>
+    <view class="margin-top-sm">{{item.secondAppropriationAmount||'暂无'}}</view>
+  </view>
+  <view class="padding bg-white radius-xl flex align-center" wx:if="{{enterprise.declarations.length==0}}">
+    <text class="cuIcon-info"></text>
+    <text class="margin-left">暂无企业政策申报情况</text>
+  </view>
+</template>
 
-
-
+<view class="margin {{showIndex==index?'':'hide'}}" wx:for="{{navs}}" wx:key="index">
+  <template is="data-{{index}}" data="{{enterprise:enterprise,follows:follows,declareTypes:declareTypes,cooperationModes:cooperationModes}}"></template>
 </view>
+
+
 
 <view class="modal-box  flex flex-direction" catchtouchmove="true" wx:if="{{modalUpdate}}">
   <view class="modal-bg flex-sub"></view>
@@ -337,13 +403,43 @@
         <button class="cu-tag bg-white round" formType="submit">保存</button>
       </view>
       <view class="solid">
+        <input name="id" value="{{options.id}}" hidden></input>
         <template is="{{modalType}}" data="{{...enterprise,demands,followStages,cooperationModes,declareTypes,declareResults}}"></template>
       </view>
     </form>
-
-
   </view>
+</view>
 
+<view class="modal-box  flex flex-direction" catchtouchmove="true" wx:if="{{modalDeclaration}}">
+  <view class="modal-bg flex-sub"></view>
+  <view class="modal-content padding-xl flex flex-direction ">
+    <form bindsubmit="declarationSubmit">
+      <view class="flex padding justify-between bg-blue">
+        <view class="cu-tag bg-gray round" bindtap="modalStatus" data-name="Declaration">取消</view>
+        <view class="flex-sub"></view>
+        <button class="cu-tag bg-white round" formType="submit">保存</button>
+      </view>
+      <view class="solid">
+        <input name="index" hidden value="{{declaration.index}}"></input>
+        <view class="cu-form-group">
+          <view class="title">申报名称</view>
+          <input placeholder="申报名称" name="title" value="{{declaration.title}}"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">获批金额(万)</view>
+          <input placeholder="获批金额" name="approvedAmount" value="{{declaration.approvedAmount}}"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">已拨款金额(万)</view>
+          <input placeholder="已拨款金额" name="appropriationAmount" value="{{declaration.appropriationAmount}}"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">二期拨付金额(万)</view>
+          <input placeholder="二期拨付金额" name="secondAppropriationAmount" value="{{declaration.secondAppropriationAmount}}"></input>
+        </view>
+      </view>
+    </form>
+  </view>
 </view>
 
 <view class="safe-bottom"></view>

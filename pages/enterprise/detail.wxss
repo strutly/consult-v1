@@ -36,3 +36,12 @@
   overflow: hidden;
   border-radius: 5vw 5vw 0 0;
 }
+.left{
+  position: absolute;
+  top:20rpx;
+}
+.right{
+  position: absolute;
+  top:20rpx;
+  right: 0rpx;
+}

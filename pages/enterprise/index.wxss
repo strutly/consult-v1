@@ -41,3 +41,7 @@
   left: 42%;
   z-index:10;
 }
+
+.col-3 view:nth-child(n+3){
+  margin-top:10rpx;
+}

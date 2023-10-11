@@ -13,6 +13,16 @@
         <view class="title">企业名称</view>
         <input placeholder="企业名称" name="title"></input>
       </view>
+
+      <view class="cu-form-group">
+        <picker style="display: none;" disabled="true" name="tags" value="{{tags}}"></picker>
+        <view class="title">企业标签</view>
+        <view class="flex-sub" wx:if="{{tags.length>0}}">
+          <view class="cu-tag" wx:for="{{tags}}">{{item}}<text class="cuIcon-close" bind:tap="removeTag" data-index="{{index}}"></text></view>
+        </view>
+        <input placeholder="企业标签" bindblur="tagInput" wx:if="{{tags.length<3}}" value="{{tag}}"></input>
+      </view>
+
       <view class="cu-form-group">
         <view class="title">跟进中心</view>
         <input placeholder="跟进中心" name="followCenter"></input>
@@ -94,126 +104,146 @@
         <view class="title">联系电话</view>
         <input placeholder="联系电话" name="contactPhone"></input>
       </view>
+      <view class="cu-form-group">
+        <text class="title">营业执照注册号</text>
+        <input placeholder="营业执照注册号" name="regNumber"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">注册资本</view>
+        <input placeholder="注册资本" name="regCapital"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">实缴资本</view>
+        <input placeholder="实缴资本" name="paidInCapital"></input>
+      </view>
       <view class="cu-form-group align-start">
         <view class="title">企业介绍</view>
         <textarea name="introduce" maxlength="-1" placeholder="企业介绍"></textarea>
+      </view>
+      <view class="cu-form-group align-start">
+        <text class="title">企业荣誉\n获奖情况</text>
+        <textarea name="honorAwards" maxlength="-1" placeholder="企业荣誉和获奖情况"></textarea>
+      </view>
+      <view class="cu-form-group align-start">
+        <view class="title">主营业务</view>
+        <textarea name="mainBusiness" maxlength="-1" placeholder="主营业务"></textarea>
       </view>
     </view>
   </view>
 
   <block wx:if="{{formData.demands.length>0}}">
     <view class="margin radius-xl">
-    <view class="padding bg-main flex align-center" bindtap="open" data-index="1">
-      <view class="flex-sub text-white">
-        <text class="cuIcon-titles"></text>企业需求
+      <view class="padding bg-main flex align-center" bindtap="open" data-index="1">
+        <view class="flex-sub text-white">
+          <text class="cuIcon-titles"></text>企业需求
+        </view>
+        <text class="cuIcon-{{openIndex==1?'fold':'unfold'}}"></text>
       </view>
-      <text class="cuIcon-{{openIndex==1?'fold':'unfold'}}"></text>
-    </view>
-    <view class="{{openIndex==1?'':'hide'}}">
-      <block wx:if="{{Tools.include(0,formData.demands)}}">
-        <view class="bg-white padding-sm solids-top solid-bottom">
-          <view class="flex-sub text-blue">
-            <text class="cuIcon-titles"></text>融资类需求
-          </view>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">融资需求</view>
-          <input placeholder="融资需求" name="financingDemand"></input>
-        </view>
-        <view class="cu-form-group align-start">
-          <view class="title">详情</view>
-          <textarea maxlength="-1" name="financingDetail" placeholder="详情"></textarea>
-        </view>
-        <view class="cu-form-group align-start">
-          <view class="title">说明</view>
-          <textarea maxlength="-1" name="financingExplain" placeholder="说明"></textarea>
-        </view>
-      </block>
-      <block wx:if="{{Tools.include(1,formData.demands)}}">
-        <view class="bg-white padding-sm solids-top solid-bottom">
-          <view class="flex-sub text-blue">
-            <text class="cuIcon-titles"></text>人才引进需求
-          </view>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">引进人才层次</view>
-          <input placeholder="引进人才层次" name="talentLevel"></input>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">意向合作模式</view>
-          <picker name="cooperationMode" bindchange="pickerChange" data-name="cooperationMode" range="{{cooperationModes}}">
-            <view class="picker">
-              {{cooperationModes[formData.cooperationMode]?cooperationModes[formData.cooperationMode]:'请选择意向合作模式'}}
+      <view class="{{openIndex==1?'':'hide'}}">
+        <block wx:if="{{Tools.include(0,formData.demands)}}">
+          <view class="bg-white padding-sm solids-top solid-bottom">
+            <view class="flex-sub text-blue">
+              <text class="cuIcon-titles"></text>融资类需求
             </view>
-          </picker>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">融资需求</view>
+            <input placeholder="融资需求" name="financingDemand"></input>
+          </view>
+          <view class="cu-form-group align-start">
+            <view class="title">详情</view>
+            <textarea maxlength="-1" name="financingDetail" placeholder="详情"></textarea>
+          </view>
+          <view class="cu-form-group align-start">
+            <view class="title">说明</view>
+            <textarea maxlength="-1" name="financingExplain" placeholder="说明"></textarea>
+          </view>
+        </block>
+        <block wx:if="{{Tools.include(1,formData.demands)}}">
+          <view class="bg-white padding-sm solids-top solid-bottom">
+            <view class="flex-sub text-blue">
+              <text class="cuIcon-titles"></text>人才引进需求
+            </view>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">引进人才层次</view>
+            <input placeholder="引进人才层次" name="talentLevel"></input>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">意向合作模式</view>
+            <picker name="cooperationMode" bindchange="pickerChange" data-name="cooperationMode" range="{{cooperationModes}}">
+              <view class="picker">
+                {{cooperationModes[formData.cooperationMode]?cooperationModes[formData.cooperationMode]:'请选择意向合作模式'}}
+              </view>
+            </picker>
 
-        </view>
-        <view class="cu-form-group align-start">
-          <view class="title">说明</view>
-          <textarea maxlength="-1" placeholder="说明" name="talentExplain"></textarea>
-        </view>
-      </block>
+          </view>
+          <view class="cu-form-group align-start">
+            <view class="title">说明</view>
+            <textarea maxlength="-1" placeholder="说明" name="talentExplain"></textarea>
+          </view>
+        </block>
 
-      
-      <block wx:if="{{Tools.include(2,formData.demands)}}">
-        <view class="bg-white padding-sm solids-top solid-bottom">
-          <view class="flex-sub text-blue">
-            <text class="cuIcon-titles"></text>政策申报需求
-          </view>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">申报类型</view>
-          <picker name="declareType" bindchange="pickerChange" data-name="declareType" range="{{declareTypes}}">
-            <view class="picker">
-              {{declareTypes[formData.declareType]?declareTypes[formData.declareType]:'请选择申报类型'}}
+
+        <block wx:if="{{Tools.include(2,formData.demands)}}">
+          <view class="bg-white padding-sm solids-top solid-bottom">
+            <view class="flex-sub text-blue">
+              <text class="cuIcon-titles"></text>政策申报需求
             </view>
-          </picker>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">申报政策名称</view>
-          <input placeholder="申报政策名称" name="declareName"></input>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">申报结果</view>
-          <picker name="declareResult" bindchange="pickerChange" data-name="declareResult" range="{{declareResults}}">
-            <view class="picker">
-              {{declareResults[formData.declareResult]?declareResults[formData.declareResult]:'请选择申报结果'}}
-            </view>
-          </picker>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">获批金额(万元)</view>
-          <input type="digit" placeholder="获批金额" name="declareAmount"></input>
-        </view>
-        <view class="cu-form-group align-start">
-          <view class="title">说明</view>
-          <textarea maxlength="-1" name="declareExplain" placeholder="说明"></textarea>
-        </view>
-      </block>
-      <block wx:if="{{Tools.include(3,formData.demands)}}">
-        <view class="bg-white padding-sm solids-top solid-bottom">
-          <view class="flex-sub text-blue">
-            <text class="cuIcon-titles"></text>技术引进或转型需求
           </view>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">技术需求方向</view>
-          <input placeholder="技术需求方向" name="demandDirection"></input>
-        </view>
-        <view class="cu-form-group">
-          <view class="title">意向对接企业/高校</view>
-          <input placeholder="意向对接企业/高校" name="intended"></input>
-        </view>
-        <view class="cu-form-group align-start">
-          <view class="title">说明</view>
-          <textarea maxlength="-1" placeholder="说明" name="skillExplain"></textarea>
-        </view>
-      </block>
-      
+          <view class="cu-form-group">
+            <view class="title">申报类型</view>
+            <picker name="declareType" bindchange="pickerChange" data-name="declareType" range="{{declareTypes}}">
+              <view class="picker">
+                {{declareTypes[formData.declareType]?declareTypes[formData.declareType]:'请选择申报类型'}}
+              </view>
+            </picker>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">申报政策名称</view>
+            <input placeholder="申报政策名称" name="declareName"></input>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">申报结果</view>
+            <picker name="declareResult" bindchange="pickerChange" data-name="declareResult" range="{{declareResults}}">
+              <view class="picker">
+                {{declareResults[formData.declareResult]?declareResults[formData.declareResult]:'请选择申报结果'}}
+              </view>
+            </picker>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">获批金额(万元)</view>
+            <input type="digit" placeholder="获批金额" name="declareAmount"></input>
+          </view>
+          <view class="cu-form-group align-start">
+            <view class="title">说明</view>
+            <textarea maxlength="-1" name="declareExplain" placeholder="说明"></textarea>
+          </view>
+        </block>
+        <block wx:if="{{Tools.include(3,formData.demands)}}">
+          <view class="bg-white padding-sm solids-top solid-bottom">
+            <view class="flex-sub text-blue">
+              <text class="cuIcon-titles"></text>技术引进或转型需求
+            </view>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">技术需求方向</view>
+            <input placeholder="技术需求方向" name="demandDirection"></input>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">意向对接企业/高校</view>
+            <input placeholder="意向对接企业/高校" name="intended"></input>
+          </view>
+          <view class="cu-form-group align-start">
+            <view class="title">说明</view>
+            <textarea maxlength="-1" placeholder="说明" name="skillExplain"></textarea>
+          </view>
+        </block>
+
+      </view>
     </view>
-  </view>
   </block>
-  
+
 
 
   <view class="margin radius-xl">
@@ -236,10 +266,19 @@
         <view class="title">知识产权数量</view>
         <input placeholder="知识产权数量" type="number" name="propertyNum"></input>
       </view>
-      <view class="bg-white padding-sm solids-top solid-bottom">
-        <view class="flex-sub text-blue">
+      <view class="cu-form-group">
+        <view class="title">税收情况</view>
+        <input placeholder="税收情况" type="text" name="taxSituation"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">社保人数</view>
+        <input placeholder="社保人数" type="number" name="socialNum"></input>
+      </view>
+      <view class="bg-white padding-sm solids-top solid-bottom flex">
+        <view class="text-blue">
           <text class="cuIcon-titles"></text>员工人数
         </view>
+        <input class="flex-sub padding-left" placeholder="员工人数" type="number" name="abroadNum"></input>
       </view>
       <view class="cu-form-group">
         <view class="title">留学员工人数</view>
@@ -260,6 +299,101 @@
 
     </view>
 
+  </view>
+  <!--['企业介绍', '访问记录', '企业需求', '企业运营情况','企业领军人','企业驻地信息','企业政策申报情况']-->
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="3">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>企业领军人
+      </view>
+      <text class="cuIcon-{{openIndex==3?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==3?'':'hide'}}">
+
+      <view class="cu-form-group">
+        <view class="title">是否企业领军人</view>
+        <input hidden name="ifLeader" value="{{ifLeader}}"></input>
+        <switch class='main radius' bindchange="ifLeaderChange"></switch>
+      </view>
+      <block wx:if="{{ifLeader}}">
+        <view class="cu-form-group">
+          <view class="title">姓名</view>
+          <input placeholder="姓名" name="lastRevenue"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">职称</view>
+          <input placeholder="职称" name="lastInvestment"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">身份证</view>
+          <input placeholder="身份证" type="idcard" name="propertyNum"></input>
+        </view>
+      </block>
+
+
+
+    </view>
+  </view>
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center" bindtap="open" data-index="4">
+      <view class="flex-sub text-white">
+        <text class="cuIcon-titles"></text>企业驻地信息
+      </view>
+      <text class="cuIcon-{{openIndex==4?'fold':'unfold'}}"></text>
+    </view>
+    <view class="{{openIndex==4?'':'hide'}}">
+      <view class="cu-form-group">
+          <view class="title">办公门牌</view>
+          <input placeholder="办公门牌" name="numberPlate"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">协议地址</view>
+          <input placeholder="协议地址" name="agreementAddress"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">租用面积</view>
+          <input placeholder="租用面积" name="lettableArea"></input>
+        </view>
+    </view>
+  </view>
+
+  <view class="margin radius-xl">
+    <view class="padding bg-main flex align-center">
+      <view class="flex flex-sub" bindtap="open" data-index="5">
+        <view class="flex-sub text-white">
+          <text class="cuIcon-titles"></text>企业政策申报情况
+        </view>
+        <text class="cuIcon-{{openIndex==5?'fold':'unfold'}}"></text>
+      </view>
+      <view class=" text-xl text-right">
+        <text class="cuIcon-add margin-left" bind:tap="addDeclaration" wx:if="{{openIndex==5}}"></text>
+      </view>
+    </view>
+    <view class="bg-white {{openIndex==5?'':'hide'}}">
+      <view class="solids-top flex align-center" wx:for="{{declarations}}">
+        <view class="flex-sub solid-right">
+          <view class="cu-form-group">
+            <view class="title">政策申报标题</view>
+            <input placeholder="政策申报标题" value="{{item.title}}" type="digit" data-name="title" data-index="{{index}}" bindblur="declarationChange"></input>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">获批金额(万元)</view>
+            <input placeholder="获批金额(万元)" value="{{item.approvedAmount}}" type="digit" data-name="approvedAmount" data-index="{{index}}" bindblur="declarationChange"></input>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">已拨款金额</view>
+            <input placeholder="已拨款金额" value="{{item.appropriationAmount}}" type="number" data-name="appropriationAmount" data-index="{{index}}" bindblur="declarationChange"></input>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">二期拨付金额</view>
+            <input placeholder="二期拨付金额" value="{{item.secondAppropriationAmount}}" type="text" data-name="secondAppropriationAmount" data-index="{{index}}" bindblur="declarationChange"></input>
+          </view>
+        </view>
+        <view class="padding text-xxl">
+          <text class="cuIcon-delete" data-index="{{index}}" bind:tap="removeDeclaration"></text>
+        </view>
+      </view>
+    </view>
   </view>
 
   <view class="text-center safe-bottom">

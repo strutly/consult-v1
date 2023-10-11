@@ -19,7 +19,7 @@ CustomPage({
     getApp().watch(function (value) {
       if (value) {
         that.roundList(1);
-        that.noticeList();
+        //that.noticeList();
       }
     })
     that.setData({

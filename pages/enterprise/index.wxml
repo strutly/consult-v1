@@ -4,24 +4,40 @@
 
 <view class="margin-top-sm padding footer-bottom">
   <view class="margin-bottom padding bg-white radius-xl" wx:for="{{enterprises}}" wx:key="index" bindtap="toUrl" data-url="/pages/enterprise/detail?id={{item.id}}">
-    <view>
-      <text class="cuIcon-titles text-blue"></text>
-      <text>{{item.title}}</text>
-    </view>
-    <view class="padding-left-sm">
-      <view class="margin-top-sm flex">
-        <view class="flex-sub">
-          <view class="text-grey">项目对接人</view>
-          <view class="text-bold">{{item.abutment||'暂无'}}</view>
-        </view>
-        <view class="flex-sub">
-          <view class="text-grey">跟进阶段</view>
-          <view class="text-bold">{{followStages[item.followStage]}}</view>
-        </view>
+    <view class="flex">
+      <view class="flex-sub">
+        <text class="cuIcon-titles text-blue"></text>
+        <text>{{item.title}}</text>
       </view>
-      <view class="margin-top-sm">
+      <view>{{item.numberPlate||'暂无'}}</view>
+    </view>
+    <view class="margin-tb">
+    <view class="cu-tag bg-cyan light" wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag"> {{tag}}</view>
+    </view>
+    <view class="padding-left-sm grid col-3">
+      <view>
+        <view class="text-grey">项目对接人</view>
+          <view class="text-bold">{{item.abutment||'暂无'}}</view>
+      </view>
+      <view>
+        <view class="text-grey">维护阶段</view>
+          <view class="text-bold">{{followStages[item.followStage]}}</view>
+      </view>
+      <view>
+        <view class="text-grey">行业领域</view>
+          <view class="text-bold">{{item.classify||'暂无'}}</view>
+      </view>
+      <view>
         <view class="text-grey">后期服务人</view>
-        <view class="text-bold">{{item.servicer||'暂无'}}</view>
+          <view class="text-bold">{{item.servicer||'暂无'}}</view>
+      </view>
+      <view>
+        <view class="text-grey">是否挂靠</view>
+          <view class="text-bold">{{item.attachment?'是':'否'}}</view>
+      </view>
+      <view>
+        <view class="text-grey">企业办公情况</view>
+          <view class="text-bold">{{item.situation||'暂无'}}</view>
       </view>
     </view>
   </view>

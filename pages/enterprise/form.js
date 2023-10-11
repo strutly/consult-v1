@@ -8,14 +8,18 @@ CustomPage({
     openIndex: 0,
     formData: {
     },
-    demands:['融资需求','人才引进类','政策申报类','技术引进或转型需求','无'],
+    tag: '',
+    tags: [],
+    demands: ['融资需求', '人才引进类', '政策申报类', '技术引进或转型需求', '无'],
     followStages: ['维护', '储备', '拟服务'],
     cooperationModes: ['横向课题', '合作申报项目', '兼职顾问', '全职引进'],
-    corporateHonors:['雏鹰入库','小巨人','高新企业','专精特精','独角兽','科小','瞪羚','无'],
-    leaderTitles:['院士','高校教授','海外院士','专家'],
-    declareTypes:['人才','科技','工信'],
-    declareResults:['未通过','通过'],
-    staffs:[{name:'测试',id:1}]
+    corporateHonors: ['雏鹰入库', '小巨人', '高新企业', '专精特精', '独角兽', '科小', '瞪羚', '无'],
+    leaderTitles: ['院士', '高校教授', '海外院士', '专家'],
+    declareTypes: ['人才', '科技', '工信'],
+    declareResults: ['未通过', '通过'],
+    staffs: [{ name: '测试', id: 1 }],
+    declarations: [],
+    ifLeader:0,
   },
   onLoad(options) {
     that = this;
@@ -40,7 +44,7 @@ CustomPage({
       leaderTitles: {
         list: true
       },
-      leaderTitles:{
+      leaderTitles: {
         list: true
       },
       classify: {
@@ -54,7 +58,7 @@ CustomPage({
       },
       talentId: {
         required: true,
-        min:0
+        min: 0
       },
       abutment: {
         required: true
@@ -68,32 +72,32 @@ CustomPage({
       contactPhone: {
         required: true
       },
-      lastRevenue:{
+      lastRevenue: {
         required: true
       },
-      lastInvestment:{
+      lastInvestment: {
         required: true,
-        min:0
+        min: 0
       },
-      propertyNum:{
+      propertyNum: {
         required: true,
-        min:0
+        min: 0
       },
-      abroadNum:{
+      abroadNum: {
         required: true,
-        min:0
+        min: 0
       },
-      doctorNum:{
+      doctorNum: {
         required: true,
-        min:0
+        min: 0
       },
-      masterNum:{
+      masterNum: {
         required: true,
-        min:0
+        min: 0
       },
-      artisanNum:{
+      artisanNum: {
         required: true,
-        min:0
+        min: 0
       }
     };
     const messages = {
@@ -113,7 +117,7 @@ CustomPage({
       corporateHonors: {
         list: "企业荣誉请选择至少一项"
       },
-      leaderTitles:{
+      leaderTitles: {
         list: "带头人称号请选择至少一项"
       },
       classify: {
@@ -127,68 +131,87 @@ CustomPage({
       },
       talentId: {
         required: "请选择负责人",
-        min:"请选择负责人"
+        min: "请选择负责人"
       },
       abutment: {
         required: "请输入项目对接人"
       },
       servicer: {
         required: "请输入后期服务人"
-      },      
+      },
       contactName: {
         required: "请输入联系人"
       },
       contactPhone: {
         required: "请输入联系电话"
       },
-      lastRevenue:{
+      lastRevenue: {
         required: "请输入上年度营收"
       },
-      lastInvestment:{
+      lastInvestment: {
         required: "请输入上年度研发投入",
         min: "请输入上年度研发投入"
       },
-      propertyNum:{
-        required:  "请输入知识产权数量入",
+      propertyNum: {
+        required: "请输入知识产权数量入",
         min: "请输入知识产权数量"
       },
-      abroadNum:{
-        required:  "请输入留学员工人数人数",
+      abroadNum: {
+        required: "请输入留学员工人数人数",
         min: "请输入留学员工人数人数"
       },
-      doctorNum:{
-        required:  "请输入博士人数",
+      doctorNum: {
+        required: "请输入博士人数",
         min: "请输入博士人数"
       },
-      masterNum:{
-        required:  "请输入硕士人数",
+      masterNum: {
+        required: "请输入硕士人数",
         min: "请输入硕士人数"
       },
-      artisanNum:{
-        required:  "请输入技术人员人数",
+      artisanNum: {
+        required: "请输入技术人员人数",
         min: "请输入技术人员人数"
       }
     };
     that.WxValidate = new WxValidate(rules, messages);
   },
   onReady() {
-       
-    Api.talentAll().then(res=>{
+
+    Api.talentAll().then(res => {
       that.setData({
-        talents:res.data
+        talents: res.data
       })
-    },err=>{
+    }, err => {
       that.showTips(err.msg);
     })
-    
+
   },
   onShow() {
 
   },
-  demandChange(e){
+  demandChange(e) {
     console.log(e);
     that.setData({
       ['formData.demands']: e.detail.value
+    })
+  },
+  tagInput(e) {
+    let tags = that.data.tags;
+    let tag = e.detail.value;
+    if (tags.indexOf(tag) == -1 && tag) {
+      tags.push(tag);
+    }
+    that.setData({
+      tags: tags,
+      tag: ''
+    })
+  },
+  removeTag(e) {
+    let index = e.currentTarget.dataset.index;
+    let tags = that.data.tags;
+    tags.splice(index, 1);
+    that.setData({
+      tags: tags
     })
   },
   pickerChange(e) {
@@ -197,7 +220,7 @@ CustomPage({
       ['formData.' + name]: e.detail.value
     })
   },
-  talentIdChange(e){
+  talentIdChange(e) {
     console.log(e);
     let name = e.currentTarget.dataset.name;
     let value = e.detail.value;
@@ -206,7 +229,7 @@ CustomPage({
     formData[name] = value;
     formData.talentType = talents[value].type;
     that.setData({
-      formData:formData
+      formData: formData
     })
 
   },
@@ -218,13 +241,14 @@ CustomPage({
       let error = that.WxValidate.errorList[0]
       return that.showTips(error.msg);
     }
-    Api.enterpriseAdd(data).then(res=>{
+    let declarations = that.data.declarations;
+    Api.enterpriseAdd({...data,declarations:declarations}).then(res => {
       console.log(res);
-      that.showTips("保存成功","success");
-      setTimeout(()=>{
+      that.showTips("保存成功", "success");
+      setTimeout(() => {
         wx.navigateBack();
-      },1500)
-    },err=>{
+      }, 1500)
+    }, err => {
       that.showTips(err.msg);
     })
   },
@@ -237,6 +261,42 @@ CustomPage({
     }
     that.setData({
       openIndex: index
+    })
+  },
+  ifLeaderChange(e){
+    console.log(e);
+    that.setData({
+      ifLeader:e.detail.value?1:0
+    })
+  },
+  addDeclaration() {
+    let declarations = that.data.declarations;
+    declarations.push({
+      title: '',
+      approvedAmount: '',
+      appropriationAmount: '',
+      secondAppropriationAmount: ''
+    });
+    that.setData({
+      declarations:declarations
+    })
+  },
+  declarationChange(e){
+    let declarations = that.data.declarations;
+    let index = e.currentTarget.dataset.index;
+    let name = e.currentTarget.dataset.name;
+    declarations[index][name] = e.detail.value;
+    that.setData({
+      declarations:declarations
+    })
+  },
+  removeDeclaration(e){
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+    let declarations = that.data.declarations;
+    declarations.splice(index,1);
+    that.setData({
+      declarations:declarations
     })
   }
 })
